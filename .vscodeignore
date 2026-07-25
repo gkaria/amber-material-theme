@@ -1,5 +1,6 @@
 scripts/**
 ghostty/**
+.vibe-learn/**
 .git/**
 .gitignore
 docs/**

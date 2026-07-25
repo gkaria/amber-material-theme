@@ -1,13 +1,14 @@
 {
-  "name": "palenight-amber",
-  "displayName": "Palenight Amber",
-  "description": "A high-contrast Palenight variant with an amber accent, derived from the MIT-licensed Palenight theme.",
+  "name": "amber-material-theme",
+  "displayName": "Amber Material High Contrast",
+  "description": "A warm, high-contrast Material-inspired theme with an amber accent, derived from the MIT-licensed Palenight theme.",
   "version": "1.0.0",
+  "private": true,
   "publisher": "gaurang",
-  "license": "MIT",
+  "license": "SEE LICENSE IN LICENSE",
   "repository": {
     "type": "git",
-    "url": "https://github.com/gaurangkaria/palenight-amber.git"
+    "url": "https://github.com/gkaria/amber-material-theme.git"
   },
   "engines": {
     "vscode": "^1.70.0"
@@ -25,9 +26,9 @@
   "contributes": {
     "themes": [
       {
-        "label": "Palenight Amber High Contrast",
+        "label": "Amber Material High Contrast",
         "uiTheme": "vs-dark",
-        "path": "./themes/palenight-amber-hc.json"
+        "path": "./themes/amber-material-hc.json"
       }
     ]
   }

@@ -1,7 +1,7 @@
-# Palenight Amber
+# Amber Material High Contrast
 
-A high-contrast dark theme for VS Code with an amber accent, plus a matching
-Ghostty terminal theme generated from the same palette.
+A high-contrast dark theme for VS Code with an amber accent, plus a warm,
+Material-inspired high-contrast Ghostty terminal theme.
 
 Derived from [vscode-palenight-theme](https://github.com/whizkydee/vscode-palenight-theme)
 by Olaolu Olawuyi, used under the MIT License.
@@ -10,24 +10,22 @@ by Olaolu Olawuyi, used under the MIT License.
 
 ```sh
 npx @vscode/vsce package
-code --install-extension palenight-amber-1.0.0.vsix
+code --install-extension amber-material-theme-1.0.0.vsix
 ```
 
-Then **Cmd+K Cmd+T** → *Palenight Amber High Contrast*.
-
-> Packaging from a path under `/tmp` silently produces an empty `.vsix`; build
-> from a normal directory.
+Then **Cmd+K Cmd+T** → *Amber Material High Contrast*.
 
 ## Build
 
 ```sh
-python3 scripts/build_theme.py     # themes/palenight-amber-hc.json
-python3 scripts/build_ghostty.py   # ghostty/palenight-amber
+python3 scripts/build_theme.py     # themes/amber-material-hc.json
+python3 scripts/build_ghostty.py   # ghostty/amber-material
 ```
 
-`scripts/build_theme.py` is the source of truth. It reads the upstream MIT base
-(`scripts/base-palenight-italic.json`) and applies this variant's palette on top.
-Never hand-edit `themes/*.json` — it is regenerated.
+`scripts/build_theme.py` is the source of truth for VS Code. It reads the
+upstream MIT base (`scripts/base-palenight-italic.json`) and applies this
+variant's palette on top. `scripts/build_ghostty.py` owns the separate terminal
+palette. Never hand-edit generated files in `themes/` or `ghostty/`.
 
 To re-accent the entire theme, change one constant:
 
@@ -35,7 +33,7 @@ To re-accent the entire theme, change one constant:
 AMBER = "#FFCB6B"   # cursors, scrollbars, badges, focus rings, links
 ```
 
-## Palette
+## VS Code palette
 
 | Role | Hex |
 | --- | --- |
@@ -75,7 +73,7 @@ properties — a theme extension cannot bundle them:
 
 ```jsonc
 {
-  "workbench.colorTheme": "Palenight Amber High Contrast",
+  "workbench.colorTheme": "Amber Material High Contrast",
 
   // Cascadia Code NF: ligatures + Nerd Font glyphs for terminal prompts.
   // brew install --cask font-cascadia-code-nf
@@ -90,7 +88,7 @@ properties — a theme extension cannot bundle them:
   "material-icon-theme.rootFolders.color": "#FFCB6B",
   "material-icon-theme.saturation": 0.9,
 
-  "terminal.integrated.fontFamily": "'Cascadia Code'",
+  "terminal.integrated.fontFamily": "'Cascadia Code NF', 'Cascadia Code', Menlo, monospace",
   "terminal.integrated.fontSize": 13
 }
 ```
@@ -123,27 +121,71 @@ be tinted to this theme's accent.
 
 ## Ghostty
 
-`ghostty/palenight-amber` is generated from the built VS Code theme's
-`terminal.*` slots, so both stay in sync.
+`ghostty/amber-material` uses a purpose-built terminal palette: a warm
+Gruvbox Material-style near-black base, clearer Material Design-inspired ANSI
+colors, and the same amber identity accent as the VS Code theme.
+
+| Role | Hex |
+| --- | --- |
+| Background | `#1D2021` |
+| Foreground | `#E7E1D1` |
+| Cursor / ANSI yellow | `#FFCB6B` |
+| Selection background | `#4A3F28` |
+| Selection foreground | `#FFF4D6` |
+
+### Install the theme
+
+From the repository root:
 
 ```sh
-cp ghostty/palenight-amber ~/.config/ghostty/themes/palenight-amber
+mkdir -p ~/.config/ghostty/themes
+cp ghostty/amber-material ~/.config/ghostty/themes/amber-material
 ```
 
-Then in `~/.config/ghostty/config`:
+Ghostty looks up named custom themes in `~/.config/ghostty/themes` (or
+`$XDG_CONFIG_HOME/ghostty/themes` when `XDG_CONFIG_HOME` is set).
+
+### Configure Ghostty
+
+Set the theme in your Ghostty configuration:
+
+- macOS: `~/Library/Application Support/com.mitchellh.ghostty/config.ghostty`
+- XDG/Linux: `~/.config/ghostty/config.ghostty`
 
 ```ini
-theme = palenight-amber
+theme = amber-material
 font-family = Cascadia Code NF
-font-size = 13
+font-size = 16
 ```
 
-The NF (Nerd Font) build carries the Powerline and icon glyphs that prompts like
-Starship and Powerlevel10k rely on; plain Cascadia Code renders those as tofu.
+Keep your preferred font size if it differs. `Cascadia Code NF` gives VS Code,
+Ghostty, and prompts such as Starship or Powerlevel10k the same glyph coverage.
+Ghostty 1.2 and newer also include a Nerd Font symbols fallback, so an NF-patched
+primary font is optional in Ghostty even though it is useful for consistency
+across applications.
 
-> Untested — generated from the palette but not yet verified in a running
-> Ghostty. Validate with `ghostty +validate-config`.
+Reload the configuration with **Cmd+Shift+,** on macOS or **Ctrl+Shift+,** on
+Linux. New terminals will use the updated theme.
+
+### Validate
+
+If the `ghostty` CLI is on `PATH`:
+
+```sh
+ghostty +validate-config
+```
+
+For the standard macOS app installation:
+
+```sh
+/Applications/Ghostty.app/Contents/MacOS/ghostty +validate-config
+```
 
 ## License
 
-MIT — see [LICENSE](LICENSE). Retains the upstream Palenight copyright.
+This project is currently proprietary and is not offered under an open-source
+license. See [LICENSE](LICENSE).
+
+It contains material derived from the MIT-licensed Palenight theme. The
+upstream copyright and license are retained in
+[LICENSE-upstream-palenight.md](LICENSE-upstream-palenight.md).

@@ -11,7 +11,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 
 SRC = os.path.join(HERE, "base-palenight-italic.json")
-DST = os.path.join(ROOT, "themes", "palenight-amber-hc.json")
+DST = os.path.join(ROOT, "themes", "amber-material-hc.json")
 
 # Darker, cooler base than stock Palenight (#292D3E) for a higher-contrast feel.
 BG        = "#22252F"  # editor / sidebar surface
@@ -317,7 +317,8 @@ colors["commandCenter.activeBorder"] = BORDER + "00"
 colors["tab.unfocusedActiveBorderTop"] = "#676E9500"
 
 # Identity -----------------------------------------------------------------
-theme["name"] = "Palenight Amber High Contrast"
+theme["name"] = "Amber Material High Contrast"
+theme["semanticClass"] = "amber-material-high-contrast"
 theme.pop("maintainers", None)
 theme["author"] = "Gaurang Karia"
 theme["semanticHighlighting"] = True

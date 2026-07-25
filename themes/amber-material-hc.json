@@ -1,8 +1,8 @@
 {
-  "name": "Palenight Amber High Contrast",
+  "name": "Amber Material High Contrast",
   "author": "Gaurang Karia",
   "type": "dark",
-  "semanticClass": "palenight-italic",
+  "semanticClass": "amber-material-high-contrast",
   "colors": {
     "contrastActiveBorder": "#1C1F2700",
     "contrastBorder": "#333846",
