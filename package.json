@@ -1,0 +1,30 @@
+{
+  "name": "palenight-amber",
+  "displayName": "Palenight Amber",
+  "description": "A high-contrast Palenight variant with an amber accent, derived from the MIT-licensed Palenight theme.",
+  "version": "1.0.0",
+  "publisher": "gaurang",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "keywords": [
+    "theme",
+    "dark",
+    "palenight",
+    "amber",
+    "high contrast"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "Palenight Amber High Contrast",
+        "uiTheme": "vs-dark",
+        "path": "./themes/palenight-amber-hc.json"
+      }
+    ]
+  }
+}
