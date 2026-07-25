@@ -1,0 +1,11 @@
+{
+  "source": "https://github.com/material-extensions/vscode-material-icon-theme",
+  "extension": "PKief.material-icon-theme",
+  "version": "5.37.0",
+  "license": "MIT",
+  "sourceDefinitionSha256": "e3cd54ef4c35020fdd53fa70f309ec1e6a1d3986ee52a80e1ee9be9e7ea6086c",
+  "vendoredDefinitionSha256": "a136f48b6f9c5d95ad188e56137fe26abc7b2a08392301e70da4acacc7f197f6",
+  "assetCount": 1250,
+  "folderColor": "#FFCB6B",
+  "saturation": 0.9
+}

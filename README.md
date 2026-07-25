@@ -1,7 +1,8 @@
 # Amber Material High Contrast
 
 A high-contrast dark theme for VS Code with an amber accent, plus a warm,
-Material-inspired high-contrast Ghostty terminal theme.
+Material-inspired high-contrast Ghostty terminal theme and a bundled Amber
+Material file icon theme.
 
 Derived from [vscode-palenight-theme](https://github.com/whizkydee/vscode-palenight-theme)
 by Olaolu Olawuyi, used under the MIT License.
@@ -37,22 +38,31 @@ npx @vscode/vsce package
 code --install-extension amber-material-theme-1.0.0.vsix
 ```
 
-Then **Cmd+K Cmd+T** → *Amber Material High Contrast*.
+Then select both bundled themes:
+
+1. **Cmd+K Cmd+T** → *Amber Material High Contrast*
+2. **Cmd+Shift+P** → *Preferences: File Icon Theme* → *Amber Material Icons*
 
 ## Build
 
 ```sh
-python3 scripts/build_theme.py     # themes/amber-material-hc.json
-python3 scripts/build_ghostty.py   # ghostty/amber-material
+python3 scripts/build_theme.py        # themes/amber-material-hc.json
+python3 scripts/build_ghostty.py      # ghostty/amber-material
 python3 scripts/build_codex_theme.py  # codex/amber-material-high-contrast.tmTheme
+python3 scripts/vendor_material_icons.py  # pinned VS Code icon snapshot
 ```
 
 `scripts/build_theme.py` is the source of truth for VS Code. It reads the
 upstream MIT base (`scripts/base-palenight-italic.json`) and applies this
 variant's palette on top. `scripts/build_ghostty.py` owns the separate terminal
 palette. `scripts/build_codex_theme.py` combines the VS Code TextMate scopes
-with the Ghostty terminal surfaces for Codex CLI. Never hand-edit generated
-files in `themes/`, `ghostty/`, or `codex/`.
+with the Ghostty terminal surfaces for Codex CLI.
+
+`scripts/vendor_material_icons.py` snapshots Material Icon Theme 5.37.0 from a
+locally installed VS Code extension, then deterministically applies amber
+folders (`#FFCB6B`) and `0.9` saturation. It has no runtime dependency on
+the upstream extension. Never hand-edit generated files in `themes/`,
+`ghostty/`, `codex/`, `icon-themes/`, or `icons/amber-material/`.
 
 To re-accent the entire theme, change one constant:
 
@@ -84,8 +94,9 @@ outlines use the recessive `#3A4052` so the UI isn't a grid of yellow boxes.
 
 ## What a color theme does *not* control
 
-A VS Code color theme only sets colors. These are user settings, not theme
-properties — a theme extension cannot bundle them:
+The VS Code package ships both a color theme and a file icon theme, but VS Code
+keeps them as separate selections. Font and layout preferences remain user
+settings:
 
 | Concern | Setting |
 | --- | --- |
@@ -94,7 +105,7 @@ properties — a theme extension cannot bundle them:
 | Line height | `editor.lineHeight` |
 | Ligatures | `editor.fontLigatures` |
 | Italics | controlled by the theme's `tokenColors` (this theme ships them) |
-| File icons | a separate *icon theme* extension |
+| File icons | the bundled *Amber Material Icons* theme |
 
 ### Suggested companion settings
 
@@ -109,11 +120,8 @@ properties — a theme extension cannot bundle them:
   "editor.lineHeight": 1.6,
   "editor.fontLigatures": true,
 
-  // Icons: Material Icon Theme (MIT), tinted to match the amber accent.
-  "workbench.iconTheme": "material-icon-theme",
-  "material-icon-theme.folders.color": "#FFCB6B",
-  "material-icon-theme.rootFolders.color": "#FFCB6B",
-  "material-icon-theme.saturation": 0.9,
+  // Bundled, pinned Material Icon Theme snapshot with amber folders.
+  "workbench.iconTheme": "amber-material-icons",
 
   "terminal.integrated.fontFamily": "'Cascadia Code NF', 'Cascadia Code', Menlo, monospace",
   "terminal.integrated.fontSize": 13
@@ -141,10 +149,15 @@ Use the family name exactly as macOS registers it (`Cascadia Code NF`, not
 system_profiler SPFontsDataType | grep -i 'family: cascadia'
 ```
 
-Icon themes are separate extensions because they ship SVG assets, not colors.
-[Material Icon Theme](https://github.com/material-extensions/vscode-material-icon-theme)
-is MIT-licensed and exposes folder/file color settings, so its folder icons can
-be tinted to this theme's accent.
+The extension includes **Amber Material Icons**, a static snapshot of
+[Material Icon Theme 5.37.0](https://github.com/material-extensions/vscode-material-icon-theme/tree/v5.37.0).
+Its SVG assets travel inside the VSIX, so installing the upstream icon
+extension is not required and upstream deprecation cannot remove this snapshot.
+
+Cascadia Code NF is intentionally not bundled. It is already installed on this
+machine and remains the recommended editor and terminal font; its Nerd Font
+glyphs are useful in prompts and code, while Explorer uses the more portable
+bundled SVG icons.
 
 ## Ghostty
 
@@ -265,3 +278,9 @@ license. See [LICENSE](LICENSE).
 It contains material derived from the MIT-licensed Palenight theme. The
 upstream copyright and license are retained in
 [LICENSE-upstream-palenight.md](LICENSE-upstream-palenight.md).
+
+The bundled icon theme is derived from the MIT-licensed Material Icon Theme.
+Its license and the relevant icon-source notices are retained in
+[LICENSE-material-icon-theme.txt](LICENSE-material-icon-theme.txt),
+[LICENSE-Apache-2.0.txt](LICENSE-Apache-2.0.txt), and
+[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).

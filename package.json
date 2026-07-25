@@ -30,6 +30,13 @@
         "uiTheme": "vs-dark",
         "path": "./themes/amber-material-hc.json"
       }
+    ],
+    "iconThemes": [
+      {
+        "id": "amber-material-icons",
+        "label": "Amber Material Icons",
+        "path": "./icon-themes/amber-material-icons.json"
+      }
     ]
   }
 }

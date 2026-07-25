@@ -20,5 +20,12 @@ Olaolu Olawuyi. That upstream material remains available under the MIT License;
 its copyright notice and license text are reproduced in
 LICENSE-upstream-palenight.md.
 
+This repository also contains a pinned, generated snapshot derived from
+Material Icon Theme by Material Extensions. That material remains available
+under the MIT License; its copyright notice and license text are reproduced in
+LICENSE-material-icon-theme.txt. Some upstream icon designs originate from
+Apache-2.0-licensed Material Design Icons and Material Symbols; that license is
+reproduced in LICENSE-Apache-2.0.txt. See THIRD_PARTY_NOTICES.md for details.
+
 Nothing in this notice restricts any rights granted by that third-party
-license.
+licenses.
