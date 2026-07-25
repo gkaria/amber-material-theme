@@ -44,12 +44,15 @@ Then **Cmd+K Cmd+T** → *Amber Material High Contrast*.
 ```sh
 python3 scripts/build_theme.py     # themes/amber-material-hc.json
 python3 scripts/build_ghostty.py   # ghostty/amber-material
+python3 scripts/build_codex_theme.py  # codex/amber-material-high-contrast.tmTheme
 ```
 
 `scripts/build_theme.py` is the source of truth for VS Code. It reads the
 upstream MIT base (`scripts/base-palenight-italic.json`) and applies this
 variant's palette on top. `scripts/build_ghostty.py` owns the separate terminal
-palette. Never hand-edit generated files in `themes/` or `ghostty/`.
+palette. `scripts/build_codex_theme.py` combines the VS Code TextMate scopes
+with the Ghostty terminal surfaces for Codex CLI. Never hand-edit generated
+files in `themes/`, `ghostty/`, or `codex/`.
 
 To re-accent the entire theme, change one constant:
 
@@ -204,6 +207,55 @@ For the standard macOS app installation:
 ```sh
 /Applications/Ghostty.app/Contents/MacOS/ghostty +validate-config
 ```
+
+## Codex
+
+### Desktop app
+
+Open **Settings → Appearance** and use:
+
+| Setting | Value |
+| --- | --- |
+| Base theme | Dark |
+| Accent | `#FFCB6B` |
+| Background | `#1C1F27` |
+| Foreground | `#E7E1D1` |
+| Code font | `Cascadia Code NF` |
+
+This pair provides a 12.62:1 text contrast ratio while staying within the
+existing Amber Material palette. Keeping the system UI font preserves native
+macOS readability.
+
+### CLI
+
+The generated Codex CLI theme uses the warmer Ghostty background and foreground
+for terminal continuity, then carries over the VS Code TextMate syntax rules.
+
+Build and install it:
+
+```sh
+python3 scripts/build_theme.py
+python3 scripts/build_ghostty.py
+python3 scripts/build_codex_theme.py
+
+mkdir -p ~/.codex/themes
+cp codex/amber-material-high-contrast.tmTheme \
+  ~/.codex/themes/amber-material-high-contrast.tmTheme
+```
+
+Inside an interactive Codex CLI session, run `/theme` and choose
+*Amber Material High Contrast*. Alternatively, configure it directly:
+
+```toml
+[tui]
+theme = "amber-material-high-contrast"
+```
+
+The `.tmTheme` controls syntax-highlighted code blocks and diffs. Ghostty still
+controls the surrounding terminal background and ANSI colors.
+
+Codex theme support is documented in the
+[official CLI customization guide](https://learn.chatgpt.com/docs/cli-customization#syntax-highlighting-and-themes).
 
 ## License
 
