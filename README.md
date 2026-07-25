@@ -6,6 +6,30 @@ Material-inspired high-contrast Ghostty terminal theme.
 Derived from [vscode-palenight-theme](https://github.com/whizkydee/vscode-palenight-theme)
 by Olaolu Olawuyi, used under the MIT License.
 
+## Design philosophy
+
+“Material” describes the design language, not a claim that this is an official
+Google theme or a reproduction of Google's palette. [Material Design](https://design.google/library/material-design-launch-2014)
+began at Google as a system inspired by physical surfaces such as paper and
+ink, using hierarchy, spacing, color, light, and motion to make interfaces
+easier to understand.
+
+Amber Material High Contrast carries those principles into a developer
+environment:
+
+- **Amber is the identity.** `#FFCB6B` marks focus, selection, and active state.
+- **Material is the design language.** Layered surfaces, deliberate color roles,
+  and restrained structural borders create hierarchy.
+- **High Contrast is the functional promise.** Code, controls, and semantic
+  states remain easy to distinguish on dark backgrounds.
+
+The theme's direct lineage is:
+
+`Material-inspired design → Palenight → Amber Material High Contrast`
+
+It retains Palenight's syntax foundation while giving the workbench and
+terminal a distinct amber-led, higher-contrast identity.
+
 ## Install (VS Code)
 
 ```sh
