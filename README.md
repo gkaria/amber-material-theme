@@ -77,8 +77,9 @@ properties — a theme extension cannot bundle them:
 {
   "workbench.colorTheme": "Palenight Amber High Contrast",
 
-  // Cascadia Code pairs well with Palenight and ships italics + ligatures.
-  "editor.fontFamily": "'Cascadia Code', Menlo, monospace",
+  // Cascadia Code NF: ligatures + Nerd Font glyphs for terminal prompts.
+  // brew install --cask font-cascadia-code-nf
+  "editor.fontFamily": "'Cascadia Code NF', 'Cascadia Code', Menlo, monospace",
   "editor.fontSize": 13,
   "editor.lineHeight": 1.6,
   "editor.fontLigatures": true,
@@ -92,6 +93,27 @@ properties — a theme extension cannot bundle them:
   "terminal.integrated.fontFamily": "'Cascadia Code'",
   "terminal.integrated.fontSize": 13
 }
+```
+
+### Fonts
+
+```sh
+brew install --cask font-cascadia-code-nf   # ligatures + Nerd Font glyphs
+brew install --cask font-cascadia-mono-nf   # same, without ligatures
+```
+
+| Family | Ligatures | Nerd Font glyphs |
+| --- | --- | --- |
+| `Cascadia Code` | yes | no |
+| `Cascadia Mono` | no | no |
+| `Cascadia Code NF` | yes | yes |
+| `Cascadia Mono NF` | no | yes |
+
+Use the family name exactly as macOS registers it (`Cascadia Code NF`, not
+`CascadiaCodeNF`); check with:
+
+```sh
+system_profiler SPFontsDataType | grep -i 'family: cascadia'
 ```
 
 Icon themes are separate extensions because they ship SVG assets, not colors.
@@ -110,11 +132,14 @@ cp ghostty/palenight-amber ~/.config/ghostty/themes/palenight-amber
 
 Then in `~/.config/ghostty/config`:
 
-```
+```ini
 theme = palenight-amber
-font-family = Cascadia Code
+font-family = Cascadia Code NF
 font-size = 13
 ```
+
+The NF (Nerd Font) build carries the Powerline and icon glyphs that prompts like
+Starship and Powerlevel10k rely on; plain Cascadia Code renders those as tofu.
 
 > Untested — generated from the palette but not yet verified in a running
 > Ghostty. Validate with `ghostty +validate-config`.
