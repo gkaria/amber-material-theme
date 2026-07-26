@@ -21,8 +21,8 @@
     "cyan": "#66D9D0",
     "diffAddedBackground": "#a9c77d14",
     "diffRemovedBackground": "#ff557214",
-    "diffAddedLineNumberBackground": "#99b76d23",
-    "diffRemovedLineNumberBackground": "#ef535033"
+    "diffAddedLineNumberBackground": "#a9c77d23",
+    "diffRemovedLineNumberBackground": "#ff557233"
   },
   "theme": {
     "primary": "amber",

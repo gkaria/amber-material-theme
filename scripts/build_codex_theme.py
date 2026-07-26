@@ -9,6 +9,8 @@ import os
 import plistlib
 import uuid
 
+import ghostty_palette
+
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 
@@ -25,20 +27,6 @@ THEME_UUID = str(
 ).upper()
 
 
-def load_ghostty_colors(path):
-    """Read the first value for each non-palette Ghostty color option."""
-    colors = {}
-    with open(path, encoding="utf-8") as source:
-        for raw_line in source:
-            line = raw_line.strip()
-            if not line or line.startswith("#") or line.startswith("palette"):
-                continue
-            key, separator, value = line.partition("=")
-            if separator:
-                colors.setdefault(key.strip(), value.strip())
-    return colors
-
-
 def opaque(color):
     """Return #RRGGBB when a VS Code color includes an alpha channel."""
     if isinstance(color, str) and color.startswith("#") and len(color) == 9:
@@ -49,16 +37,7 @@ def opaque(color):
 with open(VSCODE_SRC, encoding="utf-8") as source:
     vscode_theme = json.load(source)
 
-ghostty = load_ghostty_colors(GHOSTTY_SRC)
-required = {
-    "background",
-    "foreground",
-    "cursor-color",
-    "selection-background",
-}
-missing = sorted(required - ghostty.keys())
-if missing:
-    raise ValueError(f"missing Ghostty colors: {', '.join(missing)}")
+ghostty, _ansi = ghostty_palette.load(GHOSTTY_SRC)
 
 ui_colors = vscode_theme["colors"]
 settings = [

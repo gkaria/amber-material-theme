@@ -7,6 +7,8 @@ upstream syntax palette intact.
 import json
 import os
 
+import ghostty_palette
+
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 
@@ -333,10 +335,19 @@ for key in (
 colors["profileBadge.background"] = AMBER
 colors["profileBadge.foreground"] = BG_DEEP
 colors["terminal.selectionBackground"] = "#3A4055"
-# Upstream sets ansiBlack to the same grey as brightBlack, which makes black
-# text nearly invisible; give it a true dark tone.
-colors["terminal.ansiBlack"] = "#1C1F27"
 colors["terminal.inactiveSelectionBackground"] = "#3A405580"
+
+# Integrated terminal ANSI colors come from the Ghostty theme, so the same
+# command renders the same way inside and outside the editor. Upstream's
+# palette disagreed with it in 14 of 16 slots and gave five bright colors the
+# same value as their normal counterpart, which flattened `ls --color` output.
+#
+# The terminal's own surfaces (background, foreground, selection) deliberately
+# stay on the cool VS Code tones set above: the panel sits beside the editor,
+# so it matches its neighbour rather than the standalone terminal.
+_, ghostty_ansi = ghostty_palette.load()
+for index, name in enumerate(ghostty_palette.ANSI_NAMES):
+    colors[f"terminal.ansi{name}"] = ghostty_ansi[index]
 
 # Focus/active affordances and the remaining accent slots. This is the single
 # place amber is applied at full strength, so every key here is assigned once.
