@@ -61,6 +61,28 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
+def assets_sha256(root: Path) -> str:
+    """Return one digest covering every vendored asset's path and contents.
+
+    Sorted by relative POSIX path so the result does not depend on filesystem
+    walk order, and each path is fed in alongside its bytes so a rename is
+    caught as well as an edit. check_generated.py recomputes this to verify the
+    committed snapshot, which is the only way to detect a hand-edited SVG --
+    counting assets cannot.
+    """
+    digest = hashlib.sha256()
+    assets = sorted(
+        (path for path in root.rglob("*") if path.is_file()),
+        key=lambda path: path.relative_to(root).as_posix(),
+    )
+    for path in assets:
+        digest.update(path.relative_to(root).as_posix().encode("utf-8"))
+        digest.update(b"\0")
+        digest.update(path.read_bytes())
+        digest.update(b"\0")
+    return digest.hexdigest()
+
+
 def load_source(source: Path):
     package_path = source / "package.json"
     package = json.loads(package_path.read_text(encoding="utf-8"))
@@ -201,6 +223,7 @@ def vendor(source: Path):
         "license": package["license"],
         "sourceDefinitionSha256": sha256(definition_path),
         "vendoredDefinitionSha256": sha256(DEST_THEME),
+        "vendoredAssetsSha256": assets_sha256(DEST_ICONS),
         "assetCount": len(copied),
         "folderColor": AMBER.upper(),
         "saturation": 0.9,

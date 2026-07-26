@@ -14,16 +14,20 @@ Exits 0 when everything is in sync, 1 otherwise, listing what drifted.
 
 The icon snapshot is checked differently. vendor_material_icons.py reads a
 locally installed VS Code extension, so it cannot run offline; instead this
-verifies the snapshot against the SHA256 and asset count that the vendoring
-step recorded in vendor/material-icon-theme.json.
+verifies the snapshot against the digests and asset count that the vendoring
+step recorded in vendor/material-icon-theme.json, recomputing them with the
+vendoring script's own functions so the two cannot drift apart.
 """
 import hashlib
 import json
 import os
+import pathlib
 import shutil
 import subprocess
 import sys
 import tempfile
+
+import vendor_material_icons
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
@@ -114,6 +118,24 @@ def check_icon_snapshot():
             f"vendoredDefinitionSha256 {expected}"
         )
 
+    # Asset contents, not just their count: an edited or corrupted SVG leaves
+    # the count and the definition digest untouched, so only this catches it.
+    assets_actual = vendor_material_icons.assets_sha256(
+        pathlib.Path(ROOT) / ICON_ASSETS
+    )
+    assets_expected = manifest.get("vendoredAssetsSha256")
+    if assets_expected is None:
+        problems.append(
+            f"{VENDOR_MANIFEST}: no vendoredAssetsSha256 recorded, so asset "
+            "contents cannot be verified; re-run vendor_material_icons.py"
+        )
+    elif assets_actual != assets_expected:
+        problems.append(
+            f"{ICON_ASSETS}: contents digest {assets_actual} does not match "
+            f"vendoredAssetsSha256 {assets_expected} -- an asset was edited, "
+            "renamed, added or removed"
+        )
+
     on_disk = sum(
         len(files) for _, _, files in os.walk(os.path.join(ROOT, ICON_ASSETS))
     )
@@ -161,16 +183,26 @@ def check_icon_snapshot():
 
 
 def main():
-    problems = check_generated_files() + check_icon_snapshot()
-    if problems:
+    theme_problems = check_generated_files()
+    icon_problems = check_icon_snapshot()
+    if theme_problems or icon_problems:
         print("generated files are out of sync:\n")
-        for problem in problems:
+        for problem in theme_problems + icon_problems:
             print(f"  - {problem}")
-        print(
-            "\nRe-run the generators in order, or revert hand edits to "
-            "generated files:\n"
-            "  " + "\n  ".join(f"python3 scripts/{g}" for g in GENERATORS)
-        )
+        if theme_problems:
+            print(
+                "\nRe-run the generators in order, or revert hand edits to "
+                "generated files:\n"
+                "  " + "\n  ".join(f"python3 scripts/{g}" for g in GENERATORS)
+            )
+        if icon_problems:
+            print(
+                "\nFor the icon snapshot, revert the hand edit, or re-vendor "
+                "against an installed "
+                f"{vendor_material_icons.UPSTREAM_ID} "
+                f"{vendor_material_icons.PINNED_VERSION}:\n"
+                "  python3 scripts/vendor_material_icons.py"
+            )
         return 1
 
     print(
