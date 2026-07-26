@@ -59,6 +59,12 @@ python3 scripts/vendor_material_icons.py  # pinned VS Code icon snapshot
 python3 scripts/check_generated.py    # verify nothing drifted
 ```
 
+Tests for the drift check itself:
+
+```sh
+python3 scripts/test_check_generated.py
+```
+
 `scripts/build_ghostty.py` owns the terminal palette and runs first, because
 the VS Code theme takes its 16 ANSI colors from it. `scripts/build_theme.py` is
 the source of truth for everything else in VS Code: it reads the upstream MIT
@@ -69,7 +75,16 @@ with the Ghostty terminal surfaces for Codex CLI.
 
 `scripts/check_generated.py` re-runs the chain into a temporary tree and
 compares every generated file, so a hand edit or a stale output fails loudly
-instead of sitting in the repository unnoticed.
+instead of sitting in the repository unnoticed. It also verifies the icon
+snapshot against the digests recorded in `vendor/material-icon-theme.json`,
+since `vendor_material_icons.py` needs an installed VS Code extension and
+cannot run offline.
+
+`scripts/test_check_generated.py` covers that checker's failure modes — a
+corrupted, renamed or deleted asset, a missing definition, a dangling
+reference — against a synthetic snapshot in a temporary directory. The happy
+path is easy to get right and was the only thing originally exercised; these
+are the cases that were not.
 
 `scripts/vendor_material_icons.py` snapshots Material Icon Theme 5.37.0 from a
 locally installed VS Code extension, then deterministically applies amber
