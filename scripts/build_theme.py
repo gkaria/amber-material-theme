@@ -21,15 +21,20 @@ FG        = "#D2D7E4"  # lifted from #BFC7D5
 FG_DIM    = "#8A91A6"
 BORDER    = "#333846"
 BORDER_SOFT = "#3A4052"  # container/box outlines — deliberately recessive
-ACCENT    = "#89DDFF"
+ACCENT    = "#89DDFF"  # debug console info; the syntax palette's cyan
 
 # AMBER is the workbench accent. Change this one value to re-accent the whole
 # theme: cursors, scrollbars, badges, focus rings, selections, links.
 AMBER     = "#FFCB6B"
-TEAL      = "#80CBC4"  # retained for syntax lineage; no longer a UI accent
 RED       = "#ff5572"  # errors, deletions
 GREEN     = "#a9c77d"  # additions
 BLUE      = "#82AAFF"  # info, modifications
+
+# Upstream accents this variant replaces wholesale. Kept as named constants so
+# the sweep below reads as intent rather than magic hex.
+UPSTREAM_PURPLE      = "#7E57C2"
+UPSTREAM_PURPLE_DEEP = "#694CA4"
+UPSTREAM_TEAL        = "#80CBC4"
 
 theme = json.load(open(SRC))
 colors = theme["colors"]
@@ -62,7 +67,7 @@ for key in (
 # Foregrounds --------------------------------------------------------------
 for key in (
     "editor.foreground", "foreground", "sideBar.foreground", "tab.activeForeground",
-    "activityBar.foreground", "statusBar.foreground", "list.activeSelectionForeground",
+    "activityBar.foreground", "statusBar.foreground",
     "menu.foreground", "dropdown.foreground", "input.foreground", "terminal.foreground",
 ):
     colors[key] = FG
@@ -72,7 +77,6 @@ for key in ("tab.inactiveForeground", "activityBar.inactiveForeground",
     colors[key] = FG_DIM
 
 # Contrast accents ---------------------------------------------------------
-colors["editorLineNumber.activeForeground"] = ACCENT
 colors["editorCursor.foreground"] = AMBER
 colors["editorCursor.background"] = BG
 colors["terminalCursor.foreground"] = AMBER
@@ -89,14 +93,11 @@ colors["editorBracketMatch.border"] = AMBER + "80"
 colors["editor.findRangeHighlightBackground"] = AMBER + "4d"
 colors["editor.selectionHighlightBackground"] = AMBER + "33"
 colors["gitDecoration.conflictingResourceForeground"] = AMBER + "e6"
-colors["focusBorder"] = "#3F4657"
 colors["contrastBorder"] = BORDER
 colors["editorIndentGuide.background1"] = "#2F3543"
 colors["editorIndentGuide.activeBackground1"] = "#4A5265"
 colors["editor.lineHighlightBackground"] = "#2A2E3A80"
 colors["editor.selectionBackground"] = "#7580B860"
-colors["tab.activeBorderTop"] = ACCENT
-colors["statusBarItem.remoteBackground"] = BG_DEEP
 
 for key in ("sideBar.border", "panel.border", "activityBar.border",
             "statusBar.border", "titleBar.border", "editorGroup.border", "tab.border"):
@@ -107,17 +108,16 @@ for key in ("sideBar.border", "panel.border", "activityBar.border",
 # sticky scroll, activity bar top), so they would otherwise fall back to VS Code
 # defaults and read as untinted against the rest of the theme.
 
-# TEAL is the workbench interaction accent: selections, links, focus, progress.
+# Amber carries interaction on these surfaces too: chat, menus, notebooks,
+# progress, links. Keys whose final value is set further down (the solid-amber
+# fills, the recessive container borders, the remote status item) are handled
+# there instead of here.
 for key in (
-    "activityBar.activeBorder", "activityBarTop.activeBorder", "chat.avatarForeground",
-    "chat.slashCommandForeground", "list.activeSelectionIconForeground",
+    "chat.avatarForeground", "chat.slashCommandForeground",
     "list.inactiveSelectionIconForeground", "menu.selectionForeground",
-    "menubar.selectionForeground", "notebook.focusedCellBorder", "progressBar.background",
-    "settings.modifiedItemIndicator", "statusBar.debuggingForeground",
-    "statusBarItem.remoteForeground", "textLink.foreground", "editorWidget.border",
-    "editorWidget.resizeBorder", "editor.findMatchBorder", "extensionButton.foreground",
+    "menubar.selectionForeground", "settings.modifiedItemIndicator",
+    "statusBar.debuggingForeground", "extensionButton.foreground",
     "editorOverviewRuler.findMatchForeground", "extensionIcon.verifiedForeground",
-    "statusBarItem.remoteHoverBackground",
 ):
     colors[key] = AMBER
 
@@ -139,8 +139,7 @@ for key in (
     "editor.selectionForeground", "editor.findMatchHighlightForeground",
     "editorLink.activeForeground", "textLink.activeForeground",
     "quickInputList.focusIconForeground", "tab.unfocusedActiveForeground",
-    "extensionBadge.remoteForeground", "menu.separatorBackground",
-    "commandCenter.activeForeground",
+    "menu.separatorBackground", "commandCenter.activeForeground",
 ):
     colors[key] = FG
 
@@ -167,7 +166,7 @@ colors["textPreformat.foreground"] = FG + "b3"
 colors["menu.selectionBackground"] = BORDER + "ff"
 
 # Borders, separators, subtle overlays.
-for key in ("menu.border", "commandCenter.border", "keybindingLabel.border",
+for key in ("commandCenter.border", "keybindingLabel.border",
             "keybindingLabel.bottomBorder"):
     colors[key] = BORDER
 
@@ -175,7 +174,7 @@ for key in ("agentsPanel.border", "sideBarActivityBarTop.border",
             "sideBarSectionHeader.border", "sideBarStickyScroll.border"):
     colors[key] = BORDER + "99"
 
-for key in ("chat.requestBorder", "notificationToast.border", "widget.border"):
+for key in ("chat.requestBorder", "widget.border"):
     colors[key] = "#ffffff0f"
 
 for key in ("menu.selectionBorder", "menubar.selectionBorder", "menubar.selectionBackground",
@@ -185,7 +184,6 @@ for key in ("menu.selectionBorder", "menubar.selectionBorder", "menubar.selectio
     colors[key] = FG + "1a"
 
 colors["quickInputList.focusBackground"] = FG + "26"
-colors["inputOption.activeBackground"] = FG + "4d"
 colors["commandCenter.foreground"] = FG + "99"
 colors["chat.requestCodeBorder"] = "#474D6C"
 colors["chat.checkpointSeparator"] = FG_DIM
@@ -221,15 +219,6 @@ for key in ("badge.foreground", "activityBarBadge.foreground",
             "extensionBadge.remoteForeground"):
     colors[key] = BG_DEEP
 
-# Remaining interaction accents that were teal.
-for key in ("focusBorder", "list.focusOutline", "editorLineNumber.activeForeground",
-            "tab.activeBorderTop", "panelTitle.activeBorder", "activityBar.activeBorder",
-            "list.highlightForeground", "list.focusHighlightForeground",
-            "pickerGroup.foreground", "textLink.foreground", "button.background",
-            "progressBar.background", "editorWidget.border", "editorWidget.resizeBorder",
-            "selection.background", "inputOption.activeBorder",
-            "statusBarItem.remoteBackground"):
-    colors[key] = AMBER
 colors["button.foreground"] = BG_DEEP
 colors["button.hoverBackground"] = "#FFD98A"
 colors["statusBarItem.remoteForeground"] = BG_DEEP
@@ -244,7 +233,7 @@ for key, value in list(colors.items()):
     if not isinstance(value, str) or not value.startswith("#"):
         continue
     base, alpha = value[:7].upper(), value[7:]
-    if base in ("#7E57C2", "#694CA4", "#80CBC4"):
+    if base in (UPSTREAM_PURPLE, UPSTREAM_PURPLE_DEEP, UPSTREAM_TEAL):
         colors[key] = AMBER + alpha
 
 # Solid amber fills need a dark foreground to stay legible.
@@ -255,7 +244,9 @@ colors["editorSuggestWidget.selectedIconForeground"] = BG_DEEP
 colors["extensionButton.prominentForeground"] = BG_DEEP
 colors["quickInputList.focusForeground"] = FG
 
-# Selections/highlights read better as translucent washes than solid amber.
+# The selected row in a list or the suggest widget is a solid amber bar, paired
+# with the dark foregrounds set just above. Everything else — find matches,
+# hovers, ranges — is a translucent wash so the accent stays a signal.
 colors["list.activeSelectionBackground"] = AMBER
 colors["editorSuggestWidget.selectedBackground"] = AMBER
 colors["editor.findMatchHighlightBackground"] = AMBER + "40"
@@ -285,11 +276,15 @@ colors["terminal.selectionBackground"] = "#3A4055"
 colors["terminal.ansiBlack"] = "#1C1F27"
 colors["terminal.inactiveSelectionBackground"] = "#3A405580"
 
-# Focus/active affordances keep the accent.
+# Focus/active affordances and the remaining accent slots. This is the single
+# place amber is applied at full strength, so every key here is assigned once.
 for key in ("focusBorder", "list.focusOutline", "inputOption.activeBorder",
             "tab.activeBorderTop", "panelTitle.activeBorder", "activityBar.activeBorder",
             "activityBarTop.activeBorder", "notebook.focusedCellBorder",
-            "editor.findMatchBorder"):
+            "editor.findMatchBorder", "editorLineNumber.activeForeground",
+            "list.highlightForeground", "list.focusHighlightForeground",
+            "pickerGroup.foreground", "textLink.foreground", "button.background",
+            "progressBar.background", "statusBarItem.remoteBackground"):
     colors[key] = AMBER
 
 # Semantic status colors reuse the existing syntax palette.
