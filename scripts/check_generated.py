@@ -55,6 +55,10 @@ GENERATED = (
 VENDOR_MANIFEST = "vendor/material-icon-theme.json"
 ICON_THEME = "icon-themes/amber-material-icons.json"
 ICON_ASSETS = "icons/amber-material"
+# Copied verbatim from upstream by vendor_material_icons.py and shipped in the
+# VSIX, so it belongs to the snapshot: without it the package ships MIT-derived
+# icons with no MIT text.
+VENDOR_LICENSE = "LICENSE-material-icon-theme.txt"
 
 
 def sha256(path):
@@ -68,6 +72,32 @@ def sha256(path):
 def read_bytes(path):
     with open(path, "rb") as handle:
         return handle.read()
+
+
+def load_json(relative):
+    """Return (data, problem) for a JSON file under ROOT.
+
+    Every failure a hand edit can cause -- deletion, truncation, merge markers,
+    a replaced root value -- comes back as a problem string rather than an
+    exception, so main() can print the drift report it promises instead of a
+    traceback. Exactly one of the two return values is ever set.
+    """
+    path = os.path.join(ROOT, relative)
+    if not os.path.isfile(path):
+        return None, f"{relative}: missing"
+    try:
+        with open(path, encoding="utf-8") as source:
+            data = json.load(source)
+    except json.JSONDecodeError as error:
+        return None, f"{relative}: not valid JSON ({error})"
+    except UnicodeDecodeError as error:
+        return None, f"{relative}: not valid UTF-8 ({error})"
+    if not isinstance(data, dict):
+        return None, (
+            f"{relative}: expected a JSON object at the top level, "
+            f"found {type(data).__name__}"
+        )
+    return data, None
 
 
 def rebuild(workspace):
@@ -106,27 +136,47 @@ def check_generated_files():
 
 
 def check_icon_snapshot():
+    manifest, problem = load_json(VENDOR_MANIFEST)
+    if problem:
+        return [problem]
+
     problems = []
-    manifest_path = os.path.join(ROOT, VENDOR_MANIFEST)
-    if not os.path.exists(manifest_path):
-        return [f"{VENDOR_MANIFEST}: missing"]
 
-    with open(manifest_path, encoding="utf-8") as source:
-        manifest = json.load(source)
-
-    # A missing definition or asset tree is the most severe form of the drift
-    # this command exists to diagnose, so report it as a finding. Every check
-    # below reads one or both, and all of them would be derived noise anyway:
-    # a deleted asset tree otherwise reports a digest mismatch, a count
-    # mismatch, and 1250 missing references for the same single cause.
+    # A missing or unreadable definition, asset tree, or license is the most
+    # severe form of the drift this command exists to diagnose, so report those
+    # and stop. Every check below reads one of them, and continuing would only
+    # add derived noise: a deleted asset tree otherwise reports a digest
+    # mismatch, a count mismatch, and 1250 missing references for one cause.
     theme_path = os.path.join(ROOT, ICON_THEME)
     assets_root = pathlib.Path(ROOT) / ICON_ASSETS
-    if not os.path.isfile(theme_path):
-        problems.append(f"{ICON_THEME}: missing")
+    license_path = os.path.join(ROOT, VENDOR_LICENSE)
+    icon_theme, theme_problem = load_json(ICON_THEME)
+    if theme_problem:
+        problems.append(theme_problem)
     if not assets_root.is_dir():
         problems.append(f"{ICON_ASSETS}: missing")
+    if not os.path.isfile(license_path):
+        problems.append(
+            f"{VENDOR_LICENSE}: missing -- the VSIX would ship MIT-derived "
+            "icons with no MIT text"
+        )
     if problems:
         return problems
+
+    license_actual = sha256(license_path)
+    license_expected = manifest.get("vendoredLicenseSha256")
+    if license_expected is None:
+        problems.append(
+            f"{VENDOR_MANIFEST}: no vendoredLicenseSha256 recorded, so "
+            f"{VENDOR_LICENSE} cannot be verified; re-run "
+            "vendor_material_icons.py"
+        )
+    elif license_actual != license_expected:
+        problems.append(
+            f"{VENDOR_LICENSE}: sha256 {license_actual} does not match "
+            f"vendoredLicenseSha256 {license_expected} -- the upstream MIT "
+            "text was modified"
+        )
 
     actual = sha256(theme_path)
     expected = manifest.get("vendoredDefinitionSha256")
@@ -163,8 +213,6 @@ def check_icon_snapshot():
 
     # Every icon the theme references must exist, and nothing should be shipped
     # that the theme never points at.
-    with open(theme_path, encoding="utf-8") as source:
-        icon_theme = json.load(source)
     theme_dir = os.path.dirname(theme_path)
     referenced = set()
     missing = []

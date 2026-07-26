@@ -44,6 +44,9 @@ def build_snapshot(root):
     (files / "rust.svg").write_text("<svg>rust</svg>", encoding="utf-8")
     (folders / "folder.svg").write_text("<svg>folder</svg>", encoding="utf-8")
 
+    license_path = root / check_generated.VENDOR_LICENSE
+    license_path.write_text("MIT License\n\nCopyright (c)\n", encoding="utf-8")
+
     definition = {
         "iconDefinitions": {
             "python": {"iconPath": "../icons/amber-material/files/python.svg"},
@@ -62,6 +65,7 @@ def build_snapshot(root):
     manifest = {
         "vendoredDefinitionSha256": check_generated.sha256(theme_path),
         "vendoredAssetsSha256": vendor_material_icons.assets_sha256(assets_root),
+        "vendoredLicenseSha256": check_generated.sha256(license_path),
         "assetCount": 3,
     }
     manifest_path = root / check_generated.VENDOR_MANIFEST
@@ -189,6 +193,54 @@ class IconSnapshotTest(unittest.TestCase):
         manifest["vendoredDefinitionSha256"] = check_generated.sha256(theme_path)
         manifest_path.write_text(json.dumps(manifest, indent=2) + "\n")
         self.assertReports("point at missing files", self.check(), count=1)
+
+    # The third-party license is part of the snapshot: vendor_material_icons.py
+    # writes it and the VSIX ships it, so losing it is a licensing problem.
+    def test_missing_license_is_reported(self):
+        (self.root / check_generated.VENDOR_LICENSE).unlink()
+        self.assertReports(f"{check_generated.VENDOR_LICENSE}: missing", self.check(), count=1)
+
+    def test_edited_license_is_reported(self):
+        target = self.root / check_generated.VENDOR_LICENSE
+        target.write_text("not the MIT license", encoding="utf-8")
+        self.assertReports("vendoredLicenseSha256", self.check(), count=1)
+
+    def test_manifest_without_license_digest_is_reported(self):
+        manifest_path = self.root / check_generated.VENDOR_MANIFEST
+        manifest = json.loads(manifest_path.read_text())
+        del manifest["vendoredLicenseSha256"]
+        manifest_path.write_text(json.dumps(manifest, indent=2) + "\n")
+        self.assertReports("no vendoredLicenseSha256 recorded", self.check(), count=1)
+
+    # Malformed JSON: a truncated file, conflict markers, or a replaced root
+    # value must report rather than raise, for both files the checker parses.
+    def test_truncated_manifest_is_reported_not_raised(self):
+        target = self.root / check_generated.VENDOR_MANIFEST
+        target.write_text('{"vendoredDefinitionSha256": "abc"', encoding="utf-8")
+        self.assertReports("not valid JSON", self.check(), count=1)
+
+    def test_manifest_with_conflict_markers_is_reported_not_raised(self):
+        target = self.root / check_generated.VENDOR_MANIFEST
+        target.write_text(
+            '<<<<<<< HEAD\n{"a": 1}\n=======\n{"a": 2}\n>>>>>>> other\n',
+            encoding="utf-8",
+        )
+        self.assertReports("not valid JSON", self.check(), count=1)
+
+    def test_truncated_definition_is_reported_not_raised(self):
+        target = self.root / check_generated.ICON_THEME
+        target.write_text('{"iconDefinitions": {', encoding="utf-8")
+        self.assertReports("not valid JSON", self.check(), count=1)
+
+    def test_non_object_manifest_is_reported(self):
+        target = self.root / check_generated.VENDOR_MANIFEST
+        target.write_text("[1, 2, 3]", encoding="utf-8")
+        self.assertReports("expected a JSON object", self.check(), count=1)
+
+    def test_non_object_definition_is_reported(self):
+        target = self.root / check_generated.ICON_THEME
+        target.write_text('"just a string"', encoding="utf-8")
+        self.assertReports("expected a JSON object", self.check(), count=1)
 
     def test_manifest_without_assets_digest_is_reported(self):
         # An older manifest predating vendoredAssetsSha256 must not silently

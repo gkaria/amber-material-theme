@@ -224,6 +224,10 @@ def vendor(source: Path):
         "sourceDefinitionSha256": sha256(definition_path),
         "vendoredDefinitionSha256": sha256(DEST_THEME),
         "vendoredAssetsSha256": assets_sha256(DEST_ICONS),
+        # The upstream MIT text is copied verbatim and shipped in the VSIX, so
+        # it is part of the snapshot: a package missing it is a licensing
+        # problem, not just a stale file.
+        "vendoredLicenseSha256": sha256(DEST_LICENSE),
         "assetCount": len(copied),
         "folderColor": AMBER.upper(),
         "saturation": 0.9,
