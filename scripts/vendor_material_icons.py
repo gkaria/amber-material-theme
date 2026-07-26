@@ -27,6 +27,12 @@ DEST_LICENSE = ROOT / "LICENSE-material-icon-theme.txt"
 DEST_METADATA = ROOT / "vendor" / "material-icon-theme.json"
 
 
+def destination_directory(asset_name: str) -> Path:
+    """Group generated assets into browsable file and folder directories."""
+    category = "folders" if asset_name.startswith("folder") else "files"
+    return DEST_ICONS / category
+
+
 def discover_source() -> Path:
     """Return the installed directory for the pinned upstream version."""
     candidates = []
@@ -133,7 +139,12 @@ def vendor(source: Path):
         for key in folder_keys
     }
 
-    DEST_ICONS.mkdir(parents=True, exist_ok=True)
+    destination_directories = {
+        DEST_ICONS / "files",
+        DEST_ICONS / "folders",
+    }
+    for directory in destination_directories:
+        directory.mkdir(parents=True, exist_ok=True)
     copied = set()
     source_hashes = {}
 
@@ -142,7 +153,8 @@ def vendor(source: Path):
         if not icon_path:
             continue
         asset = source_asset(source, definition_path, icon_path)
-        destination = DEST_ICONS / asset.name
+        destination_directory_for_asset = destination_directory(asset.name)
+        destination = destination_directory_for_asset / asset.name
         asset_hash = sha256(asset)
         previous_hash = source_hashes.get(asset.name)
         if previous_hash and previous_hash != asset_hash:
@@ -154,11 +166,13 @@ def vendor(source: Path):
             destination.write_text(svg, encoding="utf-8")
             destination.chmod(0o644)
             copied.add(asset.name)
-        icon["iconPath"] = f"../icons/amber-material/{asset.name}"
+        category = destination_directory_for_asset.name
+        icon["iconPath"] = f"../icons/amber-material/{category}/{asset.name}"
 
-    for existing in DEST_ICONS.iterdir():
-        if existing.is_file() and existing.name not in copied:
-            existing.unlink()
+    for directory in destination_directories:
+        for existing in directory.iterdir():
+            if existing.is_file() and existing.name not in copied:
+                existing.unlink()
 
     DEST_THEME.parent.mkdir(parents=True, exist_ok=True)
     with DEST_THEME.open("w", encoding="utf-8") as destination:
