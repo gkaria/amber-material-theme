@@ -5,6 +5,8 @@
   "license": "MIT",
   "sourceDefinitionSha256": "e3cd54ef4c35020fdd53fa70f309ec1e6a1d3986ee52a80e1ee9be9e7ea6086c",
   "vendoredDefinitionSha256": "6eb861e434e3b7efcb9e8371ba985f9c19c9c50cdfba484b9296b95a28f23356",
+  "vendoredAssetsSha256": "030a82c0242fda003da15c6a8c69ce15e290b2bdff6a2f5d0159e30dfb91bac1",
+  "vendoredLicenseSha256": "cdab3014d4f69b49dde2b85e81792208c72de613aa6aed7f7a9b5c6609b89670",
   "assetCount": 1250,
   "folderColor": "#FFCB6B",
   "saturation": 0.9

@@ -4,40 +4,12 @@
 import json
 from pathlib import Path
 
+import ghostty_palette
+
 
 ROOT = Path(__file__).resolve().parent.parent
 GHOSTTY_SOURCE = ROOT / "ghostty" / "amber-material"
 VSCODE_SOURCE = ROOT / "themes" / "amber-material-hc.json"
-
-
-def load_ghostty(path):
-    options = {}
-    ansi = {}
-    for raw_line in path.read_text(encoding="utf-8").splitlines():
-        line = raw_line.strip()
-        if not line or line.startswith("#") or "=" not in line:
-            continue
-        key, value = (part.strip() for part in line.split("=", 1))
-        if key == "palette":
-            index, color = value.split("=", 1)
-            ansi[int(index)] = color
-        else:
-            options[key] = value
-
-    required_options = {
-        "background",
-        "foreground",
-        "cursor-color",
-        "selection-background",
-        "selection-foreground",
-    }
-    missing_options = sorted(required_options - options.keys())
-    missing_ansi = sorted(set(range(16)) - ansi.keys())
-    if missing_options or missing_ansi:
-        raise ValueError(
-            f"incomplete Ghostty palette: options={missing_options}, ansi={missing_ansi}"
-        )
-    return options, ansi
 
 
 def write_json(path, value):
@@ -52,7 +24,7 @@ def rgb(color):
     return tuple(int(value[index : index + 2], 16) for index in (0, 2, 4))
 
 
-options, ansi = load_ghostty(GHOSTTY_SOURCE)
+options, ansi = ghostty_palette.load(GHOSTTY_SOURCE)
 vscode = json.loads(VSCODE_SOURCE.read_text(encoding="utf-8"))
 ui = vscode["colors"]
 

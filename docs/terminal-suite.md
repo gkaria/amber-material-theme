@@ -5,11 +5,19 @@ Code, OpenCode, Windows Terminal, PowerShell, and Starship. The generated files
 reuse the existing Ghostty ANSI colors and VS Code surface colors; they do not
 introduce a separate palette.
 
+VS Code's integrated terminal shares the same 16 ANSI colors, but keeps the
+cooler editor surface rather than Ghostty's warm base — see
+[What the editor and the terminal share](../README.md#what-the-editor-and-the-terminal-share).
+
 ## Build
 
-From the repository root:
+From the repository root. `build_terminal_suite.py` reads both
+`ghostty/amber-material` and `themes/amber-material-hc.json`, so regenerate
+those first if either has changed:
 
 ```sh
+python3 scripts/build_ghostty.py
+python3 scripts/build_theme.py
 python3 scripts/build_terminal_suite.py
 ```
 
