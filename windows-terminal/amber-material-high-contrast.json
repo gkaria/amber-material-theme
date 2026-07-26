@@ -1,0 +1,27 @@
+{
+  "schemes": [
+    {
+      "name": "Amber Material High Contrast",
+      "cursorColor": "#FFCB6B",
+      "selectionBackground": "#4A3F28",
+      "background": "#1D2021",
+      "foreground": "#E7E1D1",
+      "black": "#1D2021",
+      "red": "#FF6B6B",
+      "green": "#B8D96D",
+      "yellow": "#FFCB6B",
+      "blue": "#70B7FF",
+      "purple": "#D9A0FF",
+      "cyan": "#66D9D0",
+      "white": "#E7E1D1",
+      "brightBlack": "#888B84",
+      "brightRed": "#FF8787",
+      "brightGreen": "#D0EA8A",
+      "brightYellow": "#FFE08A",
+      "brightBlue": "#94CAFF",
+      "brightPurple": "#E8BDFF",
+      "brightCyan": "#8BE9E1",
+      "brightWhite": "#FFFFFF"
+    }
+  ]
+}

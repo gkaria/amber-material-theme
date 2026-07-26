@@ -1,6 +1,10 @@
 scripts/**
 ghostty/**
 codex/**
+claude-code/**
+windows-terminal/**
+powershell/**
+starship/**
 .vibe-learn/**
 .git/**
 .gitignore

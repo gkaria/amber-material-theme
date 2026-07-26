@@ -2,7 +2,8 @@
 
 A high-contrast dark theme for VS Code with an amber accent, plus a warm,
 Material-inspired high-contrast Ghostty terminal theme and a bundled Amber
-Material file icon theme.
+Material file icon theme. The same palette also ships for Codex, Claude Code,
+Windows Terminal, PowerShell, and Starship.
 
 Derived from [vscode-palenight-theme](https://github.com/whizkydee/vscode-palenight-theme)
 by Olaolu Olawuyi, used under the MIT License.
@@ -50,6 +51,7 @@ python3 scripts/build_theme.py        # themes/amber-material-hc.json
 python3 scripts/build_ghostty.py      # ghostty/amber-material
 python3 scripts/build_codex_theme.py  # codex/amber-material-high-contrast.tmTheme
 python3 scripts/vendor_material_icons.py  # pinned VS Code icon snapshot
+python3 scripts/build_terminal_suite.py   # Claude, Windows, PowerShell, Starship
 ```
 
 `scripts/build_theme.py` is the source of truth for VS Code. It reads the
@@ -269,6 +271,25 @@ controls the surrounding terminal background and ANSI colors.
 
 Codex theme support is documented in the
 [official CLI customization guide](https://learn.chatgpt.com/docs/cli-customization#syntax-highlighting-and-themes).
+
+## Cross-terminal suite
+
+The repository also generates coordinated configurations for:
+
+| Tool | Theme responsibility |
+| --- | --- |
+| Claude Code | TUI accents, text roles, modes, and fullscreen surfaces |
+| Windows Terminal | Terminal surfaces and the 16-color ANSI palette |
+| PowerShell 7 | PSReadLine syntax, selection, prediction, and error colors |
+| Starship | Cross-shell prompt layout, status, and Nerd Font symbols |
+
+All four are generated from the existing Ghostty and VS Code palettes by
+`scripts/build_terminal_suite.py`. Cascadia Code NF is used by Starship for
+symbols but remains an installation prerequisite rather than a redistributed
+font.
+
+See [Terminal suite setup](docs/terminal-suite.md) for macOS, Linux, and Windows
+installation instructions.
 
 ## License
 
