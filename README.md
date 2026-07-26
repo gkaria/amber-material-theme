@@ -286,13 +286,11 @@ macOS readability.
 The generated Codex CLI theme uses the warmer Ghostty background and foreground
 for terminal continuity, then carries over the VS Code TextMate syntax rules.
 
-Build and install it:
+Regenerate it with the [build chain](#build) — the order matters there, since
+`build_codex_theme.py` reads both the Ghostty palette and the VS Code theme, and
+`build_theme.py` in turn reads the Ghostty palette. Then install it:
 
 ```sh
-python3 scripts/build_theme.py
-python3 scripts/build_ghostty.py
-python3 scripts/build_codex_theme.py
-
 mkdir -p ~/.codex/themes
 cp codex/amber-material-high-contrast.tmTheme \
   ~/.codex/themes/amber-material-high-contrast.tmTheme
