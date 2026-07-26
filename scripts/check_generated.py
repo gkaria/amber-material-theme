@@ -65,6 +65,11 @@ def sha256(path):
     return digest.hexdigest()
 
 
+def read_bytes(path):
+    with open(path, "rb") as handle:
+        return handle.read()
+
+
 def rebuild(workspace):
     """Run the generator chain against a copy of scripts/ inside workspace."""
     shutil.copytree(HERE, os.path.join(workspace, "scripts"))
@@ -93,7 +98,7 @@ def check_generated_files():
                 problems.append(f"{relative}: no generator produced this file")
             elif not os.path.exists(committed):
                 problems.append(f"{relative}: generated but not committed")
-            elif open(committed, "rb").read() != open(fresh, "rb").read():
+            elif read_bytes(committed) != read_bytes(fresh):
                 problems.append(
                     f"{relative}: committed copy differs from generator output"
                 )
@@ -109,7 +114,20 @@ def check_icon_snapshot():
     with open(manifest_path, encoding="utf-8") as source:
         manifest = json.load(source)
 
+    # A missing definition or asset tree is the most severe form of the drift
+    # this command exists to diagnose, so report it as a finding. Every check
+    # below reads one or both, and all of them would be derived noise anyway:
+    # a deleted asset tree otherwise reports a digest mismatch, a count
+    # mismatch, and 1250 missing references for the same single cause.
     theme_path = os.path.join(ROOT, ICON_THEME)
+    assets_root = pathlib.Path(ROOT) / ICON_ASSETS
+    if not os.path.isfile(theme_path):
+        problems.append(f"{ICON_THEME}: missing")
+    if not assets_root.is_dir():
+        problems.append(f"{ICON_ASSETS}: missing")
+    if problems:
+        return problems
+
     actual = sha256(theme_path)
     expected = manifest.get("vendoredDefinitionSha256")
     if actual != expected:
@@ -120,9 +138,7 @@ def check_icon_snapshot():
 
     # Asset contents, not just their count: an edited or corrupted SVG leaves
     # the count and the definition digest untouched, so only this catches it.
-    assets_actual = vendor_material_icons.assets_sha256(
-        pathlib.Path(ROOT) / ICON_ASSETS
-    )
+    assets_actual = vendor_material_icons.assets_sha256(assets_root)
     assets_expected = manifest.get("vendoredAssetsSha256")
     if assets_expected is None:
         problems.append(
