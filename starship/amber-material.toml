@@ -45,17 +45,17 @@ Fedora = " "
 Arch = " "
 
 [username]
-format = "[$user]($style) "
-show_always = false
+format = "[$user]($style)"
+show_always = true
 style_root = "bold red"
 style_user = "dim"
 
 [hostname]
-format = "at [$hostname](bold blue) "
-ssh_only = true
+format = "[@$hostname](bold blue) "
+ssh_only = false
 
 [directory]
-format = "in [$path]($style)[$read_only]($read_only_style) "
+format = "[$path]($style)[$read_only]($read_only_style) "
 read_only = " 󰌾"
 read_only_style = "red"
 style = "bold amber"

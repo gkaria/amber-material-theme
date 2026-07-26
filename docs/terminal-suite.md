@@ -111,7 +111,11 @@ Copy-Item ".\starship\amber-material.toml" "$HOME\.config\starship.toml"
 ```
 
 The prompt uses Nerd Font symbols for Git, operating systems, languages,
-containers, cloud providers, and status. Install and select Cascadia Code NF in
+containers, cloud providers, and status. Its leading context is always
+`user@hostname current-directory`, followed by Git and runtime information;
+the same identity layout is used locally and over SSH.
+
+Install and select Cascadia Code NF in
 the host terminal. The font itself is not redistributed by this repository.
 
 ## Responsibility by layer
