@@ -2,6 +2,7 @@ scripts/**
 ghostty/**
 codex/**
 claude-code/**
+opencode/**
 windows-terminal/**
 powershell/**
 starship/**

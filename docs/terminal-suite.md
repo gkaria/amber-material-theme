@@ -1,9 +1,9 @@
 # Terminal suite
 
 Amber Material High Contrast uses one terminal palette across Ghostty, Claude
-Code, Windows Terminal, PowerShell, and Starship. The generated files reuse the
-existing Ghostty ANSI colors and VS Code surface colors; they do not introduce
-a separate palette.
+Code, OpenCode, Windows Terminal, PowerShell, and Starship. The generated files
+reuse the existing Ghostty ANSI colors and VS Code surface colors; they do not
+introduce a separate palette.
 
 ## Build
 
@@ -18,6 +18,7 @@ This generates:
 | Tool | Artifact |
 | --- | --- |
 | Claude Code | `claude-code/amber-material-high-contrast.json` |
+| OpenCode | `opencode/amber-material-high-contrast.json` |
 | Windows Terminal | `windows-terminal/amber-material-high-contrast.json` |
 | PowerShell 7 | `powershell/AmberMaterial.ps1` |
 | Starship | `starship/amber-material.toml` |
@@ -43,6 +44,42 @@ Copy-Item ".\claude-code\amber-material-high-contrast.json" "$HOME\.claude\theme
 Run `/theme` inside Claude Code and choose **Amber Material High Contrast**.
 The theme uses `dark-ansi` as its base, so the surrounding terminal still
 supplies the shared 16-color palette.
+
+## OpenCode
+
+OpenCode supports user-wide custom JSON themes.
+
+macOS and Linux:
+
+```sh
+mkdir -p ~/.config/opencode/themes
+cp opencode/amber-material-high-contrast.json ~/.config/opencode/themes/
+```
+
+Windows PowerShell:
+
+```powershell
+New-Item -ItemType Directory -Force "$HOME\.config\opencode\themes"
+Copy-Item ".\opencode\amber-material-high-contrast.json" "$HOME\.config\opencode\themes\"
+```
+
+Run `/theme` inside OpenCode and choose **amber-material-high-contrast**.
+This is the authoritative activation method for an existing profile because a
+previously saved theme selection can take precedence over `tui.json`.
+
+For a new or managed profile, create or update `~/.config/opencode/tui.json`:
+
+```json
+{
+  "$schema": "https://opencode.ai/tui.json",
+  "theme": "amber-material-high-contrast"
+}
+```
+
+The theme assigns the existing Amber Material palette to OpenCode's TUI
+surfaces, semantic states, diff viewer, Markdown renderer, and syntax
+highlighter. It uses explicit truecolor values, so run it in a terminal with
+24-bit color support.
 
 ## Windows Terminal
 
@@ -124,12 +161,14 @@ the host terminal. The font itself is not redistributed by this repository.
 | --- | --- |
 | Ghostty or Windows Terminal | Terminal surfaces and ANSI colors |
 | Claude Code | Claude-specific TUI roles |
+| OpenCode | OpenCode TUI surfaces, diffs, Markdown, and syntax |
 | PSReadLine | PowerShell input syntax and prediction colors |
 | Starship | Prompt layout, state, and Nerd Font symbols |
 
 ## References
 
 - [Claude Code custom themes](https://code.claude.com/docs/en/terminal-config#create-a-custom-theme)
+- [OpenCode custom themes](https://opencode.ai/docs/themes)
 - [Windows Terminal color schemes](https://learn.microsoft.com/windows/terminal/customize-settings/color-schemes)
 - [Windows Terminal fragments](https://learn.microsoft.com/windows/terminal/json-fragment-extensions)
 - [PSReadLine colors](https://learn.microsoft.com/powershell/module/psreadline/set-psreadlineoption)
