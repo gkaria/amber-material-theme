@@ -227,14 +227,76 @@ colors["selection.background"] = AMBER + "40"
 colors["inputOption.activeBackground"] = AMBER + "33"
 colors["inputOption.activeForeground"] = AMBER
 
-# Sweep any remaining upstream purple/teal onto the amber accent, preserving
-# each slot's original alpha so opacity relationships stay intact.
+# Sweep leftover upstream values onto this variant's palette ----------------
+# The base theme sets ~200 keys; the blocks above only name the ones this
+# variant restyles, so anything untouched keeps a Palenight tone. Left alone
+# that means competing values for roles this theme has already defined: two
+# reds, three warm tones, and the pre-lift foreground. Each mapping below
+# sends a value to the constant this theme already uses for the same role.
+#
+# Alpha is preserved, so every translucent slot keeps its opacity relationship.
+UPSTREAM_REMAP = {
+    # Accents this variant replaces wholesale.
+    UPSTREAM_PURPLE: AMBER,
+    UPSTREAM_PURPLE_DEEP: AMBER,
+    UPSTREAM_TEAL: AMBER,
+    # The foreground this variant lifted to FG.
+    "#BFC7D5": FG,
+    # Borders on the old chrome tone.
+    "#262A39": BORDER,
+    # Shadow/embedded surfaces below the editor tone.
+    "#232635": BG_DEEP,
+    # Second red. RED already carries errors and deletions everywhere else.
+    "#EF5350": RED,
+    # Second and third warm tones. AMBER already carries warnings.
+    "#FFCA28": AMBER,
+    # Git/gutter status. The theme assigns BLUE to modifications and GREEN to
+    # additions, but the primary gutter and SCM slots kept upstream's hues —
+    # so each gutter drew its primary and secondary marks in different colors.
+    "#E2C08D": BLUE,
+    "#E2B93D": BLUE,
+    "#9CCC65": GREEN,
+    "#99B76D": GREEN,
+    # Info validation, to match BLUE's declared role.
+    "#64B5F6": BLUE,
+}
 for key, value in list(colors.items()):
     if not isinstance(value, str) or not value.startswith("#"):
         continue
     base, alpha = value[:7].upper(), value[7:]
-    if base in (UPSTREAM_PURPLE, UPSTREAM_PURPLE_DEEP, UPSTREAM_TEAL):
-        colors[key] = AMBER + alpha
+    if base in UPSTREAM_REMAP:
+        colors[key] = UPSTREAM_REMAP[base] + alpha
+
+# Surfaces whose old value covered several roles, so they can't go through the
+# table above: each lands on the tone this theme uses for that kind of surface.
+colors["debugExceptionWidget.background"] = BG_RAISED
+colors["debugToolBar.background"] = BG_RAISED
+colors["breadcrumbPicker.background"] = BG_RAISED
+colors["editorMarkerNavigation.background"] = BG_RAISED
+colors["peekViewResult.background"] = BG_RAISED
+colors["list.dropBackground"] = BG_RAISED
+colors["peekViewTitle.background"] = BG_DEEP
+colors["editorGroup.background"] = BG
+colors["scrollbar.shadow"] = BG + "00"
+colors["pickerGroup.border"] = BORDER
+colors["statusBar.debuggingBorder"] = BORDER
+colors["statusBar.noFolderBorder"] = BORDER
+
+# Status bar item states: raised on hover, one step further on press.
+colors["statusBar.debuggingBackground"] = BG_RAISED
+colors["statusBarItem.hoverBackground"] = BG_RAISED
+colors["statusBarItem.prominentBackground"] = BG_RAISED
+colors["statusBarItem.activeBackground"] = BORDER
+colors["statusBarItem.prominentHoverBackground"] = BORDER
+
+# Word highlights stay neutral so they don't compete with the amber selection.
+colors["editor.wordHighlightBackground"] = BORDER
+colors["editor.wordHighlightStrongBackground"] = BORDER_SOFT
+colors["peekViewResult.selectionBackground"] = BORDER
+
+# The active find match was the one find slot still on an upstream blue-grey,
+# even though its border and every other match are already amber.
+colors["editor.findMatchBackground"] = AMBER + "66"
 
 # Solid amber fills need a dark foreground to stay legible.
 colors["list.activeSelectionForeground"] = BG_DEEP
@@ -310,6 +372,16 @@ colors["merge.border"] = BG + "00"
 colors["chat.slashCommandBackground"] = "#ffffff00"
 colors["commandCenter.activeBorder"] = BORDER + "00"
 colors["tab.unfocusedActiveBorderTop"] = "#676E9500"
+
+# The "Global settings" token rule is the only block a plain TextMate consumer
+# reads for its base surface. VS Code masks it with editor.background and the
+# Codex builder substitutes Ghostty's values over it, so it went unnoticed on
+# the upstream tones — but on its own it still described Palenight.
+for rule in theme["tokenColors"]:
+    if rule.get("name") == "Global settings":
+        rule["settings"]["background"] = BG
+        rule["settings"]["foreground"] = FG
+        break
 
 # Identity -----------------------------------------------------------------
 theme["name"] = "Amber Material High Contrast"
