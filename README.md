@@ -2,8 +2,10 @@
 
 A high-contrast dark theme for VS Code with an amber accent, plus a warm,
 Material-inspired high-contrast Ghostty terminal theme and a bundled Amber
-Material file icon theme. The same palette also ships for Codex, Claude Code,
-OpenCode, Windows Terminal, PowerShell, and Starship.
+Material file icon theme. The same amber identity also ships for Codex, Claude
+Code, OpenCode, Windows Terminal, PowerShell, and Starship — the editor and the
+terminal keep deliberately different surfaces, described under
+[Ghostty](#ghostty).
 
 Derived from [vscode-palenight-theme](https://github.com/whizkydee/vscode-palenight-theme)
 by Olaolu Olawuyi, used under the MIT License.
@@ -46,19 +48,28 @@ Then select both bundled themes:
 
 ## Build
 
+Run these in order — each step reads the output of the ones before it:
+
 ```sh
-python3 scripts/build_theme.py        # themes/amber-material-hc.json
 python3 scripts/build_ghostty.py      # ghostty/amber-material
+python3 scripts/build_theme.py        # themes/amber-material-hc.json
 python3 scripts/build_codex_theme.py  # codex/amber-material-high-contrast.tmTheme
-python3 scripts/vendor_material_icons.py  # pinned VS Code icon snapshot
 python3 scripts/build_terminal_suite.py   # Claude, OpenCode, Windows, PowerShell, Starship
+python3 scripts/vendor_material_icons.py  # pinned VS Code icon snapshot
+python3 scripts/check_generated.py    # verify nothing drifted
 ```
 
-`scripts/build_theme.py` is the source of truth for VS Code. It reads the
-upstream MIT base (`scripts/base-palenight-italic.json`) and applies this
-variant's palette on top. `scripts/build_ghostty.py` owns the separate terminal
-palette. `scripts/build_codex_theme.py` combines the VS Code TextMate scopes
+`scripts/build_ghostty.py` owns the terminal palette and runs first, because
+the VS Code theme takes its 16 ANSI colors from it. `scripts/build_theme.py` is
+the source of truth for everything else in VS Code: it reads the upstream MIT
+base (`scripts/base-palenight-italic.json`) and applies this variant's palette
+on top. `scripts/build_codex_theme.py` combines the VS Code TextMate scopes
 with the Ghostty terminal surfaces for Codex CLI.
+`scripts/ghostty_palette.py` is the shared reader for the Ghostty theme.
+
+`scripts/check_generated.py` re-runs the chain into a temporary tree and
+compares every generated file, so a hand edit or a stale output fails loudly
+instead of sitting in the repository unnoticed.
 
 `scripts/vendor_material_icons.py` snapshots Material Icon Theme 5.37.0 from a
 locally installed VS Code extension, then deterministically applies amber
@@ -176,6 +187,17 @@ colors, and the same amber identity accent as the VS Code theme.
 | Selection background | `#4A3F28` |
 | Selection foreground | `#FFF4D6` |
 
+### What the editor and the terminal share
+
+The 16 ANSI colors are shared: `themes/amber-material-hc.json` takes its
+`terminal.ansi*` values from this file, so the same command renders the same way
+in Ghostty and in VS Code's integrated terminal.
+
+The surfaces are not. Ghostty's warm `#1D2021` base is for a standalone window,
+while the integrated terminal keeps the cooler `#22252F` editor tone — that
+panel sits beside the editor, so it matches its neighbour rather than the
+standalone terminal.
+
 ### Install the theme
 
 From the repository root:
@@ -234,12 +256,14 @@ Open **Settings → Appearance** and use:
 | --- | --- |
 | Base theme | Dark |
 | Accent | `#FFCB6B` |
-| Background | `#1C1F27` |
+| Background | `#1D2021` |
 | Foreground | `#E7E1D1` |
 | Code font | `Cascadia Code NF` |
 
-This pair provides a 12.62:1 text contrast ratio while staying within the
-existing Amber Material palette. Keeping the system UI font preserves native
+This pair provides a 12.56:1 text contrast ratio while staying within the
+existing Amber Material palette. The background is the warm terminal base, so
+the desktop app matches the Codex CLI rather than the VS Code editor surface.
+Keeping the system UI font preserves native
 macOS readability.
 
 ### CLI

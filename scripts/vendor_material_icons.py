@@ -174,6 +174,11 @@ def vendor(source: Path):
             if existing.is_file() and existing.name not in copied:
                 existing.unlink()
 
+    # The snapshot carries a few blocks that are empty upstream too, so they are
+    # expected rather than a vendoring bug: "highContrast" (both of its maps),
+    # "rootFolderNames" and "rootFolderNamesExpanded". Material Icon Theme fills
+    # these at runtime from its own settings, which this static snapshot does not
+    # ship. Root folders still get an icon via "rootFolder"/"rootFolderExpanded".
     DEST_THEME.parent.mkdir(parents=True, exist_ok=True)
     with DEST_THEME.open("w", encoding="utf-8") as destination:
         json.dump(definition, destination, indent=2, ensure_ascii=False)
