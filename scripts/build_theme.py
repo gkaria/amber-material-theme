@@ -531,5 +531,8 @@ theme.pop("maintainers", None)
 theme["author"] = "Gaurang Karia"
 theme["semanticHighlighting"] = True
 
-json.dump(theme, open(DST, "w"), indent=2)
+os.makedirs(os.path.dirname(DST), exist_ok=True)
+with open(DST, "w", encoding="utf-8") as destination:
+    json.dump(theme, destination, indent=2)
+
 print(f"wrote {DST}: {len(colors)} colors, {len(theme['tokenColors'])} token rules")
