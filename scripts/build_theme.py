@@ -32,6 +32,12 @@ RED       = "#ff5572"  # errors, deletions
 GREEN     = "#a9c77d"  # additions
 BLUE      = "#82AAFF"  # info, modifications
 
+# Hues already carried by the syntax palette, named here so the workbench keys
+# that mirror syntax roles (bracket pairs, symbol icons, debug values) reuse
+# them instead of introducing new colors.
+SYNTAX_PURPLE = "#C792EA"  # keywords
+SYNTAX_ORANGE = "#F78C6C"  # numbers, constants
+
 # Upstream accents this variant replaces wholesale. Kept as named constants so
 # the sweep below reads as intent rather than magic hex.
 UPSTREAM_PURPLE      = "#7E57C2"
@@ -376,6 +382,130 @@ colors["diffEditor.insertedLineBackground"] = GREEN + "14"
 
 for key in ("activityErrorBadge.foreground", "activityWarningBadge.foreground"):
     colors[key] = "#000000"
+
+# Areas VS Code gained after the upstream base was written ------------------
+# These were unset, so they fell back to stock VS Code colors that were never
+# tuned to this palette. Every value below reuses a constant or a syntax hue.
+
+# Bracket pair colorization is on by default, so leaving it unset was the most
+# visible gap. Six levels drawn from the syntax palette, cycling warm/cool so
+# adjacent depths stay distinguishable.
+colors["editorBracketHighlight.foreground1"] = AMBER
+colors["editorBracketHighlight.foreground2"] = BLUE
+colors["editorBracketHighlight.foreground3"] = SYNTAX_ORANGE
+colors["editorBracketHighlight.foreground4"] = ACCENT
+colors["editorBracketHighlight.foreground5"] = SYNTAX_PURPLE
+colors["editorBracketHighlight.foreground6"] = GREEN
+colors["editorBracketHighlight.unexpectedBracket.foreground"] = RED
+
+# Inlay hints and inline suggestions: dim text on the raised tone.
+for key in ("editorInlayHint.foreground", "editorInlayHint.typeForeground",
+            "editorInlayHint.parameterForeground", "editorGhostText.foreground"):
+    colors[key] = FG_DIM
+for key in ("editorInlayHint.background", "editorInlayHint.typeBackground",
+            "editorInlayHint.parameterBackground"):
+    colors[key] = BG_RAISED
+
+# Sticky scroll sits over the editor, so it keeps the editor tone and separates
+# with a border instead of a different surface.
+colors["editorStickyScroll.background"] = BG
+colors["editorStickyScroll.border"] = BORDER
+
+# The only SCM decoration left unset; the others are all assigned above.
+colors["gitDecoration.addedResourceForeground"] = GREEN + "e6"
+
+# Status bar and Problems severities reuse the semantic palette. Solid fills
+# take a dark foreground, matching the badges.
+colors["statusBarItem.errorBackground"] = RED
+colors["statusBarItem.warningBackground"] = AMBER
+for key in ("statusBarItem.errorForeground", "statusBarItem.warningForeground"):
+    colors[key] = BG_DEEP
+colors["problemsErrorIcon.foreground"] = RED
+colors["problemsWarningIcon.foreground"] = AMBER
+colors["problemsInfoIcon.foreground"] = BLUE
+colors["editorHint.foreground"] = FG_DIM
+
+# Suggest widget and outline icons, mirroring the syntax roles.
+for key in ("symbolIcon.classForeground", "symbolIcon.interfaceForeground",
+            "symbolIcon.structForeground", "symbolIcon.moduleForeground",
+            "symbolIcon.namespaceForeground", "symbolIcon.packageForeground",
+            "symbolIcon.typeParameterForeground", "symbolIcon.eventForeground"):
+    colors[key] = AMBER
+for key in ("symbolIcon.functionForeground", "symbolIcon.methodForeground",
+            "symbolIcon.constructorForeground", "symbolIcon.operatorForeground"):
+    colors[key] = BLUE
+for key in ("symbolIcon.constantForeground", "symbolIcon.numberForeground",
+            "symbolIcon.enumeratorForeground",
+            "symbolIcon.enumeratorMemberForeground"):
+    colors[key] = SYNTAX_ORANGE
+for key in ("symbolIcon.keywordForeground", "symbolIcon.booleanForeground",
+            "symbolIcon.nullForeground"):
+    colors[key] = SYNTAX_PURPLE
+for key in ("symbolIcon.stringForeground", "symbolIcon.textForeground"):
+    colors[key] = GREEN
+for key in ("symbolIcon.variableForeground", "symbolIcon.propertyForeground",
+            "symbolIcon.fieldForeground", "symbolIcon.arrayForeground",
+            "symbolIcon.objectForeground", "symbolIcon.keyForeground",
+            "symbolIcon.unitForeground", "symbolIcon.valueForeground",
+            "symbolIcon.fileForeground", "symbolIcon.folderForeground",
+            "symbolIcon.referenceForeground", "symbolIcon.colorForeground"):
+    colors[key] = FG
+colors["symbolIcon.snippetForeground"] = ACCENT
+
+# Test explorer and debug toolbar icons.
+for key in ("testing.iconFailed", "testing.iconErrored", "testing.messageError.decorationForeground"):
+    colors[key] = RED
+for key in ("testing.iconPassed", "testing.runAction"):
+    colors[key] = GREEN
+colors["testing.iconQueued"] = AMBER
+for key in ("testing.iconUnset", "testing.iconSkipped"):
+    colors[key] = FG_DIM
+
+for key in ("debugIcon.breakpointForeground", "debugIcon.stopForeground",
+            "debugIcon.disconnectForeground"):
+    colors[key] = RED
+colors["debugIcon.breakpointDisabledForeground"] = RED + "80"
+for key in ("debugIcon.startForeground", "debugIcon.continueForeground",
+            "debugIcon.restartForeground"):
+    colors[key] = GREEN
+for key in ("debugIcon.pauseForeground", "debugIcon.stepOverForeground",
+            "debugIcon.stepIntoForeground", "debugIcon.stepOutForeground",
+            "debugIcon.stepBackForeground"):
+    colors[key] = BLUE
+
+colors["debugTokenExpression.name"] = BLUE
+colors["debugTokenExpression.value"] = FG
+colors["debugTokenExpression.string"] = GREEN
+colors["debugTokenExpression.number"] = SYNTAX_ORANGE
+colors["debugTokenExpression.boolean"] = SYNTAX_PURPLE
+colors["debugTokenExpression.error"] = RED
+
+# Timeline/SCM graph and other chart visuals.
+colors["charts.foreground"] = FG
+colors["charts.lines"] = BORDER
+colors["charts.red"] = RED
+colors["charts.green"] = GREEN
+colors["charts.blue"] = BLUE
+colors["charts.yellow"] = AMBER
+colors["charts.orange"] = SYNTAX_ORANGE
+colors["charts.purple"] = SYNTAX_PURPLE
+
+# Remaining chrome that had no tint.
+for key in ("tab.hoverBackground", "tab.unfocusedHoverBackground",
+            "notebook.cellEditorBackground", "inlineChat.background"):
+    colors[key] = BG_RAISED
+colors["list.filterMatchBackground"] = AMBER + "33"
+colors["list.filterMatchBorder"] = AMBER + "80"
+colors["list.errorForeground"] = RED
+colors["list.warningForeground"] = AMBER
+colors["list.deemphasizedForeground"] = FG_DIM
+colors["diffEditor.diagonalFill"] = BORDER
+colors["notebook.cellBorderColor"] = BORDER
+colors["notebook.outputContainerBackgroundColor"] = BG_DEEP
+colors["search.resultsInfoForeground"] = FG_DIM
+colors["editorGutter.foldingControlForeground"] = FG_DIM
+for key in ("window.activeBorder", "window.inactiveBorder"):
+    colors[key] = BORDER
 
 # Deliberately transparent (upstream leaves these off).
 colors["contrastActiveBorder"] = BG_DEEP + "00"
