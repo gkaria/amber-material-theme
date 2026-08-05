@@ -1,0 +1,80 @@
+{
+  "name": "Amber Material High Contrast",
+  "backgrounds": {
+    "bg_base": "#1D2021",
+    "bg_light": "#2A2E3A",
+    "bg_dark": "#1C1F27",
+    "bg_highlight": "#2F3543",
+    "bg_hover": "#333846",
+    "bg_terminal": "#1D2021",
+    "bg_visual": "#4A3F28"
+  },
+  "accents": {
+    "accent_user": "#FFCB6B",
+    "accent_assistant": "#70B7FF",
+    "accent_thinking": "#D9A0FF",
+    "accent_tool": "#66D9D0",
+    "accent_system": "#888B84",
+    "accent_error": "#FF6B6B",
+    "accent_success": "#B8D96D",
+    "accent_running": "#FFE08A",
+    "accent_skill": "#E8BDFF",
+    "accent_plan": "#94CAFF",
+    "accent_verify": "#D0EA8A",
+    "accent_feedback": "#8BE9E1",
+    "accent_remember": "#D9A0FF",
+    "accent_model": "#FF8787"
+  },
+  "text": {
+    "text_primary": "#E7E1D1",
+    "text_secondary": "#8A91A6"
+  },
+  "grays": {
+    "gray_dim": "#3A4052",
+    "gray": "#888B84",
+    "gray_bright": "#FFFFFF"
+  },
+  "semantic": {
+    "command": "#FFCB6B",
+    "path": "#66D9D0",
+    "running": "#FFE08A",
+    "warning": "#FFCB6B",
+    "fuzzy_accent": "#FFE08A"
+  },
+  "borders": {
+    "selection_border": "#FFCB6B",
+    "hover_border": "#3A4052",
+    "prompt_border": "#3A4052",
+    "prompt_border_active": "#FFCB6B",
+    "scrollbar_bg": "#1C1F27",
+    "scrollbar_fg": "#3A4052"
+  },
+  "paste": {
+    "paste_bg": "#2A2E3A",
+    "paste_fg": "#E7E1D1",
+    "paste_dim": "#888B84"
+  },
+  "diff": {
+    "diff_delete_bg": "#332934",
+    "diff_delete_fg": "#FF8787",
+    "diff_insert_bg": "#2D3235",
+    "diff_insert_fg": "#D0EA8A",
+    "diff_equal_fg": "#E7E1D1",
+    "diff_gutter_fg": "#888B84"
+  },
+  "markdown": {
+    "md_heading_h1": "#FFCB6B",
+    "md_heading_h2": "#FFE08A",
+    "md_heading_h3": "#70B7FF",
+    "md_heading_h4": "#94CAFF",
+    "md_heading_h5": "#D9A0FF",
+    "md_heading_h6": "#E8BDFF",
+    "md_code": "#B8D96D",
+    "md_code_bg": "#22252F",
+    "md_text": "#E7E1D1",
+    "md_muted": "#888B84",
+    "md_task_checked": "#B8D96D",
+    "md_task_unchecked": "#888B84",
+    "link_fg": "#70B7FF"
+  }
+}

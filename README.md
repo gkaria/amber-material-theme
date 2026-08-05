@@ -55,6 +55,7 @@ python3 scripts/build_ghostty.py      # ghostty/amber-material
 python3 scripts/build_theme.py        # themes/amber-material-hc.json
 python3 scripts/build_codex_theme.py  # codex/amber-material-high-contrast.tmTheme
 python3 scripts/build_terminal_suite.py   # Claude, OpenCode, Windows, PowerShell, Starship
+python3 scripts/build_grok_theme.py   # grok/ palette export and pager.toml
 python3 scripts/vendor_material_icons.py  # pinned VS Code icon snapshot
 python3 scripts/check_generated.py    # verify nothing drifted
 ```
@@ -91,7 +92,7 @@ locally installed VS Code extension, then deterministically applies amber
 folders (`#FFCB6B`) and `0.9` saturation. It has no runtime dependency on
 the upstream extension. Never hand-edit generated files in `themes/`,
 `ghostty/`, `codex/`, `claude-code/`, `opencode/`, `windows-terminal/`,
-`powershell/`, `starship/`, `icon-themes/`, or `icons/amber-material/`.
+`powershell/`, `starship/`, `grok/`, `icon-themes/`, or `icons/amber-material/`.
 
 To re-accent the entire theme, change one constant:
 
@@ -309,6 +310,56 @@ controls the surrounding terminal background and ANSI colors.
 
 Codex theme support is documented in the
 [official CLI customization guide](https://learn.chatgpt.com/docs/cli-customization#syntax-highlighting-and-themes).
+
+## Grok Build
+
+`scripts/build_grok_theme.py` generates two files in `grok/`. They are split
+this way because Grok divides appearance across two mechanisms, and only one of
+them currently accepts outside input.
+
+### What Grok does not load yet
+
+`grok/amber-material-high-contrast.json` is the full palette export: all 59
+color slots Grok's theme system defines, under the slot names from its theming
+guide (`accent_user`, `bg_base`, `diff_insert_bg`, and so on).
+
+**Grok cannot load it today.** Grok Build validates `[ui].theme` against a
+closed set of five built-in themes — `groknight`, `grokday`, `tokyonight`,
+`rosepine-moon`, `oscura-midnight` — and rejects anything else with
+`unknown theme name`. There is no `custom_theme`, `theme_path`, or theme
+directory setting. The bundled `.tmTheme` files for code blocks are compiled
+into the binary and, per xAI's own guide, "you cannot replace them with your
+own."
+
+The export exists so the palette is derived from the same source as every
+other target and stays in the drift check, rather than being reconstructed by
+hand if and when xAI opens theme loading up. It is also directly usable as a
+machine-readable palette by anything else that reads one.
+
+### What Grok does load
+
+`grok/pager.toml` is the part that takes effect now. Grok reads
+`~/.grok/pager.toml` for TUI appearance, and it accepts raw colors for the
+scrollbar plus the block styling that the accents land on:
+
+```sh
+cp grok/pager.toml ~/.grok/pager.toml
+```
+
+Changes apply on restart. Every key and enum value in the generated file was
+verified against the installed binary's own schema strings.
+
+Since `[ui].theme` stays on one of the five built-ins, pick the one closest to
+this palette — `groknight` is the neutral dark base:
+
+```toml
+[ui]
+theme = "groknight"
+```
+
+Ghostty still controls the surrounding terminal background and ANSI colors, so
+running Grok inside the Ghostty theme is what actually makes the session read
+as Amber Material.
 
 ## Cross-terminal suite
 

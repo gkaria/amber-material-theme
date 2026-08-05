@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Verify every generated file matches what its generator produces today.
 
-Nothing else enforces the rule that files in themes/, ghostty/, codex/ and the
-terminal-suite directories are outputs rather than sources. Editing a generated
-file by hand, or changing a generator without re-running the chain, leaves the
-repository in a state where the committed theme and its stated source disagree.
+Nothing else enforces the rule that files in themes/, ghostty/, codex/, grok/
+and the terminal-suite directories are outputs rather than sources. Editing a
+generated file by hand, or changing a generator without re-running the chain,
+leaves the repository in a state where the committed theme and its stated
+source disagree.
 
 Run from anywhere:
 
@@ -33,12 +34,13 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 
 # In dependency order: build_ghostty owns the terminal palette, build_theme
-# consumes it, and the Codex and terminal-suite builders consume both.
+# consumes it, and the Codex, terminal-suite and Grok builders consume both.
 GENERATORS = (
     "build_ghostty.py",
     "build_theme.py",
     "build_codex_theme.py",
     "build_terminal_suite.py",
+    "build_grok_theme.py",
 )
 
 GENERATED = (
@@ -50,6 +52,8 @@ GENERATED = (
     "windows-terminal/amber-material-high-contrast.json",
     "powershell/AmberMaterial.ps1",
     "starship/amber-material.toml",
+    "grok/amber-material-high-contrast.json",
+    "grok/pager.toml",
 )
 
 VENDOR_MANIFEST = "vendor/material-icon-theme.json"
