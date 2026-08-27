@@ -1,7 +1,7 @@
 {
   "name": "amber-material-theme",
   "displayName": "Amber Material High Contrast",
-  "description": "A warm, high-contrast Material-inspired theme with an amber accent, derived from the MIT-licensed Palenight theme.",
+  "description": "A warm, high-contrast Material-inspired theme with an amber accent for VS Code and Cursor, derived from the MIT-licensed Palenight theme.",
   "version": "1.0.0",
   "private": true,
   "publisher": "gaurang",
@@ -21,7 +21,8 @@
     "dark",
     "palenight",
     "amber",
-    "high contrast"
+    "high contrast",
+    "cursor"
   ],
   "contributes": {
     "themes": [
