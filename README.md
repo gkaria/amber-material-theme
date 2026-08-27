@@ -1,7 +1,7 @@
 # Amber Material High Contrast
 
-A high-contrast dark theme for VS Code with an amber accent, plus a warm,
-Material-inspired high-contrast Ghostty terminal theme and a bundled Amber
+A high-contrast dark theme for VS Code and Cursor with an amber accent, plus a
+warm, Material-inspired high-contrast Ghostty terminal theme and a bundled Amber
 Material file icon theme. The same amber identity also ships for Codex, Claude
 Code, OpenCode, Windows Terminal, PowerShell, and Starship — the editor and the
 terminal keep deliberately different surfaces, described under
@@ -34,17 +34,38 @@ The theme's direct lineage is:
 It retains Palenight's syntax foundation while giving the workbench and
 terminal a distinct amber-led, higher-contrast identity.
 
-## Install (VS Code)
+## Install
+
+This is a VS Code extension. The same VSIX installs in VS Code and in Cursor.
+It is not listed on the VS Code Marketplace or Open VSX — package it from this
+repository and install the file locally.
 
 ```sh
 npx @vscode/vsce package
+```
+
+That writes `amber-material-theme-1.0.0.vsix` in the repository root.
+
+### VS Code
+
+```sh
 code --install-extension amber-material-theme-1.0.0.vsix
 ```
 
-Then select both bundled themes:
+### Cursor
 
-1. **Cmd+K Cmd+T** → *Amber Material High Contrast*
-2. **Cmd+Shift+P** → *Preferences: File Icon Theme* → *Amber Material Icons*
+```sh
+cursor --install-extension amber-material-theme-1.0.0.vsix
+```
+
+Alternatively, in Cursor open the Command Palette (**Cmd+Shift+P** on macOS,
+**Ctrl+Shift+P** on Windows/Linux) and run *Extensions: Install from VSIX…*,
+then choose that file.
+
+Then, in either editor, select both bundled themes:
+
+1. **Cmd+K Cmd+T** / **Ctrl+K Ctrl+T** → *Amber Material High Contrast*
+2. **Cmd+Shift+P** / **Ctrl+Shift+P** → *Preferences: File Icon Theme* → *Amber Material Icons*
 
 ## Build
 
@@ -68,9 +89,10 @@ python3 scripts/test_check_generated.py
 
 `scripts/build_ghostty.py` owns the terminal palette and runs first, because
 the VS Code theme takes its 16 ANSI colors from it. `scripts/build_theme.py` is
-the source of truth for everything else in VS Code: it reads the upstream MIT
-base (`scripts/base-palenight-italic.json`) and applies this variant's palette
-on top. `scripts/build_codex_theme.py` combines the VS Code TextMate scopes
+the source of truth for everything else in VS Code and Cursor: it reads the
+upstream MIT base (`scripts/base-palenight-italic.json`) and applies this
+variant's palette on top. There is no second, Cursor-only theme file.
+`scripts/build_codex_theme.py` combines the VS Code TextMate scopes
 with the Ghostty terminal surfaces for Codex CLI.
 `scripts/ghostty_palette.py` is the shared reader for the Ghostty theme.
 
@@ -102,6 +124,9 @@ AMBER = "#FFCB6B"   # cursors, scrollbars, badges, focus rings, links
 
 ## VS Code palette
 
+The same palette is the source of truth in Cursor. There is no second,
+Cursor-only theme JSON.
+
 | Role | Hex |
 | --- | --- |
 | Editor / sidebar surface | `#22252F` |
@@ -116,6 +141,11 @@ AMBER = "#FFCB6B"   # cursors, scrollbars, badges, focus rings, links
 | Addition | `#a9c77d` |
 | Info / modification | `#82AAFF` |
 
+Editor and sidebar share that first surface on purpose. Cursor paints chat and
+composer with `editor.background` rather than `sideBar.background`; because
+those two tokens are the same hex here, the auxiliary bar matches Explorer
+instead of looking like a different panel.
+
 ### Border convention
 
 Amber marks **state**, not structure. Focus rings, the active tab underline, and
@@ -124,9 +154,9 @@ outlines use the recessive `#3A4052` so the UI isn't a grid of yellow boxes.
 
 ## What a color theme does *not* control
 
-The VS Code package ships both a color theme and a file icon theme, but VS Code
-keeps them as separate selections. Font and layout preferences remain user
-settings:
+The package ships both a color theme and a file icon theme, but VS Code and
+Cursor keep them as separate selections. Font and layout preferences remain
+user settings:
 
 | Concern | Setting |
 | --- | --- |
@@ -137,7 +167,28 @@ settings:
 | Italics | controlled by the theme's `tokenColors` (this theme ships them) |
 | File icons | the bundled *Amber Material Icons* theme |
 
+### Cursor chat, composer, and Agents Window
+
+Chat, composer, the auxiliary bar, and the parts of the agent panel that honor
+a color theme use the VS Code tokens this generator already sets: `chat.*`,
+`inlineChat.*`, `agents*`, `textLink.*`, scrollbars, tabs, and the status bar.
+
+Two Cursor surfaces are **not** themeable from this package, and we do not
+inject CSS or invent private tokens to fake them:
+
+- **Agents Window chrome.** Some of that window ignores `workbench.colorTheme`.
+  The `agents*` keys cover the slots VS Code actually registers; the rest of
+  that chrome stays on Cursor's own default until Cursor themes it.
+- **Agent chat file-path and citation links.** Those often use Cursor's
+  `--cursor-text-link` color, which does not follow `textLink.foreground`.
+  Markdown links that *do* honor `textLink.foreground` render in amber
+  (`#FFCB6B`).
+
 ### Suggested companion settings
+
+These are optional. `workbench.colorTheme` and `workbench.iconTheme` are the
+same keys in VS Code and in Cursor; set them after installing the VSIX if you
+want the themes selected without using the Command Palette.
 
 ```jsonc
 {
