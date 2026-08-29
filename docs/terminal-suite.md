@@ -1,19 +1,18 @@
 # Terminal suite
 
-Amber Material High Contrast uses one terminal palette across Ghostty, Claude
-Code, OpenCode, Windows Terminal, PowerShell, and Starship. The generated files
-reuse the existing Ghostty ANSI colors and VS Code surface colors; they do not
-introduce a separate palette.
+Amber Material High Contrast ships dark and light variants across Ghostty,
+Claude Code, OpenCode, Windows Terminal, PowerShell, and Starship. The
+generated files reuse the matching Ghostty ANSI colors and VS Code surface
+colors; they do not introduce a separate palette.
 
-VS Code's integrated terminal shares the same 16 ANSI colors, but keeps the
-cooler editor surface rather than Ghostty's warm base — see
+VS Code's integrated terminal shares the same 16 ANSI colors per variant, but
+keeps the editor surface rather than Ghostty's warm base — see
 [What the editor and the terminal share](../README.md#what-the-editor-and-the-terminal-share).
 
 ## Build
 
-From the repository root. `build_terminal_suite.py` reads both
-`ghostty/amber-material` and `themes/amber-material-hc.json`, so regenerate
-those first if either has changed:
+From the repository root. `build_terminal_suite.py` reads both Ghostty themes
+and both VS Code themes, so regenerate those first if either has changed:
 
 ```sh
 python3 scripts/build_ghostty.py
@@ -23,13 +22,13 @@ python3 scripts/build_terminal_suite.py
 
 This generates:
 
-| Tool | Artifact |
-| --- | --- |
-| Claude Code | `claude-code/amber-material-high-contrast.json` |
-| OpenCode | `opencode/amber-material-high-contrast.json` |
-| Windows Terminal | `windows-terminal/amber-material-high-contrast.json` |
-| PowerShell 7 | `powershell/AmberMaterial.ps1` |
-| Starship | `starship/amber-material.toml` |
+| Tool | Dark artifact | Light artifact |
+| --- | --- | --- |
+| Claude Code | `claude-code/amber-material-high-contrast.json` | `claude-code/amber-material-light-high-contrast.json` |
+| OpenCode | `opencode/amber-material-high-contrast.json` | `opencode/amber-material-light-high-contrast.json` |
+| Windows Terminal | `windows-terminal/amber-material-high-contrast.json` | `windows-terminal/amber-material-light-high-contrast.json` |
+| PowerShell 7 | `powershell/AmberMaterial.ps1` | `powershell/AmberMaterialLight.ps1` |
+| Starship | `starship/amber-material.toml` | `starship/amber-material-light.toml` |
 
 ## Claude Code
 
@@ -40,6 +39,7 @@ macOS and Linux:
 ```sh
 mkdir -p ~/.claude/themes
 cp claude-code/amber-material-high-contrast.json ~/.claude/themes/
+cp claude-code/amber-material-light-high-contrast.json ~/.claude/themes/
 ```
 
 Windows PowerShell:
@@ -47,11 +47,13 @@ Windows PowerShell:
 ```powershell
 New-Item -ItemType Directory -Force "$HOME\.claude\themes"
 Copy-Item ".\claude-code\amber-material-high-contrast.json" "$HOME\.claude\themes\"
+Copy-Item ".\claude-code\amber-material-light-high-contrast.json" "$HOME\.claude\themes\"
 ```
 
-Run `/theme` inside Claude Code and choose **Amber Material High Contrast**.
-The theme uses `dark-ansi` as its base, so the surrounding terminal still
-supplies the shared 16-color palette.
+Run `/theme` inside Claude Code and choose **Amber Material High Contrast** or
+**Amber Material Light High Contrast**. The dark theme uses `dark-ansi` as its
+base; the light theme uses `light-ansi`. The surrounding terminal still supplies
+the shared 16-color palette.
 
 ## OpenCode
 
@@ -62,6 +64,7 @@ macOS and Linux:
 ```sh
 mkdir -p ~/.config/opencode/themes
 cp opencode/amber-material-high-contrast.json ~/.config/opencode/themes/
+cp opencode/amber-material-light-high-contrast.json ~/.config/opencode/themes/
 ```
 
 Windows PowerShell:
@@ -69,9 +72,11 @@ Windows PowerShell:
 ```powershell
 New-Item -ItemType Directory -Force "$HOME\.config\opencode\themes"
 Copy-Item ".\opencode\amber-material-high-contrast.json" "$HOME\.config\opencode\themes\"
+Copy-Item ".\opencode\amber-material-light-high-contrast.json" "$HOME\.config\opencode\themes\"
 ```
 
-Run `/theme` inside OpenCode and choose **amber-material-high-contrast**.
+Run `/theme` inside OpenCode and choose **amber-material-high-contrast** or
+**amber-material-light-high-contrast**.
 This is the authoritative activation method for an existing profile because a
 previously saved theme selection can take precedence over `tui.json`.
 
@@ -83,6 +88,8 @@ For a new or managed profile, create or update `~/.config/opencode/tui.json`:
   "theme": "amber-material-high-contrast"
 }
 ```
+
+Use `amber-material-light-high-contrast` for the light variant.
 
 The theme assigns the existing Amber Material palette to OpenCode's TUI
 surfaces, semantic states, diff viewer, Markdown renderer, and syntax
@@ -97,10 +104,12 @@ Install the color scheme as a per-user Windows Terminal fragment:
 $FragmentDirectory = "$env:LOCALAPPDATA\Microsoft\Windows Terminal\Fragments\AmberMaterial"
 New-Item -ItemType Directory -Force $FragmentDirectory
 Copy-Item ".\windows-terminal\amber-material-high-contrast.json" "$FragmentDirectory\amber-material.json"
+Copy-Item ".\windows-terminal\amber-material-light-high-contrast.json" "$FragmentDirectory\amber-material-light.json"
 ```
 
 Then open Windows Terminal Settings and select **Amber Material High Contrast**
-as the color scheme for the PowerShell profile or profile defaults. Set the
+or **Amber Material Light High Contrast** as the color scheme for the PowerShell
+profile or profile defaults. Set the
 profile font face to `Cascadia Code NF` if that is the family name registered
 on the Windows machine.
 
@@ -116,12 +125,13 @@ Copy the PSReadLine configuration:
 $ThemeDirectory = "$HOME\.config\amber-material"
 New-Item -ItemType Directory -Force $ThemeDirectory
 Copy-Item ".\powershell\AmberMaterial.ps1" "$ThemeDirectory\AmberMaterial.ps1"
+Copy-Item ".\powershell\AmberMaterialLight.ps1" "$ThemeDirectory\AmberMaterialLight.ps1"
 ```
 
 Add these lines to the PowerShell profile shown by `$PROFILE`:
 
 ```powershell
-. "$HOME\.config\amber-material\AmberMaterial.ps1"
+. "$HOME\.config\amber-material\AmberMaterial.ps1"       # or AmberMaterialLight.ps1
 Invoke-Expression (&starship init powershell)
 ```
 
@@ -138,7 +148,8 @@ macOS:
 ```sh
 brew install starship
 mkdir -p ~/.config
-cp starship/amber-material.toml ~/.config/starship.toml
+cp starship/amber-material.toml ~/.config/starship.toml           # dark
+cp starship/amber-material-light.toml ~/.config/starship.toml     # light
 ```
 
 Add this to `~/.zshrc`:
@@ -152,7 +163,8 @@ Windows:
 ```powershell
 winget install --id Starship.Starship
 New-Item -ItemType Directory -Force "$HOME\.config"
-Copy-Item ".\starship\amber-material.toml" "$HOME\.config\starship.toml"
+Copy-Item ".\starship\amber-material.toml" "$HOME\.config\starship.toml"           # dark
+Copy-Item ".\starship\amber-material-light.toml" "$HOME\.config\starship.toml"     # light
 ```
 
 The prompt uses Nerd Font symbols for Git, operating systems, languages,
