@@ -1,8 +1,8 @@
 {
   "name": "amber-material-theme",
   "displayName": "Amber Material High Contrast",
-  "description": "A warm, high-contrast Material-inspired theme with an amber accent for VS Code and Cursor, derived from the MIT-licensed Palenight theme.",
-  "version": "1.0.0",
+  "description": "Warm, high-contrast Material-inspired dark and light themes with an amber accent for VS Code and Cursor, derived from the MIT-licensed Palenight theme.",
+  "version": "1.1.0",
   "private": true,
   "publisher": "gaurang",
   "license": "SEE LICENSE IN LICENSE",
@@ -19,17 +19,29 @@
   "keywords": [
     "theme",
     "dark",
+    "light",
     "palenight",
     "amber",
     "high contrast",
     "cursor"
   ],
+  "scripts": {
+    "build": "python3 scripts/build_ghostty.py && python3 scripts/build_theme.py && python3 scripts/build_codex_theme.py && python3 scripts/build_terminal_suite.py && python3 scripts/build_grok_theme.py",
+    "check": "python3 scripts/check_generated.py",
+    "test": "python3 scripts/test_check_generated.py",
+    "package": "vsce package"
+  },
   "contributes": {
     "themes": [
       {
         "label": "Amber Material High Contrast",
         "uiTheme": "vs-dark",
         "path": "./themes/amber-material-hc.json"
+      },
+      {
+        "label": "Amber Material Light High Contrast",
+        "uiTheme": "vs",
+        "path": "./themes/amber-material-light-hc.json"
       }
     ],
     "iconThemes": [

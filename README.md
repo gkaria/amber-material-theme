@@ -1,10 +1,10 @@
 # Amber Material High Contrast
 
-A high-contrast dark theme for VS Code and Cursor with an amber accent, plus a
-warm, Material-inspired high-contrast Ghostty terminal theme and a bundled Amber
-Material file icon theme. The same amber identity also ships for Codex, Claude
-Code, OpenCode, Windows Terminal, PowerShell, and Starship — the editor and the
-terminal keep deliberately different surfaces, described under
+A high-contrast dark and light theme pair for VS Code and Cursor with an amber
+accent, plus warm, Material-inspired high-contrast Ghostty terminal themes and a
+bundled Amber Material file icon theme. The same amber identity also ships for
+Codex, Claude Code, OpenCode, Windows Terminal, PowerShell, and Starship — the
+editor and the terminal keep deliberately different surfaces, described under
 [Ghostty](#ghostty).
 
 Derived from [vscode-palenight-theme](https://github.com/whizkydee/vscode-palenight-theme)
@@ -19,9 +19,10 @@ ink, using hierarchy, spacing, color, light, and motion to make interfaces
 easier to understand.
 
 Amber Material High Contrast carries those principles into a developer
-environment:
+environment in both dark and light variants:
 
-- **Amber is the identity.** `#FFCB6B` marks focus, selection, and active state.
+- **Amber is the identity.** `#FFCB6B` marks fills, highlights, and buttons on both
+  variants; light mode uses `#A65F00` for amber *text* on cream so it stays readable.
 - **Material is the design language.** Layered surfaces, deliberate color roles,
   and restrained structural borders create hierarchy.
 - **High Contrast is the functional promise.** Code, controls, and semantic
@@ -44,18 +45,18 @@ repository and install the file locally.
 npx @vscode/vsce package
 ```
 
-That writes `amber-material-theme-1.0.0.vsix` in the repository root.
+That writes `amber-material-theme-1.1.0.vsix` in the repository root.
 
 ### VS Code
 
 ```sh
-code --install-extension amber-material-theme-1.0.0.vsix
+code --install-extension amber-material-theme-1.1.0.vsix
 ```
 
 ### Cursor
 
 ```sh
-cursor --install-extension amber-material-theme-1.0.0.vsix
+cursor --install-extension amber-material-theme-1.1.0.vsix
 ```
 
 Alternatively, in Cursor open the Command Palette (**Cmd+Shift+P** on macOS,
@@ -64,7 +65,8 @@ then choose that file.
 
 Then, in either editor, select both bundled themes:
 
-1. **Cmd+K Cmd+T** / **Ctrl+K Ctrl+T** → *Amber Material High Contrast*
+1. **Cmd+K Cmd+T** / **Ctrl+K Ctrl+T** → *Amber Material High Contrast* or
+   *Amber Material Light High Contrast*
 2. **Cmd+Shift+P** / **Ctrl+Shift+P** → *Preferences: File Icon Theme* → *Amber Material Icons*
 
 ## Build
@@ -122,7 +124,7 @@ To re-accent the entire theme, change one constant:
 AMBER = "#FFCB6B"   # cursors, scrollbars, badges, focus rings, links
 ```
 
-## VS Code palette
+## VS Code palette (dark)
 
 The same palette is the source of truth in Cursor. There is no second,
 Cursor-only theme JSON.
@@ -140,6 +142,23 @@ Cursor-only theme JSON.
 | Error / deletion | `#ff5572` |
 | Addition | `#a9c77d` |
 | Info / modification | `#82AAFF` |
+
+## VS Code palette (light)
+
+| Role | Hex |
+| --- | --- |
+| Editor / sidebar surface | `#FAF6EE` |
+| Activity bar / status bar | `#F0EBE0` |
+| Raised (tabs, widgets, hovers) | `#FFFFFF` |
+| Foreground | `#1E2228` |
+| Dimmed foreground | `#5A6070` |
+| Structural border | `#D8D2C6` |
+| Container border (recessive) | `#E8E2D8` |
+| **Accent (amber fill)** | `#FFCB6B` |
+| **Accent (amber on cream)** | `#A65F00` |
+| Error / deletion | `#C62828` |
+| Addition | `#4A7C1B` |
+| Info / modification | `#2E5DB8` |
 
 Editor and sidebar share that first surface on purpose. Cursor paints chat and
 composer with `editor.background` rather than `sideBar.background`; because
@@ -192,7 +211,7 @@ want the themes selected without using the Command Palette.
 
 ```jsonc
 {
-  "workbench.colorTheme": "Amber Material High Contrast",
+  "workbench.colorTheme": "Amber Material High Contrast", // or "Amber Material Light High Contrast"
 
   // Cascadia Code NF: ligatures + Nerd Font glyphs for terminal prompts.
   // brew install --cask font-cascadia-code-nf
@@ -242,9 +261,12 @@ bundled SVG icons.
 
 ## Ghostty
 
-`ghostty/amber-material` uses a purpose-built terminal palette: a warm
-Gruvbox Material-style near-black base, clearer Material Design-inspired ANSI
-colors, and the same amber identity accent as the VS Code theme.
+`ghostty/amber-material` and `ghostty/amber-material-light` use purpose-built
+terminal palettes: warm Gruvbox Material-style bases, clearer Material
+Design-inspired ANSI colors, and the same amber identity accent as the VS Code
+themes.
+
+### Dark
 
 | Role | Hex |
 | --- | --- |
@@ -254,11 +276,21 @@ colors, and the same amber identity accent as the VS Code theme.
 | Selection background | `#4A3F28` |
 | Selection foreground | `#FFF4D6` |
 
+### Light
+
+| Role | Hex |
+| --- | --- |
+| Background | `#FBF7EE` |
+| Foreground | `#2B2926` |
+| Cursor / ANSI yellow | `#FFCB6B` |
+| Selection background | `#E8D5A8` |
+| Selection foreground | `#1E2228` |
+
 ### What the editor and the terminal share
 
-The 16 ANSI colors are shared: `themes/amber-material-hc.json` takes its
-`terminal.ansi*` values from this file, so the same command renders the same way
-in Ghostty and in VS Code's integrated terminal.
+The 16 ANSI colors are shared per variant: each VS Code theme takes its
+`terminal.ansi*` values from the matching Ghostty file, so the same command
+renders the same way in Ghostty and in VS Code's integrated terminal.
 
 The surfaces are not. Ghostty's warm `#1D2021` base is for a standalone window,
 while the integrated terminal keeps the cooler `#22252F` editor tone — that
@@ -272,6 +304,7 @@ From the repository root:
 ```sh
 mkdir -p ~/.config/ghostty/themes
 cp ghostty/amber-material ~/.config/ghostty/themes/amber-material
+cp ghostty/amber-material-light ~/.config/ghostty/themes/amber-material-light
 ```
 
 Ghostty looks up named custom themes in `~/.config/ghostty/themes` (or
@@ -285,7 +318,7 @@ Set the theme in your Ghostty configuration:
 - XDG/Linux: `~/.config/ghostty/config.ghostty`
 
 ```ini
-theme = amber-material
+theme = amber-material          # or amber-material-light
 font-family = Cascadia Code NF
 font-size = 16
 ```
@@ -346,14 +379,17 @@ Regenerate it with the [build chain](#build) — the order matters there, since
 mkdir -p ~/.codex/themes
 cp codex/amber-material-high-contrast.tmTheme \
   ~/.codex/themes/amber-material-high-contrast.tmTheme
+cp codex/amber-material-light-high-contrast.tmTheme \
+  ~/.codex/themes/amber-material-light-high-contrast.tmTheme
 ```
 
 Inside an interactive Codex CLI session, run `/theme` and choose
-*Amber Material High Contrast*. Alternatively, configure it directly:
+*Amber Material High Contrast* or *Amber Material Light High Contrast*.
+Alternatively, configure it directly:
 
 ```toml
 [tui]
-theme = "amber-material-high-contrast"
+theme = "amber-material-high-contrast"  # or amber-material-light-high-contrast
 ```
 
 The `.tmTheme` controls syntax-highlighted code blocks and diffs. Ghostty still
@@ -370,9 +406,10 @@ them currently accepts outside input.
 
 ### What Grok does not load yet
 
-`grok/amber-material-high-contrast.json` is the full palette export: all 59
-color slots Grok's theme system defines, under the slot names from its theming
-guide (`accent_user`, `bg_base`, `diff_insert_bg`, and so on).
+`grok/amber-material-high-contrast.json` and
+`grok/amber-material-light-high-contrast.json` are the full palette exports:
+all 59 color slots Grok's theme system defines, under the slot names from its
+theming guide (`accent_user`, `bg_base`, `diff_insert_bg`, and so on).
 
 **Grok cannot load it today.** Grok Build validates `[ui].theme` against a
 closed set of five built-in themes — `groknight`, `grokday`, `tokyonight`,
@@ -389,23 +426,24 @@ machine-readable palette by anything else that reads one.
 
 ### What Grok does load
 
-`grok/pager.toml` is the part that takes effect now. Grok reads
-`~/.grok/pager.toml` for TUI appearance, and it accepts raw colors for the
-scrollbar plus the block styling that the accents land on:
+`grok/pager.toml` and `grok/pager-light.toml` are the parts that take effect now.
+Grok reads `~/.grok/pager.toml` for TUI appearance, and it accepts raw colors for
+the scrollbar plus the block styling that the accents land on:
 
 ```sh
-cp grok/pager.toml ~/.grok/pager.toml
+cp grok/pager.toml ~/.grok/pager.toml           # dark
+cp grok/pager-light.toml ~/.grok/pager.toml   # light
 ```
 
 Changes apply on restart. Every key and enum value in the generated file was
 verified against the installed binary's own schema strings.
 
 Since `[ui].theme` stays on one of the five built-ins, pick the one closest to
-this palette — `groknight` is the neutral dark base:
+your variant — `groknight` for dark, `grokday` for light:
 
 ```toml
 [ui]
-theme = "groknight"
+theme = "groknight"  # or grokday for the light variant
 ```
 
 Ghostty still controls the surrounding terminal background and ANSI colors, so
@@ -414,7 +452,8 @@ as Amber Material.
 
 ## Cross-terminal suite
 
-The repository also generates coordinated configurations for:
+The repository generates coordinated configurations for both dark and light
+variants across:
 
 | Tool | Theme responsibility |
 | --- | --- |

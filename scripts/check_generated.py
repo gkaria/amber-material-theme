@@ -45,15 +45,25 @@ GENERATORS = (
 
 GENERATED = (
     "ghostty/amber-material",
+    "ghostty/amber-material-light",
     "themes/amber-material-hc.json",
+    "themes/amber-material-light-hc.json",
     "codex/amber-material-high-contrast.tmTheme",
+    "codex/amber-material-light-high-contrast.tmTheme",
     "claude-code/amber-material-high-contrast.json",
+    "claude-code/amber-material-light-high-contrast.json",
     "opencode/amber-material-high-contrast.json",
+    "opencode/amber-material-light-high-contrast.json",
     "windows-terminal/amber-material-high-contrast.json",
+    "windows-terminal/amber-material-light-high-contrast.json",
     "powershell/AmberMaterial.ps1",
+    "powershell/AmberMaterialLight.ps1",
     "starship/amber-material.toml",
+    "starship/amber-material-light.toml",
     "grok/amber-material-high-contrast.json",
+    "grok/amber-material-light-high-contrast.json",
     "grok/pager.toml",
+    "grok/pager-light.toml",
 )
 
 VENDOR_MANIFEST = "vendor/material-icon-theme.json"

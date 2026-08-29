@@ -1,0 +1,80 @@
+{
+  "name": "Amber Material Light High Contrast",
+  "backgrounds": {
+    "bg_base": "#FBF7EE",
+    "bg_light": "#FFFFFF",
+    "bg_dark": "#F0EBE0",
+    "bg_highlight": "#E0DBD0",
+    "bg_hover": "#D8D2C6",
+    "bg_terminal": "#FBF7EE",
+    "bg_visual": "#E8D5A8"
+  },
+  "accents": {
+    "accent_user": "#FFCB6B",
+    "accent_assistant": "#2E5DB8",
+    "accent_thinking": "#7B3F9E",
+    "accent_tool": "#0E7490",
+    "accent_system": "#8A8580",
+    "accent_error": "#C62828",
+    "accent_success": "#4A7C1B",
+    "accent_running": "#FFE08A",
+    "accent_skill": "#9B59C7",
+    "accent_plan": "#3D6BB8",
+    "accent_verify": "#5A9A24",
+    "accent_feedback": "#0E9AAF",
+    "accent_remember": "#7B3F9E",
+    "accent_model": "#D32F2F"
+  },
+  "text": {
+    "text_primary": "#2B2926",
+    "text_secondary": "#5A6070"
+  },
+  "grays": {
+    "gray_dim": "#E8E2D8",
+    "gray": "#8A8580",
+    "gray_bright": "#1E2228"
+  },
+  "semantic": {
+    "command": "#FFCB6B",
+    "path": "#0E7490",
+    "running": "#FFE08A",
+    "warning": "#FFCB6B",
+    "fuzzy_accent": "#FFE08A"
+  },
+  "borders": {
+    "selection_border": "#FFCB6B",
+    "hover_border": "#E8E2D8",
+    "prompt_border": "#E8E2D8",
+    "prompt_border_active": "#FFCB6B",
+    "scrollbar_bg": "#F0EBE0",
+    "scrollbar_fg": "#E8E2D8"
+  },
+  "paste": {
+    "paste_bg": "#FFFFFF",
+    "paste_fg": "#2B2926",
+    "paste_dim": "#8A8580"
+  },
+  "diff": {
+    "diff_delete_bg": "#F6E6DE",
+    "diff_delete_fg": "#D32F2F",
+    "diff_insert_bg": "#ECECDD",
+    "diff_insert_fg": "#5A9A24",
+    "diff_equal_fg": "#2B2926",
+    "diff_gutter_fg": "#8A8580"
+  },
+  "markdown": {
+    "md_heading_h1": "#FFCB6B",
+    "md_heading_h2": "#FFE08A",
+    "md_heading_h3": "#2E5DB8",
+    "md_heading_h4": "#3D6BB8",
+    "md_heading_h5": "#7B3F9E",
+    "md_heading_h6": "#9B59C7",
+    "md_code": "#4A7C1B",
+    "md_code_bg": "#FAF6EE",
+    "md_text": "#2B2926",
+    "md_muted": "#8A8580",
+    "md_task_checked": "#4A7C1B",
+    "md_task_unchecked": "#8A8580",
+    "link_fg": "#2E5DB8"
+  }
+}
