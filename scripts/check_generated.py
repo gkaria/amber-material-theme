@@ -59,7 +59,6 @@ GENERATED = (
     "powershell/AmberMaterial.ps1",
     "powershell/AmberMaterialLight.ps1",
     "starship/amber-material.toml",
-    "starship/amber-material-light.toml",
     "grok/amber-material-high-contrast.json",
     "grok/amber-material-light-high-contrast.json",
     "grok/pager.toml",

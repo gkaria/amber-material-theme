@@ -14,14 +14,14 @@ $AmberMaterialLightColors = @{
     String                  = "#4A7C1B"
     Operator                = "#0E7490"
     Variable                = "#7B3F9E"
-    Command                 = "#FFCB6B"
+    Command                 = "#C99200"
     Parameter               = "#FFE08A"
     Type                    = "#2E5DB8"
     Number                  = "#5A9A24"
     Member                  = "#3D6BB8"
     InlinePrediction        = "#8A8580"
     ListPrediction          = "#2B2926"
-    ListPredictionSelected  = "${AmberMaterialLightEscape}[38;2;251;247;238;48;2;255;203;107m"
+    ListPredictionSelected  = "${AmberMaterialLightEscape}[38;2;251;247;238;48;2;201;146;0m"
     ListPredictionTooltip   = "#8A8580"
 }
 

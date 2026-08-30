@@ -28,7 +28,7 @@ This generates:
 | OpenCode | `opencode/amber-material-high-contrast.json` | `opencode/amber-material-light-high-contrast.json` |
 | Windows Terminal | `windows-terminal/amber-material-high-contrast.json` | `windows-terminal/amber-material-light-high-contrast.json` |
 | PowerShell 7 | `powershell/AmberMaterial.ps1` | `powershell/AmberMaterialLight.ps1` |
-| Starship | `starship/amber-material.toml` | `starship/amber-material-light.toml` |
+| Starship | `starship/amber-material.toml` | same file (`palette = "amber_material_light"`) |
 
 ## Claude Code
 
@@ -141,16 +141,25 @@ error colors. Starship controls only the prompt.
 
 ## Starship
 
-Install Starship and copy the shared prompt configuration.
+Install Starship and copy the shared prompt configuration. Dark and light
+palettes both live in that one file; switch with the top-level `palette` key.
 
 macOS:
 
 ```sh
 brew install starship
 mkdir -p ~/.config
-cp starship/amber-material.toml ~/.config/starship.toml           # dark
-cp starship/amber-material-light.toml ~/.config/starship.toml     # light
+cp starship/amber-material.toml ~/.config/starship.toml
 ```
+
+In `~/.config/starship.toml`:
+
+```toml
+palette = "amber_material"         # dark Ghostty
+# palette = "amber_material_light" # light Ghostty
+```
+
+Or: `starship config palette amber_material_light`
 
 Add this to `~/.zshrc`:
 
@@ -163,8 +172,7 @@ Windows:
 ```powershell
 winget install --id Starship.Starship
 New-Item -ItemType Directory -Force "$HOME\.config"
-Copy-Item ".\starship\amber-material.toml" "$HOME\.config\starship.toml"           # dark
-Copy-Item ".\starship\amber-material-light.toml" "$HOME\.config\starship.toml"     # light
+Copy-Item ".\starship\amber-material.toml" "$HOME\.config\starship.toml"
 ```
 
 The prompt uses Nerd Font symbols for Git, operating systems, languages,

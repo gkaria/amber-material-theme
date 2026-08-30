@@ -282,7 +282,8 @@ themes.
 | --- | --- |
 | Background | `#FBF7EE` |
 | Foreground | `#2B2926` |
-| Cursor / ANSI yellow | `#FFCB6B` |
+| Cursor | `#C99200` |
+| ANSI yellow | `#FFCB6B` |
 | Selection background | `#E8D5A8` |
 | Selection foreground | `#1E2228` |
 

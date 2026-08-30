@@ -74,6 +74,11 @@ class Variant:
     powershell_class: str
     codex_uuid_seed: str
     grok_pager_block_bg: str  # "dark" or "light"
+    # Prompt text on the Ghostty surface. Distinct from cursor-color, which can
+    # stay the bright fill gold even when that gold is too light as glyphs.
+    prompt_amber: str
+    prompt_amber_bright: str
+    prompt_dim: str
 
     # Ghostty terminal palette (source for build_ghostty.py)
     ghostty_background: str
@@ -143,6 +148,9 @@ DARK = Variant(
     powershell_class="AmberMaterial",
     codex_uuid_seed="https://github.com/gkaria/amber-material-theme#codex",
     grok_pager_block_bg="dark",
+    prompt_amber="#FFCB6B",
+    prompt_amber_bright="#FFE08A",
+    prompt_dim="#B8B3A8",
     ghostty_background="#1D2021",
     ghostty_foreground="#E7E1D1",
     ghostty_cursor="#FFCB6B",
@@ -202,16 +210,19 @@ LIGHT = Variant(
     opencode_path="opencode/amber-material-light-high-contrast.json",
     windows_terminal_path="windows-terminal/amber-material-light-high-contrast.json",
     powershell_path="powershell/AmberMaterialLight.ps1",
-    starship_path="starship/amber-material-light.toml",
+    starship_path="starship/amber-material.toml",
     grok_json_path="grok/amber-material-light-high-contrast.json",
     grok_pager_path="grok/pager-light.toml",
     starship_palette="amber_material_light",
     powershell_class="AmberMaterialLight",
     codex_uuid_seed="https://github.com/gkaria/amber-material-theme#codex-light",
     grok_pager_block_bg="light",
+    prompt_amber="#C99200",
+    prompt_amber_bright="#D4A017",
+    prompt_dim="#5A6070",
     ghostty_background="#FBF7EE",
     ghostty_foreground="#2B2926",
-    ghostty_cursor="#FFCB6B",
+    ghostty_cursor="#C99200",
     ghostty_selection_bg="#E8D5A8",
     ghostty_selection_fg="#1E2228",
     ghostty_ansi=(
