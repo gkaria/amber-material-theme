@@ -22,11 +22,13 @@ Amber Material High Contrast carries those principles into a developer
 environment in both dark and light variants:
 
 - **Amber is the identity.** `#FFCB6B` marks fills, highlights, and buttons on both
-  variants; light mode uses `#A65F00` for amber *text* on cream so it stays readable.
+  variants. On cream, amber *text* (links, line numbers) uses `#A65F00`, and the
+  Ghostty caret plus Starship prompt use a yellower `#C99200` so glyphs stay
+  readable without turning brown.
 - **Material is the design language.** Layered surfaces, deliberate color roles,
   and restrained structural borders create hierarchy.
 - **High Contrast is the functional promise.** Code, controls, and semantic
-  states remain easy to distinguish on dark backgrounds.
+  states remain easy to distinguish on both the dark and light surfaces.
 
 The theme's direct lineage is:
 
@@ -74,11 +76,11 @@ Then, in either editor, select both bundled themes:
 Run these in order — each step reads the output of the ones before it:
 
 ```sh
-python3 scripts/build_ghostty.py      # ghostty/amber-material
-python3 scripts/build_theme.py        # themes/amber-material-hc.json
-python3 scripts/build_codex_theme.py  # codex/amber-material-high-contrast.tmTheme
+python3 scripts/build_ghostty.py      # ghostty/amber-material{,-light}
+python3 scripts/build_theme.py        # themes/amber-material{-light,}-hc.json
+python3 scripts/build_codex_theme.py  # codex/amber-material{-light,}-high-contrast.tmTheme
 python3 scripts/build_terminal_suite.py   # Claude, OpenCode, Windows, PowerShell, Starship
-python3 scripts/build_grok_theme.py   # grok/ palette export and pager.toml
+python3 scripts/build_grok_theme.py   # grok/ palette export and pager.toml / pager-light.toml
 python3 scripts/vendor_material_icons.py  # pinned VS Code icon snapshot
 python3 scripts/check_generated.py    # verify nothing drifted
 ```
@@ -118,11 +120,10 @@ the upstream extension. Never hand-edit generated files in `themes/`,
 `ghostty/`, `codex/`, `claude-code/`, `opencode/`, `windows-terminal/`,
 `powershell/`, `starship/`, `grok/`, `icon-themes/`, or `icons/amber-material/`.
 
-To re-accent the entire theme, change one constant:
-
-```python
-AMBER = "#FFCB6B"   # cursors, scrollbars, badges, focus rings, links
-```
+To re-accent the entire theme, edit the `DARK` and `LIGHT` profiles in
+`scripts/variants.py`. Light keeps three amber roles on purpose: fill gold
+(`amber_bright`, `#FFCB6B`), cream-readable text (`amber`, `#A65F00`), and
+Ghostty/Starship prompt gold (`prompt_amber`, `#C99200`).
 
 ## VS Code palette (dark)
 
@@ -163,13 +164,15 @@ Cursor-only theme JSON.
 Editor and sidebar share that first surface on purpose. Cursor paints chat and
 composer with `editor.background` rather than `sideBar.background`; because
 those two tokens are the same hex here, the auxiliary bar matches Explorer
-instead of looking like a different panel.
+instead of looking like a different panel. Ghostty's caret and Starship's
+prompt gold on cream are `#C99200`, not a VS Code workbench token.
 
 ### Border convention
 
 Amber marks **state**, not structure. Focus rings, the active tab underline, and
 the active sidebar indicator are amber; widget, popup, input, and peek-view
-outlines use the recessive `#3A4052` so the UI isn't a grid of yellow boxes.
+outlines use the recessive border (`#3A4052` dark, `#E8E2D8` light) so the UI
+isn't a grid of yellow boxes.
 
 ## What a color theme does *not* control
 
@@ -201,7 +204,7 @@ inject CSS or invent private tokens to fake them:
 - **Agent chat file-path and citation links.** Those often use Cursor's
   `--cursor-text-link` color, which does not follow `textLink.foreground`.
   Markdown links that *do* honor `textLink.foreground` render in amber
-  (`#FFCB6B`).
+  (`#FFCB6B` dark, `#A65F00` light).
 
 ### Suggested companion settings
 
@@ -293,10 +296,14 @@ The 16 ANSI colors are shared per variant: each VS Code theme takes its
 `terminal.ansi*` values from the matching Ghostty file, so the same command
 renders the same way in Ghostty and in VS Code's integrated terminal.
 
-The surfaces are not. Ghostty's warm `#1D2021` base is for a standalone window,
-while the integrated terminal keeps the cooler `#22252F` editor tone — that
-panel sits beside the editor, so it matches its neighbour rather than the
-standalone terminal.
+The surfaces are not. Ghostty's standalone window uses a slightly different
+base from the editor so a dedicated terminal does not look like a second
+workbench panel:
+
+| Variant | Ghostty | Editor / integrated terminal |
+| --- | --- | --- |
+| Dark | `#1D2021` | `#22252F` |
+| Light | `#FBF7EE` | `#FAF6EE` |
 
 ### Install the theme
 
@@ -351,7 +358,10 @@ For the standard macOS app installation:
 
 ### Desktop app
 
-Open **Settings → Appearance** and use:
+Open **Settings → Appearance** and match the Ghostty surfaces so the desktop
+app tracks the Codex CLI rather than the VS Code editor:
+
+**Dark**
 
 | Setting | Value |
 | --- | --- |
@@ -361,11 +371,19 @@ Open **Settings → Appearance** and use:
 | Foreground | `#E7E1D1` |
 | Code font | `Cascadia Code NF` |
 
-This pair provides a 12.56:1 text contrast ratio while staying within the
-existing Amber Material palette. The background is the warm terminal base, so
-the desktop app matches the Codex CLI rather than the VS Code editor surface.
-Keeping the system UI font preserves native
-macOS readability.
+**Light**
+
+| Setting | Value |
+| --- | --- |
+| Base theme | Light |
+| Accent | `#FFCB6B` |
+| Background | `#FBF7EE` |
+| Foreground | `#2B2926` |
+| Code font | `Cascadia Code NF` |
+
+The dark pair is a 12.56:1 text contrast ratio. Accent stays the fill gold on
+both; cream-readable amber (`#A65F00`) is for editor text, not this picker.
+Keeping the system UI font preserves native macOS readability.
 
 ### CLI
 
@@ -465,7 +483,9 @@ variants across:
 | Starship | Cross-shell prompt layout, status, and Nerd Font symbols |
 
 All five are generated from the existing Ghostty and VS Code palettes by
-`scripts/build_terminal_suite.py`. Cascadia Code NF is used by Starship for
+`scripts/build_terminal_suite.py`. Starship ships both palettes in one file,
+`starship/amber-material.toml`: set `palette = "amber_material"` or
+`palette = "amber_material_light"`. Cascadia Code NF is used by Starship for
 symbols but remains an installation prerequisite rather than a redistributed
 font.
 
