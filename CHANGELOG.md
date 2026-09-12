@@ -8,19 +8,19 @@ All notable changes to this project are documented here. The format follows
 
 ### Changed
 
-- Relicensed under the MIT License. Previously proprietary; third-party
-  material was already MIT / Apache-2.0 and is unchanged.
-- Publisher identifier is now `gkaria`.
-- Regenerated `starship/amber-material.toml` so the committed file matches
-  the generator (dark palette default).
+- `LICENSE` is the bare MIT text so GitHub detects the license. Palenight
+  attribution now lives in `THIRD_PARTY_NOTICES.md` with the icon theme
+  notice.
 
-### Added
+### Fixed
 
-- GitHub Actions CI running the drift check, its tests, and a VSIX package.
-- Issue and pull request templates, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`,
-  and this changelog.
+- README License section treats `THIRD_PARTY_NOTICES.md` as the index for
+  Palenight and the icon theme, matching the post-relicense layout.
+- Pull request template asks for a `[Unreleased]` changelog line, matching
+  `CONTRIBUTING.md`.
+- Changelog compare links no longer reference a missing `v1.0.0` tag.
 
-## [1.1.0] - 2026-08-30
+## [1.1.0] - 2026-09-12
 
 ### Added
 
@@ -31,9 +31,17 @@ All notable changes to this project are documented here. The format follows
   `palette = "amber_material"` or `palette = "amber_material_light"`.
 - Grok Build support: full palette export plus `pager.toml` /
   `pager-light.toml`.
+- GitHub Actions CI running the drift check, its tests, and a VSIX package.
+- Issue and pull request templates, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`,
+  and this changelog.
 
 ### Changed
 
+- Relicensed under the MIT License. Previously proprietary; third-party
+  material was already MIT / Apache-2.0 and is unchanged.
+- Publisher identifier is now `gkaria`.
+- Regenerated `starship/amber-material.toml` so the committed file matches
+  the generator (dark palette default).
 - VS Code theme is first-class in Cursor: `chat.*`, `inlineChat.*`, `agents*`,
   and `textLink.*` tokens are set; editor and sidebar share one surface so the
   auxiliary bar matches Explorer.
@@ -56,5 +64,5 @@ All notable changes to this project are documented here. The format follows
   modes.
 
 [Unreleased]: https://github.com/gkaria/amber-material-theme/compare/v1.1.0...HEAD
-[1.1.0]: https://github.com/gkaria/amber-material-theme/compare/v1.0.0...v1.1.0
-[1.0.0]: https://github.com/gkaria/amber-material-theme/releases/tag/v1.0.0
+[1.1.0]: https://github.com/gkaria/amber-material-theme/releases/tag/v1.1.0
+[1.0.0]: https://github.com/gkaria/amber-material-theme/commit/c4dc0cc

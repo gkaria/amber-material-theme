@@ -496,12 +496,10 @@ installation instructions.
 
 This project is released under the [MIT License](LICENSE).
 
-It contains material derived from the MIT-licensed Palenight theme. The
-upstream copyright and license are retained in
-[LICENSE-upstream-palenight.md](LICENSE-upstream-palenight.md).
-
-The bundled icon theme is derived from the MIT-licensed Material Icon Theme.
-Its license and the relevant icon-source notices are retained in
-[LICENSE-material-icon-theme.txt](LICENSE-material-icon-theme.txt),
-[LICENSE-Apache-2.0.txt](LICENSE-Apache-2.0.txt), and
-[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+It contains material derived from the MIT-licensed Palenight theme and a
+pinned snapshot of the MIT-licensed Material Icon Theme. Third-party
+attribution is collected in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+The upstream license texts are retained in
+[LICENSE-upstream-palenight.md](LICENSE-upstream-palenight.md),
+[LICENSE-material-icon-theme.txt](LICENSE-material-icon-theme.txt), and
+[LICENSE-Apache-2.0.txt](LICENSE-Apache-2.0.txt).

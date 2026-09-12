@@ -9,3 +9,4 @@
 - [ ] `python3 scripts/check_generated.py` reports in sync.
 - [ ] `python3 scripts/test_check_generated.py` passes.
 - [ ] `README.md` palette tables are updated if a documented hex changed.
+- [ ] I added a line under `[Unreleased]` in `CHANGELOG.md`.
