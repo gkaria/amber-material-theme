@@ -3,9 +3,11 @@
   "displayName": "Amber Material High Contrast",
   "description": "Warm, high-contrast Material-inspired dark and light themes with an amber accent for VS Code and Cursor, derived from the MIT-licensed Palenight theme.",
   "version": "1.1.0",
-  "private": true,
-  "publisher": "gaurang",
-  "license": "SEE LICENSE IN LICENSE",
+  "publisher": "gkaria",
+  "author": {
+    "name": "Gaurang Karia"
+  },
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/gkaria/amber-material-theme.git"

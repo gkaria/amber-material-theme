@@ -1,0 +1,49 @@
+name: Bug report
+description: Something looks wrong or does not work
+labels: [bug]
+body:
+  - type: dropdown
+    id: target
+    attributes:
+      label: Where does it happen?
+      multiple: true
+      options:
+        - VS Code
+        - Cursor
+        - Ghostty
+        - Codex
+        - Claude Code
+        - OpenCode
+        - Windows Terminal
+        - PowerShell
+        - Starship
+        - Grok
+        - Icon theme
+    validations:
+      required: true
+  - type: dropdown
+    id: variant
+    attributes:
+      label: Variant
+      options:
+        - Dark
+        - Light
+        - Both
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Include the UI element or syntax scope, and a screenshot if you can.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+  - type: input
+    id: version
+    attributes:
+      label: Theme version and editor/tool version
+      placeholder: "1.1.0, Cursor 1.x / VS Code 1.9x"

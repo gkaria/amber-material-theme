@@ -1,8 +1,7 @@
 # Third-party notices
 
-Amber Material High Contrast is proprietary except for the third-party
-material identified here. Those portions remain available under their
-respective licenses.
+Amber Material High Contrast is MIT-licensed (see `LICENSE`). The third-party
+material identified here is included under its own terms.
 
 ## Material Icon Theme
 

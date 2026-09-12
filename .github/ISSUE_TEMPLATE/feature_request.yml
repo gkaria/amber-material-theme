@@ -1,0 +1,16 @@
+name: Feature request
+description: Suggest a new target, palette role, or improvement
+labels: [enhancement]
+body:
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What would you like?
+      description: A new tool to theme, a token that should be covered, a contrast issue to revisit, and so on.
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Why?
+      description: What problem does this solve, and does it fit the amber-marks-state, high-contrast philosophy in the README?

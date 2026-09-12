@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Generated files, tests, and package
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Verify generated files match their generators
+        run: python3 scripts/check_generated.py
+
+      - name: Run drift-check tests
+        run: python3 scripts/test_check_generated.py
+
+      - name: Package the extension
+        run: npx --yes @vscode/vsce package --out amber-material-theme.vsix
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: amber-material-theme-vsix
+          path: amber-material-theme.vsix

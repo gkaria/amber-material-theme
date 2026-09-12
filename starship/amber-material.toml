@@ -6,7 +6,7 @@
 "$schema" = "https://starship.rs/config-schema.json"
 
 add_newline = true
-palette = "amber_material_light"
+palette = "amber_material"
 format = "$os$username$hostname$directory$git_branch$git_status$package$nodejs$python$rust$golang$java$dotnet$docker_context$kubernetes$aws$azure$gcloud$line_break$character"
 right_format = "$status$cmd_duration$time"
 

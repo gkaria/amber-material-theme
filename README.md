@@ -494,8 +494,7 @@ installation instructions.
 
 ## License
 
-This project is currently proprietary and is not offered under an open-source
-license. See [LICENSE](LICENSE).
+This project is released under the [MIT License](LICENSE).
 
 It contains material derived from the MIT-licensed Palenight theme. The
 upstream copyright and license are retained in

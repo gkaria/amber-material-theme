@@ -9,6 +9,10 @@ powershell/**
 starship/**
 .vibe-learn/**
 .git/**
+.github/**
+.vscode/**
 .gitignore
+CONTRIBUTING.md
+CODE_OF_CONDUCT.md
 docs/**
 *.vsix
