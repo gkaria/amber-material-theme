@@ -19,17 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-Third-party material
---------------------
-
-This repository contains material derived from vscode-palenight-theme by
-Olaolu Olawuyi, used under the MIT License. Its copyright notice and license
-text are reproduced in LICENSE-upstream-palenight.md.
-
-This repository also contains a pinned, generated snapshot derived from
-Material Icon Theme by Material Extensions, used under the MIT License. Its
-copyright notice and license text are reproduced in
-LICENSE-material-icon-theme.txt. Some upstream icon designs originate from
-Apache-2.0-licensed Material Design Icons and Material Symbols; that license is
-reproduced in LICENSE-Apache-2.0.txt. See THIRD_PARTY_NOTICES.md for details.

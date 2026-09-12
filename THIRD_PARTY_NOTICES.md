@@ -3,6 +3,17 @@
 Amber Material High Contrast is MIT-licensed (see `LICENSE`). The third-party
 material identified here is included under its own terms.
 
+## Palenight
+
+The VS Code syntax scopes and workbench base are derived from:
+
+- Project: vscode-palenight-theme
+- Author: Olaolu Olawuyi
+- Source: https://github.com/whizkydee/vscode-palenight-theme
+- License: MIT
+
+The upstream MIT text is reproduced in `LICENSE-upstream-palenight.md`.
+
 ## Material Icon Theme
 
 The bundled `Amber Material Icons` file icon theme is a generated snapshot of:
