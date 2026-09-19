@@ -29,8 +29,8 @@ jobs:
       - name: Verify generated files match their generators
         run: python3 scripts/check_generated.py
 
-      - name: Run drift-check tests
-        run: python3 scripts/test_check_generated.py
+      - name: Run tests
+        run: npm test
 
       - name: Package the extension
         run: python3 scripts/package_release.py

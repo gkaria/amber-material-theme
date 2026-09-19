@@ -14,15 +14,29 @@ TARGETS = (
 )
 
 
+def release_revision(root):
+    status = subprocess.check_output(
+        ["git", "status", "--porcelain", "--untracked-files=all"],
+        cwd=root, text=True,
+    )
+    if status:
+        raise SystemExit(
+            "Release packaging requires a clean worktree. Commit or remove "
+            "staged, unstaged, and untracked changes before packaging; "
+            "README links are pinned to HEAD.\n" + status
+        )
+    return subprocess.check_output(
+        ["git", "rev-parse", "HEAD"], cwd=root, text=True,
+    ).strip()
+
+
 def main():
+    revision = release_revision(ROOT)
     manifest = json.loads((ROOT / "package.json").read_text())
     version = manifest["version"]
     output = ROOT / "dist"
     output.mkdir(exist_ok=True)
     vsix = output / f"{manifest['name']}-{version}.vsix"
-    revision = subprocess.check_output(
-        ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True,
-    ).strip()
     repository = manifest["repository"]["url"].removesuffix(".git")
     # Invoke the pinned JS entry point directly, including on Windows.
     subprocess.run([

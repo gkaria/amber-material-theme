@@ -6,6 +6,10 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+### Fixed
+
+- Reject uncommitted release inputs before packaging commit-pinned README links.
+
 ## [1.1.1] - 2026-09-19
 
 ### Added

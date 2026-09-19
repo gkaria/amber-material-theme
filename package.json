@@ -30,7 +30,7 @@
   "scripts": {
     "build": "python3 scripts/build_ghostty.py && python3 scripts/build_theme.py && python3 scripts/build_codex_theme.py && python3 scripts/build_terminal_suite.py && python3 scripts/build_grok_theme.py",
     "check": "python3 scripts/check_generated.py",
-    "test": "python3 scripts/test_check_generated.py",
+    "test": "python3 scripts/test_check_generated.py && python3 scripts/test_package_release.py",
     "package": "vsce package --no-dependencies",
     "package:release": "npm run check && npm test && python3 scripts/package_release.py"
   },

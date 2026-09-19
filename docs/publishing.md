@@ -14,6 +14,11 @@ npm ci --ignore-scripts
 npm run package:release
 ```
 
+Commit all release changes before running the command. Packaging rejects staged,
+unstaged, and untracked changes so its commit-pinned links match the files in
+the VSIX. Ignored build outputs such as `dist/` and `node_modules/` are allowed.
+Push that commit before distributing the package so its links are accessible.
+
 This checks generated files, runs the existing tests, and writes these files
 to `dist/` (with the version from `package.json`):
 
