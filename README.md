@@ -10,6 +10,18 @@ editor and the terminal keep deliberately different surfaces, described under
 Derived from [vscode-palenight-theme](https://github.com/whizkydee/vscode-palenight-theme)
 by Olaolu Olawuyi, used under the MIT License.
 
+## Preview
+
+### Dark
+
+![Amber Material High Contrast in VS Code](docs/images/dark.png)
+
+### Light
+
+![Amber Material Light High Contrast in VS Code](docs/images/light.png)
+
+Actual VS Code screenshots. Fonts and layout are user settings.
+
 ## Design philosophy
 
 “Material” describes the design language, not a claim that this is an official
@@ -40,25 +52,27 @@ terminal a distinct amber-led, higher-contrast identity.
 ## Install
 
 This is a VS Code extension. The same VSIX installs in VS Code and in Cursor.
-It is not listed on the VS Code Marketplace or Open VSX — package it from this
-repository and install the file locally.
+Download the VSIX from [GitHub Releases](https://github.com/gkaria/amber-material-theme/releases),
+or package it from this repository. Registry publication is tracked separately;
+see the [publishing guide](docs/publishing.md).
 
 ```sh
-npx @vscode/vsce package
+npm ci --ignore-scripts
+npm run package
 ```
 
-That writes `amber-material-theme-1.1.0.vsix` in the repository root.
+That writes `amber-material-theme-1.1.1.vsix` in the repository root.
 
 ### VS Code
 
 ```sh
-code --install-extension amber-material-theme-1.1.0.vsix
+code --install-extension amber-material-theme-1.1.1.vsix
 ```
 
 ### Cursor
 
 ```sh
-cursor --install-extension amber-material-theme-1.1.0.vsix
+cursor --install-extension amber-material-theme-1.1.1.vsix
 ```
 
 Alternatively, in Cursor open the Command Palette (**Cmd+Shift+P** on macOS,
@@ -257,8 +271,7 @@ The extension includes **Amber Material Icons**, a static snapshot of
 Its SVG assets travel inside the VSIX, so installing the upstream icon
 extension is not required and upstream deprecation cannot remove this snapshot.
 
-Cascadia Code NF is intentionally not bundled. It is already installed on this
-machine and remains the recommended editor and terminal font; its Nerd Font
+Cascadia Code NF is intentionally not bundled. It is the recommended editor and terminal font; its Nerd Font
 glyphs are useful in prompts and code, while Explorer uses the more portable
 bundled SVG icons.
 
@@ -307,7 +320,7 @@ workbench panel:
 
 ### Install the theme
 
-From the repository root:
+From the repository root (or an extracted terminal-suite release bundle):
 
 ```sh
 mkdir -p ~/.config/ghostty/themes
@@ -488,6 +501,11 @@ All five are generated from the existing Ghostty and VS Code palettes by
 `palette = "amber_material_light"`. Cascadia Code NF is used by Starship for
 symbols but remains an installation prerequisite rather than a redistributed
 font.
+
+Terminal release bundles contain these configurations, Ghostty, Codex, Grok,
+installation docs, and license notices; no source build is needed. See the
+[publishing and distribution guide](docs/publishing.md) for release packaging
+and upstream discovery options.
 
 See [Terminal suite setup](docs/terminal-suite.md) for macOS, Linux, and Windows
 installation instructions.

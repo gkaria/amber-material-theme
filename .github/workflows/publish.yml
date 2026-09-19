@@ -1,0 +1,84 @@
+name: Package and publish
+
+on:
+  workflow_dispatch:
+    inputs:
+      marketplace:
+        description: Publish to VS Code Marketplace
+        type: boolean
+        default: false
+      open_vsx:
+        description: Publish to Open VSX
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: theme-publishing
+  cancel-in-progress: false
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npm run package:release
+      - uses: actions/upload-artifact@v4
+        with:
+          name: amber-material-release
+          path: dist/*
+          if-no-files-found: error
+
+  marketplace:
+    if: inputs.marketplace
+    needs: package
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - uses: actions/download-artifact@v4
+        with:
+          name: amber-material-release
+          path: dist
+      - name: Publish the packaged VSIX
+        env:
+          VSCE_PAT: ${{ secrets.VSCE_PAT }}
+        run: |
+          test -n "$VSCE_PAT" || { echo "Add the VSCE_PAT repository secret first."; exit 1; }
+          npx --no-install vsce publish --packagePath dist/*.vsix
+
+  open-vsx:
+    if: inputs.open_vsx
+    needs: package
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - uses: actions/download-artifact@v4
+        with:
+          name: amber-material-release
+          path: dist
+      - name: Publish the packaged VSIX
+        env:
+          OVSX_PAT: ${{ secrets.OVSX_PAT }}
+        run: |
+          test -n "$OVSX_PAT" || { echo "Add the OVSX_PAT repository secret first."; exit 1; }
+          npx --no-install ovsx publish dist/*.vsix

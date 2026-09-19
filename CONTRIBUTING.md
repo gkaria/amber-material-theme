@@ -7,7 +7,7 @@ sources, re-run the generators, and commit both.
 ## Prerequisites
 
 - Python 3.10 or newer (standard library only; no packages to install)
-- Node.js 18 or newer, for `npx @vscode/vsce package`
+- Node.js 22 or newer; run `npm ci --ignore-scripts` for pinned packaging tools
 - Optionally, VS Code with the Material Icon Theme extension installed, only
   if you need to refresh the icon snapshot
 
@@ -83,7 +83,7 @@ before proposing palette changes. In short:
 ## Testing locally
 
 ```sh
-npx @vscode/vsce package
+npm run package
 code --install-extension amber-material-theme-*.vsix     # or: cursor --install-extension ...
 ```
 

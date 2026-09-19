@@ -6,6 +6,16 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+## [1.1.1] - 2026-09-19
+
+### Added
+
+- Extension icon and real dark/light VS Code screenshots for the listing.
+
+- Pinned extension packaging tools, opt-in registry publishing workflow, and
+  terminal-suite release ZIP with SHA-256 checksums.
+- Publishing setup and distribution guide for editor and terminal themes.
+
 ### Changed
 
 - `LICENSE` is the bare MIT text so GitHub detects the license. Palenight
@@ -13,6 +23,8 @@ All notable changes to this project are documented here. The format follows
   notice.
 
 ### Fixed
+
+- Exclude Grok exports, build artifacts, and development dependencies from VSIX.
 
 - README License section treats `THIRD_PARTY_NOTICES.md` as the index for
   Palenight and the icon theme, matching the post-relicense layout.
@@ -63,6 +75,7 @@ All notable changes to this project are documented here. The format follows
 - `scripts/check_generated.py` drift check with tests covering its failure
   modes.
 
-[Unreleased]: https://github.com/gkaria/amber-material-theme/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/gkaria/amber-material-theme/compare/v1.1.1...HEAD
+[1.1.1]: https://github.com/gkaria/amber-material-theme/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/gkaria/amber-material-theme/releases/tag/v1.1.0
 [1.0.0]: https://github.com/gkaria/amber-material-theme/commit/c4dc0cc
