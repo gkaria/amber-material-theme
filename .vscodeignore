@@ -16,3 +16,10 @@ CONTRIBUTING.md
 CODE_OF_CONDUCT.md
 docs/**
 *.vsix
+grok/**
+dist/**
+node_modules/**
+package-lock.json
+**/.DS_Store
+assets/*.svg
+!docs/images/*.png

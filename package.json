@@ -2,7 +2,7 @@
   "name": "amber-material-theme",
   "displayName": "Amber Material High Contrast",
   "description": "Warm, high-contrast Material-inspired dark and light themes with an amber accent for VS Code and Cursor, derived from the MIT-licensed Palenight theme.",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "publisher": "gkaria",
   "author": {
     "name": "Gaurang Karia"
@@ -30,8 +30,9 @@
   "scripts": {
     "build": "python3 scripts/build_ghostty.py && python3 scripts/build_theme.py && python3 scripts/build_codex_theme.py && python3 scripts/build_terminal_suite.py && python3 scripts/build_grok_theme.py",
     "check": "python3 scripts/check_generated.py",
-    "test": "python3 scripts/test_check_generated.py",
-    "package": "vsce package"
+    "test": "python3 scripts/test_check_generated.py && python3 scripts/test_package_release.py",
+    "package": "vsce package --no-dependencies",
+    "package:release": "npm run check && npm test && python3 scripts/package_release.py"
   },
   "contributes": {
     "themes": [
@@ -53,5 +54,19 @@
         "path": "./icon-themes/amber-material-icons.json"
       }
     ]
-  }
+  },
+  "devDependencies": {
+    "@vscode/vsce": "4.0.0",
+    "ovsx": "1.2.0"
+  },
+  "homepage": "https://github.com/gkaria/amber-material-theme#readme",
+  "bugs": {
+    "url": "https://github.com/gkaria/amber-material-theme/issues"
+  },
+  "icon": "assets/icon.png",
+  "galleryBanner": {
+    "color": "#22252F",
+    "theme": "dark"
+  },
+  "pricing": "Free"
 }

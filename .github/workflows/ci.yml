@@ -21,18 +21,22 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "22"
+          cache: npm
+
+      - run: npm ci --ignore-scripts
 
       - name: Verify generated files match their generators
         run: python3 scripts/check_generated.py
 
-      - name: Run drift-check tests
-        run: python3 scripts/test_check_generated.py
+      - name: Run tests
+        run: npm test
 
       - name: Package the extension
-        run: npx --yes @vscode/vsce package --out amber-material-theme.vsix
+        run: python3 scripts/package_release.py
 
       - uses: actions/upload-artifact@v4
         with:
-          name: amber-material-theme-vsix
-          path: amber-material-theme.vsix
+          name: amber-material-release
+          path: dist/*
+          if-no-files-found: error
