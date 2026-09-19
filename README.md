@@ -10,6 +10,9 @@ editor and the terminal keep deliberately different surfaces, described under
 Derived from [vscode-palenight-theme](https://github.com/whizkydee/vscode-palenight-theme)
 by Olaolu Olawuyi, used under the MIT License.
 
+[VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=gkaria.amber-material-theme)
+· [Open VSX](https://open-vsx.org/extension/gkaria/amber-material-theme)
+
 ## Preview
 
 ### Dark
@@ -51,39 +54,59 @@ terminal a distinct amber-led, higher-contrast identity.
 
 ## Install
 
-This is a VS Code extension. The same VSIX installs in VS Code and in Cursor.
-Download the VSIX from [GitHub Releases](https://github.com/gkaria/amber-material-theme/releases),
-or package it from this repository. Registry publication is tracked separately;
-see the [publishing guide](docs/publishing.md).
-
-```sh
-npm ci --ignore-scripts
-npm run package
-```
-
-That writes `amber-material-theme-1.1.1.vsix` in the repository root.
+Install from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=gkaria.amber-material-theme)
+or [Open VSX](https://open-vsx.org/extension/gkaria/amber-material-theme).
+The same extension ID, `gkaria.amber-material-theme`, works in VS Code and Cursor.
 
 ### VS Code
 
+In the Extensions view, search for **Amber Material High Contrast**, or install
+from the command line:
+
 ```sh
-code --install-extension amber-material-theme-1.1.1.vsix
+code --install-extension gkaria.amber-material-theme
 ```
+
+You can also [install it directly in VS Code](vscode:extension/gkaria.amber-material-theme)
+from the Marketplace listing.
 
 ### Cursor
 
-```sh
-cursor --install-extension amber-material-theme-1.1.1.vsix
-```
+Cursor's extension gallery uses Open VSX. Search for **Amber Material High Contrast**
+in the Extensions view, or:
 
-Alternatively, in Cursor open the Command Palette (**Cmd+Shift+P** on macOS,
-**Ctrl+Shift+P** on Windows/Linux) and run *Extensions: Install from VSIX…*,
-then choose that file.
+```sh
+cursor --install-extension gkaria.amber-material-theme
+```
 
 Then, in either editor, select both bundled themes:
 
 1. **Cmd+K Cmd+T** / **Ctrl+K Ctrl+T** → *Amber Material High Contrast* or
    *Amber Material Light High Contrast*
 2. **Cmd+Shift+P** / **Ctrl+Shift+P** → *Preferences: File Icon Theme* → *Amber Material Icons*
+
+### From a VSIX
+
+Download a VSIX from [GitHub Releases](https://github.com/gkaria/amber-material-theme/releases),
+or package it from this repository:
+
+```sh
+npm ci --ignore-scripts
+npm run package
+```
+
+That writes `amber-material-theme-1.1.1.vsix` in the repository root. Publisher
+packaging is documented in the [publishing guide](docs/publishing.md).
+
+```sh
+code --install-extension amber-material-theme-1.1.1.vsix
+# or
+cursor --install-extension amber-material-theme-1.1.1.vsix
+```
+
+Alternatively, in either editor open the Command Palette (**Cmd+Shift+P** on macOS,
+**Ctrl+Shift+P** on Windows/Linux) and run *Extensions: Install from VSIX…*,
+then choose that file.
 
 ## Build
 
@@ -223,8 +246,8 @@ inject CSS or invent private tokens to fake them:
 ### Suggested companion settings
 
 These are optional. `workbench.colorTheme` and `workbench.iconTheme` are the
-same keys in VS Code and in Cursor; set them after installing the VSIX if you
-want the themes selected without using the Command Palette.
+same keys in VS Code and in Cursor; set them after installing the extension if
+you want the themes selected without using the Command Palette.
 
 ```jsonc
 {
