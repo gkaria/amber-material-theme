@@ -58,30 +58,26 @@ The supplied PAT workflow is a short-term option. For continued automation,
 configure an authorized Entra identity and use `vsce publish --azure-credential`
 following Microsoft's guide before that deadline.
 
-Once publication succeeds, the listing will be:
+The listing is:
 <https://marketplace.visualstudio.com/items?itemName=gkaria.amber-material-theme>.
-Then users can run `code --install-extension gkaria.amber-material-theme`.
-Do not advertise this listing as live before checking it.
+Users can run `code --install-extension gkaria.amber-material-theme`.
 
-## Open VSX setup
+## Open VSX
 
-Follow the [Open VSX publisher instructions](https://github.com/EclipseFdn/open-vsx.org/wiki/Publishing-Extensions):
-
-1. Log in with GitHub, connect an Eclipse Foundation account, and accept the
-   publisher agreement yourself.
-2. Create an access token in Open VSX settings. Store it as the GitHub repository
-   secret `OVSX_PAT`. Do not commit it or paste it into an issue.
-3. Create the `gkaria` namespace using `ovsx create-namespace gkaria` with
-   `OVSX_PAT` set in your local environment. If it already exists, confirm that
-   your account has publishing rights instead of attempting to recreate it.
-4. [Claim namespace ownership](https://github.com/EclipseFdn/open-vsx.org/wiki/Namespace-Access)
-   for verified ownership. Creating a namespace and claiming ownership are
-   separate steps.
-
-Once publication succeeds, the listing will be:
+The listing is:
 <https://open-vsx.org/extension/gkaria/amber-material-theme>.
 Open VSX supports editors that use that registry; users of other compatible
 editors can install the GitHub Release VSIX directly.
+
+The `gkaria` namespace is [claimed and verified](https://open-vsx.org/api/gkaria).
+Creating a namespace and claiming ownership are separate steps; do not run
+`ovsx create-namespace gkaria` again. Namespace access is documented in the
+[Open VSX Namespace Access wiki](https://github.com/EclipseFdn/open-vsx.org/wiki/Namespace-Access).
+
+Future publishes use the `OVSX_PAT` GitHub repository secret. Create or rotate
+that token in Open VSX settings; do not commit it or paste it into an issue.
+The first-time publisher agreement and Eclipse Foundation account steps are in
+the [Open VSX publisher instructions](https://github.com/EclipseFdn/open-vsx.org/wiki/Publishing-Extensions).
 
 ## GitHub workflow
 
