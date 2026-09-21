@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>name</key>
-	<string>Amber Material High Contrast</string>
+	<string>Amber Material High Contrast No Italic</string>
 	<key>settings</key>
 	<array>
 		<dict>
@@ -1871,13 +1871,13 @@
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
-				<string>italic</string>
+				<string>normal</string>
 			</dict>
 			<key>name</key>
 			<string>italicsify certain tokens</string>
 		</dict>
 	</array>
 	<key>uuid</key>
-	<string>B0C0BD92-FAD0-5230-921D-8ED07786A487</string>
+	<string>B0986C44-177C-5E27-9688-169575BF332E</string>
 </dict>
 </plist>

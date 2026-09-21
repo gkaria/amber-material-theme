@@ -1,0 +1,252 @@
+{
+  "name": "Amber Material",
+  "contrastMinimum": 4.5,
+  "variants": {
+    "dark": {
+      "name": "Amber Material High Contrast",
+      "roles": {
+        "editor.background": {
+          "hex": "#22252F",
+          "use": "surface"
+        },
+        "editor.backgroundDeep": {
+          "hex": "#1C1F27",
+          "use": "surface"
+        },
+        "editor.backgroundRaised": {
+          "hex": "#2A2E3A",
+          "use": "surface"
+        },
+        "editor.foreground": {
+          "hex": "#D2D7E4",
+          "use": "text",
+          "contrastAgainst": "bg",
+          "contrast": 10.61
+        },
+        "editor.foregroundDim": {
+          "hex": "#8A91A6",
+          "use": "text",
+          "contrastAgainst": "bg",
+          "contrast": 4.86
+        },
+        "editor.foregroundDisabled": {
+          "hex": "#8A91A6",
+          "use": "text",
+          "contrastAgainst": "bg",
+          "contrast": 4.86
+        },
+        "accent.fill": {
+          "hex": "#FFCB6B",
+          "use": "fill"
+        },
+        "accent.text": {
+          "hex": "#FFCB6B",
+          "use": "text",
+          "contrastAgainst": "bg",
+          "contrast": 10.2
+        },
+        "syntax.gold": {
+          "hex": "#FFCB6B",
+          "use": "text",
+          "contrastAgainst": "bg",
+          "contrast": 10.2
+        },
+        "syntax.orange": {
+          "hex": "#F78C6C",
+          "use": "text",
+          "contrastAgainst": "bg",
+          "contrast": 6.5
+        },
+        "syntax.purple": {
+          "hex": "#C792EA",
+          "use": "text",
+          "contrastAgainst": "bg",
+          "contrast": 6.35
+        },
+        "syntax.red": {
+          "hex": "#FF5572",
+          "use": "text",
+          "contrastAgainst": "bg",
+          "contrast": 4.95
+        },
+        "syntax.green": {
+          "hex": "#A9C77D",
+          "use": "text",
+          "contrastAgainst": "bg",
+          "contrast": 8.12
+        },
+        "syntax.blue": {
+          "hex": "#82AAFF",
+          "use": "text",
+          "contrastAgainst": "bg",
+          "contrast": 6.66
+        },
+        "syntax.cyan": {
+          "hex": "#89DDFF",
+          "use": "text",
+          "contrastAgainst": "bg",
+          "contrast": 10.08
+        },
+        "border": {
+          "hex": "#333846",
+          "use": "border"
+        },
+        "border.soft": {
+          "hex": "#3A4052",
+          "use": "border"
+        },
+        "terminal.background": {
+          "hex": "#1D2021",
+          "use": "surface"
+        },
+        "terminal.foreground": {
+          "hex": "#E7E1D1",
+          "use": "text",
+          "contrastAgainst": "ghostty_background",
+          "contrast": 12.56
+        },
+        "terminal.cursor": {
+          "hex": "#FFCB6B",
+          "use": "text",
+          "contrastAgainst": "ghostty_background",
+          "contrast": 10.94
+        },
+        "terminal.prompt": {
+          "hex": "#FFCB6B",
+          "use": "text",
+          "contrastAgainst": "ghostty_background",
+          "contrast": 10.94
+        },
+        "terminal.promptBright": {
+          "hex": "#FFE08A",
+          "use": "text",
+          "contrastAgainst": "ghostty_background",
+          "contrast": 12.71
+        }
+      }
+    },
+    "light": {
+      "name": "Amber Material Light High Contrast",
+      "roles": {
+        "editor.background": {
+          "hex": "#FAF6EE",
+          "use": "surface"
+        },
+        "editor.backgroundDeep": {
+          "hex": "#F0EBE0",
+          "use": "surface"
+        },
+        "editor.backgroundRaised": {
+          "hex": "#FFFFFF",
+          "use": "surface"
+        },
+        "editor.foreground": {
+          "hex": "#1E2228",
+          "use": "text",
+          "contrastAgainst": "bg",
+          "contrast": 14.82
+        },
+        "editor.foregroundDim": {
+          "hex": "#5A6070",
+          "use": "text",
+          "contrastAgainst": "bg",
+          "contrast": 5.83
+        },
+        "editor.foregroundDisabled": {
+          "hex": "#5A6070",
+          "use": "text",
+          "contrastAgainst": "bg",
+          "contrast": 5.83
+        },
+        "accent.fill": {
+          "hex": "#FFCB6B",
+          "use": "fill"
+        },
+        "accent.text": {
+          "hex": "#A65F00",
+          "use": "text",
+          "contrastAgainst": "bg",
+          "contrast": 4.58
+        },
+        "syntax.gold": {
+          "hex": "#8F6200",
+          "use": "text",
+          "contrastAgainst": "bg",
+          "contrast": 4.98
+        },
+        "syntax.orange": {
+          "hex": "#B24E26",
+          "use": "text",
+          "contrastAgainst": "bg",
+          "contrast": 4.86
+        },
+        "syntax.purple": {
+          "hex": "#7B3F9E",
+          "use": "text",
+          "contrastAgainst": "bg",
+          "contrast": 6.39
+        },
+        "syntax.red": {
+          "hex": "#C62828",
+          "use": "text",
+          "contrastAgainst": "bg",
+          "contrast": 5.22
+        },
+        "syntax.green": {
+          "hex": "#4A7C1B",
+          "use": "text",
+          "contrastAgainst": "bg",
+          "contrast": 4.65
+        },
+        "syntax.blue": {
+          "hex": "#2E5DB8",
+          "use": "text",
+          "contrastAgainst": "bg",
+          "contrast": 5.77
+        },
+        "syntax.cyan": {
+          "hex": "#0E7490",
+          "use": "text",
+          "contrastAgainst": "bg",
+          "contrast": 4.97
+        },
+        "border": {
+          "hex": "#D8D2C6",
+          "use": "border"
+        },
+        "border.soft": {
+          "hex": "#E8E2D8",
+          "use": "border"
+        },
+        "terminal.background": {
+          "hex": "#FBF7EE",
+          "use": "surface"
+        },
+        "terminal.foreground": {
+          "hex": "#2B2926",
+          "use": "text",
+          "contrastAgainst": "ghostty_background",
+          "contrast": 13.57
+        },
+        "terminal.cursor": {
+          "hex": "#8F6200",
+          "use": "text",
+          "contrastAgainst": "ghostty_background",
+          "contrast": 5.02
+        },
+        "terminal.prompt": {
+          "hex": "#8F6200",
+          "use": "text",
+          "contrastAgainst": "ghostty_background",
+          "contrast": 5.02
+        },
+        "terminal.promptBright": {
+          "hex": "#996515",
+          "use": "text",
+          "contrastAgainst": "ghostty_background",
+          "contrast": 4.65
+        }
+      }
+    }
+  }
+}

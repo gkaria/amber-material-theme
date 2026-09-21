@@ -4,25 +4,25 @@
 
 $AmberMaterialLightEscape = [char]0x1b
 $AmberMaterialLightColors = @{
-    ContinuationPrompt      = "#8A8580"
-    Emphasis                = "#FFE08A"
+    ContinuationPrompt      = "#75706B"
+    Emphasis                = "#996515"
     Error                   = "#C62828"
     Selection               = "${AmberMaterialLightEscape}[38;2;30;34;40;48;2;232;213;168m"
     Default                 = "#2B2926"
-    Comment                 = "#8A8580"
+    Comment                 = "#75706B"
     Keyword                 = "#7B3F9E"
     String                  = "#4A7C1B"
     Operator                = "#0E7490"
     Variable                = "#7B3F9E"
-    Command                 = "#C99200"
-    Parameter               = "#FFE08A"
+    Command                 = "#8F6200"
+    Parameter               = "#996515"
     Type                    = "#2E5DB8"
-    Number                  = "#5A9A24"
+    Number                  = "#3F7018"
     Member                  = "#3D6BB8"
-    InlinePrediction        = "#8A8580"
+    InlinePrediction        = "#75706B"
     ListPrediction          = "#2B2926"
-    ListPredictionSelected  = "${AmberMaterialLightEscape}[38;2;251;247;238;48;2;201;146;0m"
-    ListPredictionTooltip   = "#8A8580"
+    ListPredictionSelected  = "${AmberMaterialLightEscape}[38;2;251;247;238;48;2;143;98;0m"
+    ListPredictionTooltip   = "#75706B"
 }
 
 if (Get-Module -ListAvailable -Name PSReadLine) {

@@ -37,9 +37,9 @@ Amber Material High Contrast carries those principles into a developer
 environment in both dark and light variants:
 
 - **Amber is the identity.** `#FFCB6B` marks fills, highlights, and buttons on both
-  variants. On cream, amber *text* (links, line numbers) uses `#A65F00`, and the
-  Ghostty caret plus Starship prompt use a yellower `#C99200` so glyphs stay
-  readable without turning brown.
+  variants. On cream, amber *text* (links, line numbers) uses `#A65F00`. Syntax
+  gold and the Ghostty caret plus Starship prompt use `#8F6200`, which stays
+  amber and clears 4.5:1 on cream.
 - **Material is the design language.** Layered surfaces, deliberate color roles,
   and restrained structural borders create hierarchy.
 - **High Contrast is the functional promise.** Code, controls, and semantic
@@ -79,10 +79,11 @@ in the Extensions view, or:
 cursor --install-extension gkaria.amber-material-theme
 ```
 
-Then, in either editor, select both bundled themes:
+Then, in either editor, select a bundled theme:
 
 1. **Cmd+K Cmd+T** / **Ctrl+K Ctrl+T** → *Amber Material High Contrast* or
-   *Amber Material Light High Contrast*
+   *Amber Material Light High Contrast*. The *No Italic* pair uses the same
+   colors with upright keywords; comments and markdown emphasis stay italic.
 2. **Cmd+Shift+P** / **Ctrl+Shift+P** → *Preferences: File Icon Theme* → *Amber Material Icons*
 
 ### From a VSIX
@@ -95,13 +96,13 @@ npm ci --ignore-scripts
 npm run package
 ```
 
-That writes `amber-material-theme-1.1.1.vsix` in the repository root. Publisher
+That writes `amber-material-theme-1.2.0.vsix` in the repository root. Publisher
 packaging is documented in the [publishing guide](docs/publishing.md).
 
 ```sh
-code --install-extension amber-material-theme-1.1.1.vsix
+code --install-extension amber-material-theme-1.2.0.vsix
 # or
-cursor --install-extension amber-material-theme-1.1.1.vsix
+cursor --install-extension amber-material-theme-1.2.0.vsix
 ```
 
 Alternatively, in either editor open the Command Palette (**Cmd+Shift+P** on macOS,
@@ -114,18 +115,20 @@ Run these in order — each step reads the output of the ones before it:
 
 ```sh
 python3 scripts/build_ghostty.py      # ghostty/amber-material{,-light}
-python3 scripts/build_theme.py        # themes/amber-material{-light,}-hc.json
-python3 scripts/build_codex_theme.py  # codex/amber-material{-light,}-high-contrast.tmTheme
+python3 scripts/build_theme.py        # themes/amber-material{-light,}-hc{,-no-italic}.json
+python3 scripts/build_codex_theme.py  # codex/amber-material{-light,}-high-contrast{,-no-italic}.tmTheme
 python3 scripts/build_terminal_suite.py   # Claude, OpenCode, Windows, PowerShell, Starship
 python3 scripts/build_grok_theme.py   # grok/ palette export and pager.toml / pager-light.toml
+python3 scripts/build_palette.py      # palette/amber-material.json
 python3 scripts/vendor_material_icons.py  # pinned VS Code icon snapshot
 python3 scripts/check_generated.py    # verify nothing drifted
 ```
 
-Tests for the drift check itself:
+Tests for the drift check and the 4.5:1 contrast gate:
 
 ```sh
 python3 scripts/test_check_generated.py
+python3 scripts/test_contrast.py
 ```
 
 `scripts/build_ghostty.py` owns the terminal palette and runs first, because
@@ -155,12 +158,15 @@ locally installed VS Code extension, then deterministically applies amber
 folders (`#FFCB6B`) and `0.9` saturation. It has no runtime dependency on
 the upstream extension. Never hand-edit generated files in `themes/`,
 `ghostty/`, `codex/`, `claude-code/`, `opencode/`, `windows-terminal/`,
-`powershell/`, `starship/`, `grok/`, `icon-themes/`, or `icons/amber-material/`.
+`powershell/`, `starship/`, `grok/`, `palette/`, `icon-themes/`, or
+`icons/amber-material/`.
 
 To re-accent the entire theme, edit the `DARK` and `LIGHT` profiles in
-`scripts/variants.py`. Light keeps three amber roles on purpose: fill gold
-(`amber_bright`, `#FFCB6B`), cream-readable text (`amber`, `#A65F00`), and
-Ghostty/Starship prompt gold (`prompt_amber`, `#C99200`).
+`scripts/variants.py`. Light keeps fill gold (`amber_bright`, `#FFCB6B`) for
+buttons and focus, cream-readable text (`amber`, `#A65F00`) for links and line
+numbers, and syntax/prompt gold (`syntax_gold` and `prompt_amber`, `#8F6200`)
+for glyphs that have to clear 4.5:1 on cream. `palette/amber-material.json`
+publishes those roles and their contrast ratios.
 
 ## VS Code palette (dark)
 
@@ -202,7 +208,8 @@ Editor and sidebar share that first surface on purpose. Cursor paints chat and
 composer with `editor.background` rather than `sideBar.background`; because
 those two tokens are the same hex here, the auxiliary bar matches Explorer
 instead of looking like a different panel. Ghostty's caret and Starship's
-prompt gold on cream are `#C99200`, not a VS Code workbench token.
+prompt gold on cream are `#8F6200`, not a VS Code workbench token. Comments
+and every syntax color clear 4.5:1 on both editor backgrounds.
 
 ### Border convention
 
@@ -321,8 +328,7 @@ themes.
 | --- | --- |
 | Background | `#FBF7EE` |
 | Foreground | `#2B2926` |
-| Cursor | `#C99200` |
-| ANSI yellow | `#FFCB6B` |
+| Cursor / ANSI yellow | `#8F6200` |
 | Selection background | `#E8D5A8` |
 | Selection foreground | `#1E2228` |
 
@@ -436,10 +442,15 @@ cp codex/amber-material-high-contrast.tmTheme \
   ~/.codex/themes/amber-material-high-contrast.tmTheme
 cp codex/amber-material-light-high-contrast.tmTheme \
   ~/.codex/themes/amber-material-light-high-contrast.tmTheme
+cp codex/amber-material-high-contrast-no-italic.tmTheme \
+  ~/.codex/themes/amber-material-high-contrast-no-italic.tmTheme
+cp codex/amber-material-light-high-contrast-no-italic.tmTheme \
+  ~/.codex/themes/amber-material-light-high-contrast-no-italic.tmTheme
 ```
 
 Inside an interactive Codex CLI session, run `/theme` and choose
-*Amber Material High Contrast* or *Amber Material Light High Contrast*.
+*Amber Material High Contrast* or *Amber Material Light High Contrast*, or
+either *No Italic* companion.
 Alternatively, configure it directly:
 
 ```toml

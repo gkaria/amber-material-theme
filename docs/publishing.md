@@ -22,9 +22,9 @@ Push that commit before distributing the package so its links are accessible.
 This checks generated files, runs the existing tests, and writes these files
 to `dist/` (with the version from `package.json`):
 
-- `amber-material-theme-1.1.1.vsix`
-- `amber-material-terminal-suite-1.1.1.zip`
-- `amber-material-1.1.1-SHA256SUMS.txt`
+- `amber-material-theme-1.2.0.vsix`
+- `amber-material-terminal-suite-1.2.0.zip`
+- `amber-material-1.2.0-SHA256SUMS.txt`
 
 Before publishing a new release, update the version in `package.json` and
 `package-lock.json` together (`npm version patch --no-git-tag-version`), finish
@@ -38,7 +38,7 @@ assets are the public downloads to link to. The workflow below does not create
 a GitHub Release automatically. Keep older files in `dist/` out of the upload.
 
 Verify downloaded files on macOS with `shasum -a 256 -c
-amber-material-1.1.1-SHA256SUMS.txt` or on Linux with `sha256sum -c` followed by
+amber-material-1.2.0-SHA256SUMS.txt` or on Linux with `sha256sum -c` followed by
 the same filename. Run the command from the directory containing both files.
 
 ## VS Code Marketplace setup
@@ -94,11 +94,11 @@ Duplicate versions deliberately fail rather than silently claiming success.
 For local publishing of a reviewed package, with credentials configured:
 
 ```sh
-npx --no-install vsce publish --packagePath dist/amber-material-theme-1.1.1.vsix
-npx --no-install ovsx publish dist/amber-material-theme-1.1.1.vsix
+npx --no-install vsce publish --packagePath dist/amber-material-theme-1.2.0.vsix
+npx --no-install ovsx publish dist/amber-material-theme-1.2.0.vsix
 ```
 
-Use the actual release version in place of `1.1.1`.
+Use the actual release version in place of `1.2.0`.
 
 ## Distribution beyond editors
 

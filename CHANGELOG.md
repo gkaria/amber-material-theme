@@ -6,8 +6,31 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-09-21
+
+### Added
+
+- *Amber Material High Contrast No Italic* and *Amber Material Light High
+  Contrast No Italic*. Same colors as the existing themes; keywords and types
+  are upright. Comments and markdown emphasis stay italic. Existing theme
+  names are unchanged, so a current `workbench.colorTheme` selection keeps
+  working.
+- `semanticTokenColors` for the cases VS Code's TextMate fallback paints with
+  the wrong role, including `const` bindings, Python classes, and Rust
+  `self`.
+- `palette/amber-material.json`, the named color roles and their contrast
+  ratios, shipped in the VSIX and the terminal-suite ZIP.
+- A contrast test that fails when a text role or syntax color drops under
+  4.5:1.
+
 ### Fixed
 
+- Comments, light syntax colors, and light terminal text now clear WCAG AA
+  (4.5:1). Comments were 3.18:1 on dark and 4.43:1 on light. Twelve Palenight
+  colors had no light remap, including syntax gold at 3.54:1 and yellows near
+  1.1:1 on cream. Light prompt gold moves from `#C99200` (2.59:1) to
+  `#8F6200`. Fill gold `#FFCB6B` stays the button and focus color.
+- Disabled text uses the dim foreground on both variants so it stays readable.
 - Reject uncommitted release inputs before packaging commit-pinned README links.
 
 ## [1.1.1] - 2026-09-19
@@ -79,7 +102,8 @@ All notable changes to this project are documented here. The format follows
 - `scripts/check_generated.py` drift check with tests covering its failure
   modes.
 
-[Unreleased]: https://github.com/gkaria/amber-material-theme/compare/v1.1.1...HEAD
+[Unreleased]: https://github.com/gkaria/amber-material-theme/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/gkaria/amber-material-theme/compare/v1.1.1...v1.2.0
 [1.1.1]: https://github.com/gkaria/amber-material-theme/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/gkaria/amber-material-theme/releases/tag/v1.1.0
 [1.0.0]: https://github.com/gkaria/amber-material-theme/commit/c4dc0cc

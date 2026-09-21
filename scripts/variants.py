@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Variant profiles for Amber Material High Contrast (dark and light)."""
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -38,6 +38,7 @@ class Variant:
     accent: str  # cyan debug/info
     syntax_purple: str
     syntax_orange: str
+    syntax_gold: str
 
     # Variant-specific workbench tuning
     indent_guide: str
@@ -88,6 +89,11 @@ class Variant:
     ghostty_selection_fg: str
     ghostty_ansi: tuple[str, ...]
 
+    # Keyword and type italics from the Palenight base. Comments and markup
+    # emphasis stay italic either way.
+    italic_keywords: bool = True
+    # False for editor-only companions that share a color variant's terminals.
+    exports_terminal: bool = True
     upstream_remap_extra: dict[str, str] = field(default_factory=dict)
     syntax_remap: dict[str, str] = field(default_factory=dict)
     # Applied last so Palenight leftovers cannot win on light surfaces.
@@ -116,6 +122,7 @@ DARK = Variant(
     accent="#89DDFF",
     syntax_purple="#C792EA",
     syntax_orange="#F78C6C",
+    syntax_gold="#FFCB6B",
     indent_guide="#2F3543",
     indent_guide_active="#4A5265",
     line_highlight="#2A2E3A80",
@@ -132,7 +139,7 @@ DARK = Variant(
     text_link_active="#FFD98A",
     button_hover="#FFD98A",
     muted_structural="#4E5579",
-    disabled_fg="#676E95ff",
+    disabled_fg="#8A91A6ff",
     chat_input_border_3="#FFD98A",
     ghostty_path="ghostty/amber-material",
     vscode_path="themes/amber-material-hc.json",
@@ -161,6 +168,13 @@ DARK = Variant(
         "#66D9D0", "#E7E1D1", "#888B84", "#FF8787", "#D0EA8A", "#FFE08A",
         "#94CAFF", "#E8BDFF", "#8BE9E1", "#FFFFFF",
     ),
+    syntax_remap={
+        # Palenight comment gray is 3.18:1 on the editor. Keep the base file
+        # verbatim and retint it here.
+        "#697098": "#858DAF",
+        # Template-string punctuation, 3.36:1 on the editor.
+        "#D3423E": "#FF5572",
+    },
 )
 
 LIGHT = Variant(
@@ -184,7 +198,8 @@ LIGHT = Variant(
     blue="#2E5DB8",
     accent="#0E7490",
     syntax_purple="#7B3F9E",
-    syntax_orange="#C45A2E",
+    syntax_orange="#B24E26",
+    syntax_gold="#8F6200",
     indent_guide="#E0DBD0",
     indent_guide_active="#C8C2B6",
     line_highlight="#F0EBE080",
@@ -201,7 +216,7 @@ LIGHT = Variant(
     text_link_active="#A65F00",
     button_hover="#FFD98A",
     muted_structural="#9CA3B0",
-    disabled_fg="#9CA3B0ff",
+    disabled_fg="#5A6070ff",
     chat_input_border_3="#FFD98A",
     ghostty_path="ghostty/amber-material-light",
     vscode_path="themes/amber-material-light-hc.json",
@@ -217,27 +232,27 @@ LIGHT = Variant(
     powershell_class="AmberMaterialLight",
     codex_uuid_seed="https://github.com/gkaria/amber-material-theme#codex-light",
     grok_pager_block_bg="light",
-    prompt_amber="#C99200",
-    prompt_amber_bright="#D4A017",
+    prompt_amber="#8F6200",
+    prompt_amber_bright="#996515",
     prompt_dim="#5A6070",
     ghostty_background="#FBF7EE",
     ghostty_foreground="#2B2926",
-    ghostty_cursor="#C99200",
+    ghostty_cursor="#8F6200",
     ghostty_selection_bg="#E8D5A8",
     ghostty_selection_fg="#1E2228",
     ghostty_ansi=(
-        "#FBF7EE", "#C62828", "#4A7C1B", "#FFCB6B", "#2E5DB8", "#7B3F9E",
-        "#0E7490", "#2B2926", "#8A8580", "#D32F2F", "#5A9A24", "#FFE08A",
-        "#3D6BB8", "#9B59C7", "#0E9AAF", "#1E2228",
+        "#FBF7EE", "#C62828", "#4A7C1B", "#8F6200", "#2E5DB8", "#7B3F9E",
+        "#0E7490", "#2B2926", "#75706B", "#D32F2F", "#3F7018", "#996515",
+        "#3D6BB8", "#8E4EBE", "#0A6C84", "#1E2228",
     ),
     syntax_remap={
-        "#697098": "#6B7289",
+        "#697098": "#646B82",
         "#BFC7D5": "#1E2228",
         "#C3E88D": "#4A7C1B",
         "#C792EA": "#7B3F9E",
         "#82AAFF": "#2E5DB8",
-        "#FFCB6B": "#A67C00",
-        "#F78C6C": "#C45A2E",
+        "#FFCB6B": "#8F6200",
+        "#F78C6C": "#B24E26",
         "#89DDFF": "#0E7490",
         "#A9C77D": "#4A7C1B",
         "#FF5572": "#C62828",
@@ -249,20 +264,34 @@ LIGHT = Variant(
         "#D9F5DD": "#3D7A2E",
         "#FF5874": "#C62828",
         "#EF5350": "#C62828",
-        "#FFCA28": "#A67C00",
+        "#FFCA28": "#8F6200",
         "#E2C08D": "#2E5DB8",
         "#E2B93D": "#2E5DB8",
         "#9CCC65": "#4A7C1B",
         "#99B76D": "#4A7C1B",
         "#64B5F6": "#2E5DB8",
-        "#7E57C2": "#C68400",
-        "#694CA4": "#C68400",
+        "#7E57C2": "#8F6200",
+        "#694CA4": "#8F6200",
         "#262A39": "#D8D2C6",
         "#232635": "#F0EBE0",
         "#292D3E": "#FAF6EE",
         "#383D51": "#E8E2D8",
         "#32374D": "#E8E2D8",
         "#2E3250": "#E0DBD0",
+        # Palenight leftovers that never had a light entry. Yellows become
+        # syntax gold; pale blues become the light blue; pinks become red.
+        "#FFEB95": "#8F6200",
+        "#FAD430": "#8F6200",
+        "#FFCB8B": "#8F6200",
+        "#DDDDDD": "#1E2228",
+        "#BEC5D4": "#1E2228",
+        "#B2CCD6": "#2E5DB8",
+        "#78CCF0": "#2E5DB8",
+        "#8EACE3": "#2E5DB8",
+        "#82B1FF": "#2E5DB8",
+        "#FF869A": "#C62828",
+        "#EC5F67": "#C62828",
+        "#D3423E": "#C62828",
     },
     workbench_overrides={
         # Palenight paints explorer hover/focus in white for dark chrome.
@@ -296,7 +325,41 @@ LIGHT = Variant(
     },
 )
 
-VARIANTS = (DARK, LIGHT)
+def _no_italic(variant: Variant, **overrides) -> Variant:
+    """Editor companion that drops keyword italics and reuses terminal files."""
+    return replace(variant, italic_keywords=False, exports_terminal=False, **overrides)
+
+
+DARK_NO_ITALIC = _no_italic(
+    DARK,
+    id="dark-no-italic",
+    name="Amber Material High Contrast No Italic",
+    semantic_class="amber-material-high-contrast-no-italic",
+    vscode_path="themes/amber-material-hc-no-italic.json",
+    codex_path="codex/amber-material-high-contrast-no-italic.tmTheme",
+    codex_uuid_seed="https://github.com/gkaria/amber-material-theme#codex-no-italic",
+)
+
+LIGHT_NO_ITALIC = _no_italic(
+    LIGHT,
+    id="light-no-italic",
+    name="Amber Material Light High Contrast No Italic",
+    semantic_class="amber-material-light-high-contrast-no-italic",
+    vscode_path="themes/amber-material-light-hc-no-italic.json",
+    codex_path="codex/amber-material-light-high-contrast-no-italic.tmTheme",
+    codex_uuid_seed="https://github.com/gkaria/amber-material-theme#codex-light-no-italic",
+)
+
+VARIANTS = (DARK, LIGHT, DARK_NO_ITALIC, LIGHT_NO_ITALIC)
+
+
+def terminal_variants() -> tuple[Variant, ...]:
+    """Color variants that own terminal, prompt, and pager output.
+
+    No-italic companions share these palettes and must not write them again,
+    or the Ghostty header and the Starship palette table would be duplicated.
+    """
+    return tuple(variant for variant in VARIANTS if variant.exports_terminal)
 
 
 def upstream_remap(variant: Variant) -> dict[str, str]:

@@ -8,7 +8,7 @@ identity accent.
 """
 import os
 
-from variants import ROOT, VARIANTS
+from variants import ROOT, terminal_variants
 
 
 def build(variant):
@@ -37,7 +37,7 @@ def build(variant):
 
 
 def main():
-    for variant in VARIANTS:
+    for variant in terminal_variants():
         build(variant)
 
 

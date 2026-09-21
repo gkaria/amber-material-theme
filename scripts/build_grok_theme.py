@@ -7,7 +7,7 @@ only one of them is open to us today.
 import json
 
 import ghostty_palette
-from variants import ROOT, VARIANTS
+from variants import ROOT, terminal_variants
 
 
 def flatten(color, over):
@@ -217,7 +217,7 @@ show_prefix = true
 
 
 def main():
-  for variant in VARIANTS:
+  for variant in terminal_variants():
     build(variant)
 
 

@@ -31,6 +31,40 @@ def remap_syntax(token_colors, syntax_remap):
         settings[key] = normalized[base] + alpha
 
 
+def semantic_token_colors(variant):
+  """Entries only where a semantic token would miss the TextMate color.
+
+  VS Code already maps the standard types (keyword, string, function) onto
+  tokenColors. These are the cases where that fallback paints the wrong role.
+  """
+  gold = variant.syntax_gold
+  foreground = variant.fg
+  readonly = {
+    "property.readonly:typescript": foreground,
+    "property.readonly:javascript": foreground,
+    "property.readonly:typescriptreact": foreground,
+    "property.readonly:javascriptreact": foreground,
+    "variable.readonly:typescript": foreground,
+    "variable.readonly:javascript": foreground,
+    "variable.readonly:typescriptreact": foreground,
+    "variable.readonly:javascriptreact": foreground,
+  }
+  return {
+    "enumMember": gold,
+    "variable.defaultLibrary": gold,
+    "variable.constant": gold,
+    **readonly,
+    "selfKeyword:rust": variant.red,
+    "macro:rust": variant.blue,
+    "class:python": gold,
+    "function.decorator:python": variant.syntax_orange,
+    "type.defaultLibrary:go": variant.syntax_purple,
+    "tomlArrayKey": variant.blue,
+    "tomlTableKey": variant.blue,
+    "*.deprecated": {"fontStyle": "strikethrough"},
+  }
+
+
 def build(variant):
   BG = variant.bg
   BG_DEEP = variant.bg_deep
@@ -501,6 +535,10 @@ def build(variant):
   colors.update(variant.workbench_overrides)
 
   remap_syntax(theme["tokenColors"], variant.syntax_remap)
+  if not variant.italic_keywords:
+    for rule in theme["tokenColors"]:
+      if rule.get("name") == "italicsify certain tokens":
+        rule["settings"]["fontStyle"] = "normal"
 
   for rule in theme["tokenColors"]:
     if rule.get("name") == "Global settings":
@@ -514,6 +552,7 @@ def build(variant):
   theme.pop("maintainers", None)
   theme["author"] = "Gaurang Karia"
   theme["semanticHighlighting"] = True
+  theme["semanticTokenColors"] = semantic_token_colors(variant)
 
   dst = ROOT / variant.vscode_path
   dst.parent.mkdir(parents=True, exist_ok=True)

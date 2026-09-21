@@ -1,8 +1,8 @@
 {
-  "name": "Amber Material Light High Contrast",
+  "name": "Amber Material Light High Contrast No Italic",
   "author": "Gaurang Karia",
   "type": "light",
-  "semanticClass": "amber-material-light-high-contrast",
+  "semanticClass": "amber-material-light-high-contrast-no-italic",
   "colors": {
     "contrastActiveBorder": "#F0EBE000",
     "contrastBorder": "#D8D2C6",
@@ -1976,7 +1976,7 @@
         "this"
       ],
       "settings": {
-        "fontStyle": "italic"
+        "fontStyle": "normal"
       }
     }
   ],

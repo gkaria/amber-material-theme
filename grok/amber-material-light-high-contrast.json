@@ -10,18 +10,18 @@
     "bg_visual": "#E8D5A8"
   },
   "accents": {
-    "accent_user": "#C99200",
+    "accent_user": "#8F6200",
     "accent_assistant": "#2E5DB8",
     "accent_thinking": "#7B3F9E",
     "accent_tool": "#0E7490",
-    "accent_system": "#8A8580",
+    "accent_system": "#75706B",
     "accent_error": "#C62828",
     "accent_success": "#4A7C1B",
-    "accent_running": "#FFE08A",
-    "accent_skill": "#9B59C7",
+    "accent_running": "#996515",
+    "accent_skill": "#8E4EBE",
     "accent_plan": "#3D6BB8",
-    "accent_verify": "#5A9A24",
-    "accent_feedback": "#0E9AAF",
+    "accent_verify": "#3F7018",
+    "accent_feedback": "#0A6C84",
     "accent_remember": "#7B3F9E",
     "accent_model": "#D32F2F"
   },
@@ -31,50 +31,50 @@
   },
   "grays": {
     "gray_dim": "#E8E2D8",
-    "gray": "#8A8580",
+    "gray": "#75706B",
     "gray_bright": "#1E2228"
   },
   "semantic": {
-    "command": "#C99200",
+    "command": "#8F6200",
     "path": "#0E7490",
-    "running": "#FFE08A",
-    "warning": "#FFCB6B",
-    "fuzzy_accent": "#FFE08A"
+    "running": "#996515",
+    "warning": "#8F6200",
+    "fuzzy_accent": "#996515"
   },
   "borders": {
-    "selection_border": "#C99200",
+    "selection_border": "#8F6200",
     "hover_border": "#E8E2D8",
     "prompt_border": "#E8E2D8",
-    "prompt_border_active": "#C99200",
+    "prompt_border_active": "#8F6200",
     "scrollbar_bg": "#F0EBE0",
     "scrollbar_fg": "#E8E2D8"
   },
   "paste": {
     "paste_bg": "#FFFFFF",
     "paste_fg": "#2B2926",
-    "paste_dim": "#8A8580"
+    "paste_dim": "#75706B"
   },
   "diff": {
     "diff_delete_bg": "#F6E6DE",
     "diff_delete_fg": "#D32F2F",
     "diff_insert_bg": "#ECECDD",
-    "diff_insert_fg": "#5A9A24",
+    "diff_insert_fg": "#3F7018",
     "diff_equal_fg": "#2B2926",
-    "diff_gutter_fg": "#8A8580"
+    "diff_gutter_fg": "#75706B"
   },
   "markdown": {
-    "md_heading_h1": "#C99200",
-    "md_heading_h2": "#FFE08A",
+    "md_heading_h1": "#8F6200",
+    "md_heading_h2": "#996515",
     "md_heading_h3": "#2E5DB8",
     "md_heading_h4": "#3D6BB8",
     "md_heading_h5": "#7B3F9E",
-    "md_heading_h6": "#9B59C7",
+    "md_heading_h6": "#8E4EBE",
     "md_code": "#4A7C1B",
     "md_code_bg": "#FAF6EE",
     "md_text": "#2B2926",
-    "md_muted": "#8A8580",
+    "md_muted": "#75706B",
     "md_task_checked": "#4A7C1B",
-    "md_task_unchecked": "#8A8580",
+    "md_task_unchecked": "#75706B",
     "link_fg": "#2E5DB8"
   }
 }

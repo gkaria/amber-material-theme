@@ -41,6 +41,7 @@ GENERATORS = (
     "build_codex_theme.py",
     "build_terminal_suite.py",
     "build_grok_theme.py",
+    "build_palette.py",
 )
 
 GENERATED = (
@@ -63,6 +64,11 @@ GENERATED = (
     "grok/amber-material-light-high-contrast.json",
     "grok/pager.toml",
     "grok/pager-light.toml",
+    "themes/amber-material-hc-no-italic.json",
+    "themes/amber-material-light-hc-no-italic.json",
+    "codex/amber-material-high-contrast-no-italic.tmTheme",
+    "codex/amber-material-light-high-contrast-no-italic.tmTheme",
+    "palette/amber-material.json",
 )
 
 VENDOR_MANIFEST = "vendor/material-icon-theme.json"

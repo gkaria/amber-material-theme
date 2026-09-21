@@ -10,7 +10,7 @@ import zipfile
 ROOT = Path(__file__).resolve().parent.parent
 TARGETS = (
     "ghostty", "codex", "claude-code", "opencode", "windows-terminal",
-    "powershell", "starship", "grok",
+    "powershell", "starship", "grok", "palette",
 )
 
 

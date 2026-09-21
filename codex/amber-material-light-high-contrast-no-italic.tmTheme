@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>name</key>
-	<string>Amber Material High Contrast</string>
+	<string>Amber Material Light High Contrast No Italic</string>
 	<key>settings</key>
 	<array>
 		<dict>
@@ -12,17 +12,17 @@
 			<key>settings</key>
 			<dict>
 				<key>background</key>
-				<string>#1D2021</string>
+				<string>#FBF7EE</string>
 				<key>caret</key>
-				<string>#FFCB6B</string>
+				<string>#8F6200</string>
 				<key>foreground</key>
-				<string>#E7E1D1</string>
+				<string>#2B2926</string>
 				<key>invisibles</key>
-				<string>#4E5579</string>
+				<string>#9CA3B0</string>
 				<key>lineHighlight</key>
-				<string>#2A2E3A</string>
+				<string>#F0EBE0</string>
 				<key>selection</key>
-				<string>#4A3F28</string>
+				<string>#E8D5A8</string>
 			</dict>
 		</dict>
 		<dict>
@@ -31,7 +31,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#858DAF</string>
+				<string>#646B82</string>
 				<key>fontStyle</key>
 				<string>italic</string>
 			</dict>
@@ -44,7 +44,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#C3E88D</string>
+				<string>#4A7C1B</string>
 			</dict>
 			<key>name</key>
 			<string>String</string>
@@ -55,7 +55,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#C3E88D</string>
+				<string>#4A7C1B</string>
 			</dict>
 			<key>name</key>
 			<string>String Quoted</string>
@@ -66,7 +66,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#bfc7d5</string>
+				<string>#1E2228</string>
 			</dict>
 			<key>name</key>
 			<string>String Unquoted</string>
@@ -77,7 +77,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#ffcb6b</string>
+				<string>#8F6200</string>
 			</dict>
 			<key>name</key>
 			<string>Support Constant Math</string>
@@ -88,7 +88,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#F78C6C</string>
+				<string>#B24E26</string>
 			</dict>
 			<key>name</key>
 			<string>Number</string>
@@ -99,7 +99,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#82AAFF</string>
+				<string>#2E5DB8</string>
 			</dict>
 			<key>name</key>
 			<string>Built-in constant</string>
@@ -110,7 +110,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#82AAFF</string>
+				<string>#2E5DB8</string>
 			</dict>
 			<key>name</key>
 			<string>User-defined constant</string>
@@ -121,7 +121,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#F78C6C</string>
+				<string>#B24E26</string>
 			</dict>
 			<key>name</key>
 			<string>Constant Character Escape</string>
@@ -132,7 +132,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#80CBC4</string>
+				<string>#0E7490</string>
 			</dict>
 			<key>name</key>
 			<string>RegExp String</string>
@@ -143,7 +143,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#eeffff</string>
+				<string>#1E2228</string>
 			</dict>
 			<key>name</key>
 			<string>Comma in functions</string>
@@ -154,7 +154,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#ffcb6b</string>
+				<string>#8F6200</string>
 			</dict>
 			<key>name</key>
 			<string>Variable</string>
@@ -165,7 +165,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#c792ea</string>
+				<string>#7B3F9E</string>
 			</dict>
 			<key>name</key>
 			<string>Keyword</string>
@@ -176,7 +176,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#c792ea</string>
+				<string>#7B3F9E</string>
 			</dict>
 			<key>name</key>
 			<string>Storage</string>
@@ -187,7 +187,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#ffcb6b</string>
+				<string>#8F6200</string>
 			</dict>
 			<key>name</key>
 			<string>Class name</string>
@@ -198,7 +198,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#a9c77d</string>
+				<string>#4A7C1B</string>
 			</dict>
 			<key>name</key>
 			<string>Inherited class</string>
@@ -209,7 +209,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#82AAFF</string>
+				<string>#2E5DB8</string>
 			</dict>
 			<key>name</key>
 			<string>Function name</string>
@@ -220,7 +220,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#7986E7</string>
+				<string>#5B4FCF</string>
 			</dict>
 			<key>name</key>
 			<string>Function Parameters</string>
@@ -231,7 +231,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#89DDFF</string>
+				<string>#0E7490</string>
 			</dict>
 			<key>name</key>
 			<string>Meta Tag</string>
@@ -242,7 +242,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#ff5572</string>
+				<string>#C62828</string>
 			</dict>
 			<key>name</key>
 			<string>HTML Tag names</string>
@@ -253,7 +253,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#ffcb6b</string>
+				<string>#8F6200</string>
 			</dict>
 			<key>name</key>
 			<string>Tag attribute</string>
@@ -264,7 +264,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#ffcb6b</string>
+				<string>#8F6200</string>
 			</dict>
 			<key>name</key>
 			<string>Entity Name Tag Custom</string>
@@ -275,7 +275,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#82AAFF</string>
+				<string>#2E5DB8</string>
 			</dict>
 			<key>name</key>
 			<string>Library (function &amp; constant)</string>
@@ -286,7 +286,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#89DDFF</string>
+				<string>#0E7490</string>
 			</dict>
 			<key>name</key>
 			<string>Support Constant Property Value meta</string>
@@ -297,7 +297,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#ffcb6b</string>
+				<string>#8F6200</string>
 			</dict>
 			<key>name</key>
 			<string>Library class/type</string>
@@ -308,7 +308,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#ffcb6b</string>
+				<string>#8F6200</string>
 			</dict>
 			<key>name</key>
 			<string>Support Variable DOM</string>
@@ -321,7 +321,7 @@
 				<key>background</key>
 				<string>#ff2c83</string>
 				<key>foreground</key>
-				<string>#ffffff</string>
+				<string>#1E2228</string>
 			</dict>
 			<key>name</key>
 			<string>Invalid</string>
@@ -332,9 +332,9 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#ffffff</string>
+				<string>#1E2228</string>
 				<key>background</key>
-				<string>#FF5572</string>
+				<string>#C62828</string>
 			</dict>
 			<key>name</key>
 			<string>Invalid deprecated</string>
@@ -345,7 +345,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#89DDFF</string>
+				<string>#0E7490</string>
 			</dict>
 			<key>name</key>
 			<string>Keyword Operator</string>
@@ -356,7 +356,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#c792ea</string>
+				<string>#7B3F9E</string>
 			</dict>
 			<key>name</key>
 			<string>Keyword Operator Relational</string>
@@ -367,7 +367,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#c792ea</string>
+				<string>#7B3F9E</string>
 			</dict>
 			<key>name</key>
 			<string>Keyword Operator Assignment</string>
@@ -378,7 +378,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#858DAF</string>
+				<string>#646B82</string>
 			</dict>
 			<key>name</key>
 			<string>Double-Slashed Comment</string>
@@ -389,7 +389,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#cdebf7</string>
+				<string>#2E7A8F</string>
 			</dict>
 			<key>name</key>
 			<string>Object</string>
@@ -400,7 +400,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#ff5874</string>
+				<string>#C62828</string>
 			</dict>
 			<key>name</key>
 			<string>Null</string>
@@ -411,7 +411,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#bfc7d5</string>
+				<string>#1E2228</string>
 			</dict>
 			<key>name</key>
 			<string>Meta Brace</string>
@@ -422,7 +422,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#c792ea</string>
+				<string>#7B3F9E</string>
 			</dict>
 			<key>name</key>
 			<string>Meta Delimiter Period</string>
@@ -433,7 +433,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#d9f5dd</string>
+				<string>#3D7A2E</string>
 			</dict>
 			<key>name</key>
 			<string>Punctuation Definition String</string>
@@ -444,7 +444,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#ff5874</string>
+				<string>#C62828</string>
 			</dict>
 			<key>name</key>
 			<string>Boolean</string>
@@ -455,7 +455,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#ffffff</string>
+				<string>#1E2228</string>
 			</dict>
 			<key>name</key>
 			<string>Object Comma</string>
@@ -466,7 +466,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#89DDFF</string>
+				<string>#0E7490</string>
 			</dict>
 			<key>name</key>
 			<string>Variable Parameter Function</string>
@@ -477,7 +477,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#80CBC4</string>
+				<string>#0E7490</string>
 			</dict>
 			<key>name</key>
 			<string>Support Type Property Name &amp; entity name tags</string>
@@ -488,7 +488,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#ff5572</string>
+				<string>#C62828</string>
 			</dict>
 			<key>name</key>
 			<string>Entity Name tag reference in stylesheets</string>
@@ -499,7 +499,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#F78C6C</string>
+				<string>#B24E26</string>
 			</dict>
 			<key>name</key>
 			<string>Constant Other Color RGB Value Punctuation Definition Constant</string>
@@ -510,7 +510,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#FFEB95</string>
+				<string>#8F6200</string>
 			</dict>
 			<key>name</key>
 			<string>Constant Other Color</string>
@@ -521,7 +521,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#FFEB95</string>
+				<string>#8F6200</string>
 			</dict>
 			<key>name</key>
 			<string>Keyword Other Unit</string>
@@ -532,7 +532,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#c792ea</string>
+				<string>#7B3F9E</string>
 			</dict>
 			<key>name</key>
 			<string>Meta Selector</string>
@@ -543,7 +543,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#FAD430</string>
+				<string>#8F6200</string>
 			</dict>
 			<key>name</key>
 			<string>Entity Other Attribute Name Id</string>
@@ -554,7 +554,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#80CBC4</string>
+				<string>#0E7490</string>
 			</dict>
 			<key>name</key>
 			<string>Meta Property Name</string>
@@ -565,7 +565,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#c792ea</string>
+				<string>#7B3F9E</string>
 				<key>fontStyle</key>
 				<string>italic</string>
 			</dict>
@@ -578,7 +578,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#d9f5dd</string>
+				<string>#3D7A2E</string>
 			</dict>
 			<key>name</key>
 			<string>Punctuation Definition Parameters</string>
@@ -589,7 +589,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#89DDFF</string>
+				<string>#0E7490</string>
 			</dict>
 			<key>name</key>
 			<string>Keyword Control Operator</string>
@@ -600,7 +600,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#c792ea</string>
+				<string>#7B3F9E</string>
 			</dict>
 			<key>name</key>
 			<string>Keyword Operator Logical</string>
@@ -611,7 +611,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#ff5572</string>
+				<string>#C62828</string>
 			</dict>
 			<key>name</key>
 			<string>Variable Instances</string>
@@ -622,7 +622,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#89DDFF</string>
+				<string>#0E7490</string>
 			</dict>
 			<key>name</key>
 			<string>Variable Property Other</string>
@@ -633,7 +633,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#82AAFF</string>
+				<string>#2E5DB8</string>
 			</dict>
 			<key>name</key>
 			<string>Entity Name Function</string>
@@ -644,7 +644,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#c792ea</string>
+				<string>#7B3F9E</string>
 			</dict>
 			<key>name</key>
 			<string>Keyword Operator Comparison</string>
@@ -655,7 +655,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#89DDFF</string>
+				<string>#0E7490</string>
 			</dict>
 			<key>name</key>
 			<string>Support Constant, `new` keyword, Special Method Keyword</string>
@@ -666,7 +666,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#89DDFF</string>
+				<string>#0E7490</string>
 			</dict>
 			<key>name</key>
 			<string>Support Function</string>
@@ -679,7 +679,7 @@
 				<key>foreground</key>
 				<string>#020e14</string>
 				<key>background</key>
-				<string>#F78C6C</string>
+				<string>#B24E26</string>
 			</dict>
 			<key>name</key>
 			<string>Invalid Broken</string>
@@ -692,7 +692,7 @@
 				<key>background</key>
 				<string>#8BD649</string>
 				<key>foreground</key>
-				<string>#ffffff</string>
+				<string>#1E2228</string>
 			</dict>
 			<key>name</key>
 			<string>Invalid Unimplemented</string>
@@ -703,9 +703,9 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#ffffff</string>
+				<string>#1E2228</string>
 				<key>background</key>
-				<string>#ec5f67</string>
+				<string>#C62828</string>
 			</dict>
 			<key>name</key>
 			<string>Invalid Illegal</string>
@@ -716,7 +716,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#ff5572</string>
+				<string>#C62828</string>
 			</dict>
 			<key>name</key>
 			<string>Language Variable</string>
@@ -727,7 +727,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#89DDFF</string>
+				<string>#0E7490</string>
 			</dict>
 			<key>name</key>
 			<string>Support Variable Property</string>
@@ -738,7 +738,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#82AAFF</string>
+				<string>#2E5DB8</string>
 			</dict>
 			<key>name</key>
 			<string>Variable Function</string>
@@ -749,7 +749,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#ec5f67</string>
+				<string>#C62828</string>
 			</dict>
 			<key>name</key>
 			<string>Variable Interpolation</string>
@@ -760,7 +760,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#82AAFF</string>
+				<string>#2E5DB8</string>
 			</dict>
 			<key>name</key>
 			<string>Meta Function Call</string>
@@ -771,7 +771,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#FF5572</string>
+				<string>#C62828</string>
 			</dict>
 			<key>name</key>
 			<string>Punctuation Section Embedded</string>
@@ -782,7 +782,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#bfc7d5</string>
+				<string>#1E2228</string>
 			</dict>
 			<key>name</key>
 			<string>Punctuation Tweaks</string>
@@ -793,7 +793,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#d9f5dd</string>
+				<string>#3D7A2E</string>
 			</dict>
 			<key>name</key>
 			<string>More Punctuation Tweaks</string>
@@ -804,7 +804,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#FF5572</string>
+				<string>#C62828</string>
 			</dict>
 			<key>name</key>
 			<string>Template Strings</string>
@@ -815,7 +815,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#bfc7d5</string>
+				<string>#1E2228</string>
 			</dict>
 			<key>name</key>
 			<string>Backtics(``) in Template Strings</string>
@@ -826,7 +826,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#c792ea</string>
+				<string>#7B3F9E</string>
 				<key>fontStyle</key>
 				<string>italic</string>
 			</dict>
@@ -839,7 +839,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#ffcb6b</string>
+				<string>#8F6200</string>
 				<key>fontStyle</key>
 				<string>bold</string>
 			</dict>
@@ -852,7 +852,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#858DAF</string>
+				<string>#646B82</string>
 				<key>fontStyle</key>
 				<string>italic</string>
 			</dict>
@@ -865,7 +865,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#80CBC4</string>
+				<string>#0E7490</string>
 			</dict>
 			<key>name</key>
 			<string>Raw Code</string>
@@ -876,7 +876,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#89DDFF</string>
+				<string>#0E7490</string>
 			</dict>
 			<key>name</key>
 			<string>CoffeScript Variable Assignment</string>
@@ -887,7 +887,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#bfc7d5</string>
+				<string>#1E2228</string>
 			</dict>
 			<key>name</key>
 			<string>CoffeScript Parameter Function</string>
@@ -898,7 +898,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#89DDFF</string>
+				<string>#0E7490</string>
 			</dict>
 			<key>name</key>
 			<string>CoffeeScript Assignments</string>
@@ -909,7 +909,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#bfc7d5</string>
+				<string>#1E2228</string>
 			</dict>
 			<key>name</key>
 			<string>C# Readwrite Variables</string>
@@ -920,7 +920,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#82AAFF</string>
+				<string>#2E5DB8</string>
 			</dict>
 			<key>name</key>
 			<string>C# Classes &amp; Storage types</string>
@@ -931,7 +931,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#B2CCD6</string>
+				<string>#2E5DB8</string>
 			</dict>
 			<key>name</key>
 			<string>C# Namespaces</string>
@@ -942,7 +942,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#ff5572</string>
+				<string>#C62828</string>
 			</dict>
 			<key>name</key>
 			<string>Tag names in Stylesheets</string>
@@ -953,7 +953,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#ff5572</string>
+				<string>#C62828</string>
 			</dict>
 			<key>name</key>
 			<string>Wildcard(*) selector in Stylesheets</string>
@@ -964,7 +964,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#FFEB95</string>
+				<string>#8F6200</string>
 			</dict>
 			<key>name</key>
 			<string>(C|SC|SA|LE)SS property value unit</string>
@@ -975,7 +975,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#F78C6C</string>
+				<string>#B24E26</string>
 			</dict>
 			<key>name</key>
 			<string>Attribute Name for CSS</string>
@@ -986,7 +986,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#bfc7d5</string>
+				<string>#1E2228</string>
 			</dict>
 			<key>name</key>
 			<string>punctuations in styled components</string>
@@ -997,7 +997,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#82AAFF</string>
+				<string>#2E5DB8</string>
 			</dict>
 			<key>name</key>
 			<string>Elixir Classes</string>
@@ -1008,7 +1008,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#ffcb6b</string>
+				<string>#8F6200</string>
 			</dict>
 			<key>name</key>
 			<string>Elixir Functions</string>
@@ -1019,7 +1019,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#82AAFF</string>
+				<string>#2E5DB8</string>
 			</dict>
 			<key>name</key>
 			<string>Elixir Constants</string>
@@ -1030,7 +1030,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#a9c77d</string>
+				<string>#4A7C1B</string>
 			</dict>
 			<key>name</key>
 			<string>Elixir String Punctuations</string>
@@ -1041,7 +1041,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#ffcb6b</string>
+				<string>#8F6200</string>
 			</dict>
 			<key>name</key>
 			<string>Elixir</string>
@@ -1052,7 +1052,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#c792ea</string>
+				<string>#7B3F9E</string>
 			</dict>
 			<key>name</key>
 			<string>Elixir Binary Punctuations</string>
@@ -1063,7 +1063,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#DDDDDD</string>
+				<string>#1E2228</string>
 			</dict>
 			<key>name</key>
 			<string>Go Function Calls</string>
@@ -1074,7 +1074,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#bfc7d5</string>
+				<string>#1E2228</string>
 			</dict>
 			<key>name</key>
 			<string>GraphQL Variables</string>
@@ -1085,7 +1085,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#ffcb6b</string>
+				<string>#8F6200</string>
 			</dict>
 			<key>name</key>
 			<string>ID Attribute Name in HTML</string>
@@ -1096,7 +1096,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#89DDFF</string>
+				<string>#0E7490</string>
 			</dict>
 			<key>name</key>
 			<string>HTML Punctuation Definition Tag</string>
@@ -1107,7 +1107,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#c792ea</string>
+				<string>#7B3F9E</string>
 				<key>fontStyle</key>
 				<string>italic</string>
 			</dict>
@@ -1120,7 +1120,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#ffcb8b</string>
+				<string>#8F6200</string>
 			</dict>
 			<key>name</key>
 			<string>JavaScript Classes</string>
@@ -1131,7 +1131,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#82AAFF</string>
+				<string>#2E5DB8</string>
 				<key>fontStyle</key>
 				<string>normal</string>
 			</dict>
@@ -1144,7 +1144,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#bfc7d5</string>
+				<string>#1E2228</string>
 			</dict>
 			<key>name</key>
 			<string>JavaScript Terminator</string>
@@ -1155,7 +1155,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#bfc7d5</string>
+				<string>#1E2228</string>
 			</dict>
 			<key>name</key>
 			<string>JavaScript Meta Punctuation Definition</string>
@@ -1166,7 +1166,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#eeffff</string>
+				<string>#1E2228</string>
 			</dict>
 			<key>name</key>
 			<string>Entity Names in Code Documentations</string>
@@ -1177,7 +1177,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#78ccf0</string>
+				<string>#2E5DB8</string>
 			</dict>
 			<key>name</key>
 			<string>Other Variables in Code Documentations</string>
@@ -1188,7 +1188,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#bfc7d5</string>
+				<string>#1E2228</string>
 			</dict>
 			<key>name</key>
 			<string>JavaScript module imports and exports</string>
@@ -1199,7 +1199,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#7986E7</string>
+				<string>#5B4FCF</string>
 			</dict>
 			<key>name</key>
 			<string>JavaScript Variable Parameter Function</string>
@@ -1210,7 +1210,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#bfc7d5</string>
+				<string>#1E2228</string>
 			</dict>
 			<key>name</key>
 			<string>JavaScript Variable Other ReadWrite</string>
@@ -1221,7 +1221,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#bfc7d5</string>
+				<string>#1E2228</string>
 			</dict>
 			<key>name</key>
 			<string>Text nested in React tags</string>
@@ -1232,7 +1232,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#bfc7d5</string>
+				<string>#1E2228</string>
 			</dict>
 			<key>name</key>
 			<string>JavaScript[React] Variable Other Object</string>
@@ -1243,7 +1243,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#bfc7d5</string>
+				<string>#1E2228</string>
 			</dict>
 			<key>name</key>
 			<string>JavaScript Variables</string>
@@ -1254,7 +1254,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#ffcb8b</string>
+				<string>#8F6200</string>
 			</dict>
 			<key>name</key>
 			<string>JavaScript Entity Name Type</string>
@@ -1265,7 +1265,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#bfc7d5</string>
+				<string>#1E2228</string>
 			</dict>
 			<key>name</key>
 			<string>JavaScript Support Classes</string>
@@ -1276,7 +1276,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#C3E88D</string>
+				<string>#4A7C1B</string>
 				<key>fontStyle</key>
 				<string>normal</string>
 			</dict>
@@ -1289,7 +1289,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#ffcb6b</string>
+				<string>#8F6200</string>
 			</dict>
 			<key>name</key>
 			<string>JSON Support Constants</string>
@@ -1300,7 +1300,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#80CBC4</string>
+				<string>#0E7490</string>
 				<key>fontStyle</key>
 				<string>normal</string>
 			</dict>
@@ -1313,7 +1313,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#80CBC4</string>
+				<string>#0E7490</string>
 				<key>fontStyle</key>
 				<string>normal</string>
 			</dict>
@@ -1326,7 +1326,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#ff5874</string>
+				<string>#C62828</string>
 			</dict>
 			<key>name</key>
 			<string>Specific JSON Property values like null</string>
@@ -1337,7 +1337,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#bfc7d5</string>
+				<string>#1E2228</string>
 			</dict>
 			<key>name</key>
 			<string>Ruby Variables</string>
@@ -1348,7 +1348,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#89DDFF</string>
+				<string>#0E7490</string>
 			</dict>
 			<key>name</key>
 			<string>Ruby Hashkeys</string>
@@ -1359,7 +1359,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#ff5572</string>
+				<string>#C62828</string>
 			</dict>
 			<key>name</key>
 			<string>LESS Tag names</string>
@@ -1370,7 +1370,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#F78C6C</string>
+				<string>#B24E26</string>
 			</dict>
 			<key>name</key>
 			<string>Attribute Name for LESS</string>
@@ -1381,7 +1381,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#82b1ff</string>
+				<string>#2E5DB8</string>
 			</dict>
 			<key>name</key>
 			<string>Markup Headings</string>
@@ -1392,7 +1392,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#c792ea</string>
+				<string>#7B3F9E</string>
 				<key>fontStyle</key>
 				<string>italic</string>
 			</dict>
@@ -1405,7 +1405,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#ffcb6b</string>
+				<string>#8F6200</string>
 				<key>fontStyle</key>
 				<string>bold</string>
 			</dict>
@@ -1418,7 +1418,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#858DAF</string>
+				<string>#646B82</string>
 				<key>fontStyle</key>
 				<string>italic</string>
 			</dict>
@@ -1431,7 +1431,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#80CBC4</string>
+				<string>#0E7490</string>
 			</dict>
 			<key>name</key>
 			<string>Markup Raw Code + others</string>
@@ -1442,7 +1442,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#ff869a</string>
+				<string>#C62828</string>
 			</dict>
 			<key>name</key>
 			<string>Markup Links</string>
@@ -1453,7 +1453,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#a9c77d</string>
+				<string>#4A7C1B</string>
 			</dict>
 			<key>name</key>
 			<string>Markup Attributes</string>
@@ -1475,7 +1475,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#D9F5DD</string>
+				<string>#3D7A2E</string>
 			</dict>
 			<key>name</key>
 			<string>Markup Lists</string>
@@ -1497,7 +1497,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#bfc7d5</string>
+				<string>#1E2228</string>
 			</dict>
 			<key>name</key>
 			<string>Markdown Link Title and Description</string>
@@ -1508,7 +1508,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#82b1ff</string>
+				<string>#2E5DB8</string>
 			</dict>
 			<key>name</key>
 			<string>Markdown Punctuation</string>
@@ -1519,7 +1519,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#ff5572</string>
+				<string>#C62828</string>
 			</dict>
 			<key>name</key>
 			<string>Markdown MetaData Punctuation</string>
@@ -1530,7 +1530,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#82b1ff</string>
+				<string>#2E5DB8</string>
 			</dict>
 			<key>name</key>
 			<string>Markdown List Punctuation</string>
@@ -1541,7 +1541,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#F78C6C</string>
+				<string>#B24E26</string>
 			</dict>
 			<key>name</key>
 			<string>Asciidoc Function</string>
@@ -1552,7 +1552,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#bec5d4</string>
+				<string>#1E2228</string>
 			</dict>
 			<key>name</key>
 			<string>PHP Variables</string>
@@ -1563,7 +1563,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#ffcb8b</string>
+				<string>#8F6200</string>
 			</dict>
 			<key>name</key>
 			<string>Support Classes in PHP</string>
@@ -1574,7 +1574,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#bfc7d5</string>
+				<string>#1E2228</string>
 			</dict>
 			<key>name</key>
 			<string>Punctuations in PHP function calls</string>
@@ -1585,7 +1585,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#ffcb6b</string>
+				<string>#8F6200</string>
 			</dict>
 			<key>name</key>
 			<string>PHP Global Variables</string>
@@ -1596,7 +1596,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#ffcb6b</string>
+				<string>#8F6200</string>
 			</dict>
 			<key>name</key>
 			<string>Declaration Punctuation in PHP Global Variables</string>
@@ -1607,7 +1607,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#ff5874</string>
+				<string>#C62828</string>
 			</dict>
 			<key>name</key>
 			<string>Language Constants in Python</string>
@@ -1618,7 +1618,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#7986E7</string>
+				<string>#5B4FCF</string>
 			</dict>
 			<key>name</key>
 			<string>Python Function Parameter and Arguments</string>
@@ -1629,7 +1629,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#B2CCD6</string>
+				<string>#2E5DB8</string>
 			</dict>
 			<key>name</key>
 			<string>Python Function Call</string>
@@ -1640,7 +1640,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#bfc7d5</string>
+				<string>#1E2228</string>
 			</dict>
 			<key>name</key>
 			<string>Punctuations in Python</string>
@@ -1651,7 +1651,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#ffcb6b</string>
+				<string>#8F6200</string>
 			</dict>
 			<key>name</key>
 			<string>Decorator Functions in Python</string>
@@ -1662,7 +1662,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#8EACE3</string>
+				<string>#2E5DB8</string>
 			</dict>
 			<key>name</key>
 			<string>Python Language Variable</string>
@@ -1673,7 +1673,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#DDDDDD</string>
+				<string>#1E2228</string>
 			</dict>
 			<key>name</key>
 			<string>SCSS Variable</string>
@@ -1684,7 +1684,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#82AAFF</string>
+				<string>#2E5DB8</string>
 			</dict>
 			<key>name</key>
 			<string>Variables in SASS At-Rules</string>
@@ -1695,7 +1695,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#bec5d4</string>
+				<string>#1E2228</string>
 			</dict>
 			<key>name</key>
 			<string>Variables in SASS At-Rules</string>
@@ -1706,7 +1706,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#F78C6C</string>
+				<string>#B24E26</string>
 			</dict>
 			<key>name</key>
 			<string>Attribute Name for SASS</string>
@@ -1717,7 +1717,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#ff5572</string>
+				<string>#C62828</string>
 			</dict>
 			<key>name</key>
 			<string>Tag names in SASS</string>
@@ -1728,7 +1728,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#bfc7d5</string>
+				<string>#1E2228</string>
 			</dict>
 			<key>name</key>
 			<string>TypeScript[React] Variables and Object Properties</string>
@@ -1739,7 +1739,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#78ccf0</string>
+				<string>#2E5DB8</string>
 			</dict>
 			<key>name</key>
 			<string>TypeScript[React] Entity Name Types</string>
@@ -1750,7 +1750,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#82AAFF</string>
+				<string>#2E5DB8</string>
 			</dict>
 			<key>name</key>
 			<string>TypeScript[React] Node Classes</string>
@@ -1761,7 +1761,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#eeffff</string>
+				<string>#1E2228</string>
 			</dict>
 			<key>name</key>
 			<string>TypeScript[React] Entity Name Types as Parameters</string>
@@ -1772,7 +1772,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#bfc7d5</string>
+				<string>#1E2228</string>
 			</dict>
 			<key>name</key>
 			<string>TypeScript[React] Import/Export Punctuations</string>
@@ -1783,7 +1783,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#82AAFF</string>
+				<string>#2E5DB8</string>
 			</dict>
 			<key>name</key>
 			<string>TypeScript[React] Punctuation Decorators</string>
@@ -1794,7 +1794,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#82AAFF</string>
+				<string>#2E5DB8</string>
 			</dict>
 			<key>name</key>
 			<string>TypeScript[React] Punctuation Decorators</string>
@@ -1805,7 +1805,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#89DDFF</string>
+				<string>#0E7490</string>
 			</dict>
 			<key>name</key>
 			<string>YAML Entity Name Tags</string>
@@ -1816,7 +1816,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#bec5d4</string>
+				<string>#1E2228</string>
 			</dict>
 			<key>name</key>
 			<string>handlebars variables</string>
@@ -1827,7 +1827,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#ffcb6b</string>
+				<string>#8F6200</string>
 			</dict>
 			<key>name</key>
 			<string>handlebars parameters</string>
@@ -1838,7 +1838,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#89DDFF</string>
+				<string>#0E7490</string>
 			</dict>
 			<key>name</key>
 			<string>handlebars enitity attribute names</string>
@@ -1849,7 +1849,7 @@
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>
-				<string>#7986E7</string>
+				<string>#5B4FCF</string>
 			</dict>
 			<key>name</key>
 			<string>handlebars enitity attribute values</string>
@@ -1871,13 +1871,13 @@
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
-				<string>italic</string>
+				<string>normal</string>
 			</dict>
 			<key>name</key>
 			<string>italicsify certain tokens</string>
 		</dict>
 	</array>
 	<key>uuid</key>
-	<string>B0C0BD92-FAD0-5230-921D-8ED07786A487</string>
+	<string>DCA233F1-949D-5F7C-B81B-D7F8FC624CE3</string>
 </dict>
 </plist>
